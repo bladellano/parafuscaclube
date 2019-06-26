@@ -1,0 +1,37 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
+.header-site{
+	background-image: url('../img/bg-fusca-principal.jpeg');
+	position: center top;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	color: #000;
+	padding-top: 200px;
+	padding-bottom: 200px;
+}
+.content-site {
+	padding-top: 200px;
+	padding-bottom: 200px;
+}
+.img-site{
+	background-image: url('../img/bg-fusca.jpeg');
+	position: center top;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	color: #fff;
+	padding-top: 200px;
+	padding-bottom: 200px;
+}
+
+.footer-site {
+	background-color: #333;
+	color: #fff;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
