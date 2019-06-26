@@ -3,9 +3,9 @@
 	width: 100%;
 	height: 50px;
 	background-color: #f22613;
-	font-family: sans-serif;
 	position: fixed;
 	z-index: 3;
+	text-transform: uppercase;
 }
 
 .menu ul {
