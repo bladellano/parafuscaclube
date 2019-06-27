@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/menu.css">
+	<link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -21,21 +22,27 @@
 			
 			<ul>
 				<li><a href="#">Home</a></li> 
-				<li><a href="#">Serviços</a>
+				<li><a href="#">Quem Somos</a>
+					<ul>
+						<li><a href="#">Fundação</a></li>
+						<li><a href="#">Membros</a></li>
+						
+					</ul>
+				</li> 
+
+				<li><a href="#">História</a></li> 
+				<li><a href="#">Curiosidades</a></li> 
+				<li><a href="#">Contato</a></li> 
+				<li><a href="#">Mídias</a>
 
 					<ul>
-						<li><a href="#">Criação de Sites</a></li>
-						<li><a href="#">Arte Visual</a></li>
+						<li><a href="#">Fotos</a></li>
+						<li><a href="#">Videos</a></li>
+						<li><a href="#">Eventos</a></li>
 					</ul>
 				</li>
 
-				<li><a href="#">Cursos</a>
-					<ul>
-						<li><a href="#">Java</a></li>
-						<li><a href="#">Photoshop</a></li>
-						<li><a href="#">HTML/CSS</a></li>
-					</ul>
-				</li>
+		 
 				<li><a href="#">Contato</a></li>
 
 			</ul>
@@ -53,7 +60,7 @@
 					<p class="lead text-center">
 					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
 					<p class="text-center">
-						<a href="#" class="btn btn-danger">CADASTRA-SE</a>
+						<a href="#" class="btn btn-danger">Inscreva-se</a>
 					</p>
 				</div>
 			</div>
@@ -64,7 +71,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
-					<h1 class="text-center">Fusce semper massssa quis mauris</h1>
+					<h1 class="text-center">Últimos Eventos</h1>
 					<p class="text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make</p>
 					<br>
 				</div>
@@ -125,5 +132,6 @@
 	
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.js"></script>
+	<script src="js/functions.js"></script>
 </body>
 </html>
