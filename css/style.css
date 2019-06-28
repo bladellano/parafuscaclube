@@ -2,12 +2,22 @@
 	margin: 0;
 	padding: 0;
 }
+
+.thumnails {
+
+	height: 200px;
+	padding-left: 2px;
+	width: 240px;
+	border-radius: 8px;
+}
+
 h1{
 	font-family: 'Righteous', cursive;
 }
 
 .header-site{
-	background-image: url('../img/volkswagen_beetle_k_fer_fusca_vocho_maggiolino_canonef50mmf18ii-822797.jpg');
+	/*background-image: url('../img/bg-fusca-azul.jpg');*/
+	background-image: url('../img/capa.png');
 	position: center top;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -36,4 +46,12 @@ h1{
 	color: #fff;
 	padding-top: 50px;
 	padding-bottom: 50px;
+}
+
+@media screen and (max-width: 768px){
+	.thumnails {
+		height: 150px;
+		padding-left: 2px;
+		width: 218px;
+	}
 }
