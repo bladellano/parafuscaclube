@@ -6,7 +6,7 @@
 	background-color: #f22613;
 	position: fixed;
 	z-index: 3;
-	text-transform: uppercase;
+	/*text-transform:;*/
 	transition: all .4s;
 }
 
@@ -68,7 +68,8 @@ label[for="bt_menu"]{
 		}
 		.active a { 
 			background-color: inherit;
-			color: #273c75;
+			/*color: #273c75;*/
+			color: #333;
 		}
 		.active ul li ul li a {
 			color: #fff;

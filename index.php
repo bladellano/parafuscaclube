@@ -34,7 +34,7 @@
 
 				<li><a href="#">História</a></li> 
 				<li><a href="#">Curiosidades</a></li> 
-				<li><a href="#">Contato</a></li> 
+				<!-- <li><a href="#">Contato</a></li>  -->
 				<li><a href="#">Mídias</a>
 
 					<ul>
@@ -58,12 +58,15 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
-						<h1 class="text-center">BEM-VINDO</h1>
+						<h1 class="text-center">Bem-vindo</h1>
 						<p class="lead text-center">
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+						Somos verdadeiros apaixonados pelo fusca! E dessa paixão surgiu o Pará Fusca Clube que foi criado com o objetivo de reunir pessoas amantes desse veículo. </p>
 						<p class="text-center">
-							<a href="#" class="btn btn-danger">Inscreva-se</a>
+						<p class="text-center">
+							<a href="#" class="btn btn-danger">INSCREVA-SE</a>
 						</p>
+							<p class="lead text-center">Fundado em 19/07/2010</p>
+							<p class="lead text-center">Fundador: Damião Oliveira</p>
 					</div>
 				</div>
 			</div>
@@ -104,7 +107,7 @@
 				<div class="row">						 
 					<div class="col-sm-3">
 						<div class="thumbnail">
-							<img class="img-circle" src="img/membro1.jpeg" alt="">
+							<!-- <img class="img-circle" src="img/membro1.jpeg" alt=""> -->
 							<div class="caption text-center">
 								<h3>Rosana Ferreira</h3>
 								<p>Lorem Ipsum is simply dummy text</p>
@@ -114,7 +117,7 @@
 
 					<div class="col-sm-3">
 						<div class="thumbnail">
-							<img class="img-circle" src="img/membro1.jpeg" alt="">
+							<!-- <img class="img-circle" src="img/membro1.jpeg" alt=""> -->
 							<div class="caption text-center">
 								<h3>Rosana Ferreira</h3>
 								<p>Lorem Ipsum is simply dummy text</p>
@@ -124,7 +127,7 @@
 
 					<div class="col-sm-3">
 						<div class="thumbnail">
-							<img class="img-circle" src="img/membro1.jpeg" alt="">
+							<!-- <img class="img-circle" src="img/membro1.jpeg" alt=""> -->
 							<div class="caption text-center">
 								<h3>Rosana Ferreira</h3>
 								<p>Lorem Ipsum is simply dummy text</p>
@@ -134,7 +137,7 @@
 
 					<div class="col-sm-3">
 						<div class="thumbnail">
-							<img class="img-circle" src="img/membro1.jpeg" alt="">
+							<!-- <img class="img-circle" src="img/membro1.jpeg" alt=""> -->
 							<div class="caption text-center">
 								<h3>Rosana Ferreira</h3>
 								<p>Lorem Ipsum is simply dummy text</p>
@@ -146,7 +149,7 @@
 				<div class="row">						 
 					<div class="col-sm-3">
 						<div class="thumbnail">
-							<img class="img-circle" src="img/membro1.jpeg" alt="">
+							<!-- <img class="img-circle" src="img/membro1.jpeg" alt=""> -->
 							<div class="caption text-center">
 								<h3>Rosana Ferreira</h3>
 								<p>Lorem Ipsum is simply dummy text</p>
@@ -156,7 +159,7 @@
 
 					<div class="col-sm-3">
 						<div class="thumbnail">
-							<img class="img-circle" src="img/membro1.jpeg" alt="">
+							<!-- <img class="img-circle" src="img/membro1.jpeg" alt=""> -->
 							<div class="caption text-center">
 								<h3>Rosana Ferreira</h3>
 								<p>Lorem Ipsum is simply dummy text</p>
@@ -166,7 +169,7 @@
 
 					<div class="col-sm-3">
 						<div class="thumbnail">
-							<img class="img-circle" src="img/membro1.jpeg" alt="">
+							<!-- <img class="img-circle" src="img/membro1.jpeg" alt=""> -->
 							<div class="caption text-center">
 								<h3>Rosana Ferreira</h3>
 								<p>Lorem Ipsum is simply dummy text</p>
@@ -176,7 +179,7 @@
 
 					<div class="col-sm-3">
 						<div class="thumbnail">
-							<img class="img-circle" src="img/membro1.jpeg" alt="">
+							<!-- <img class="img-circle" src="img/membro1.jpeg" alt=""> -->
 							<div class="caption text-center">
 								<h3>Rosana Ferreira</h3>
 								<p>Lorem Ipsum is simply dummy text</p>
