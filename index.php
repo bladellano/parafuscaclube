@@ -6,10 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Pará Fusca Clube</title>
 	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/menu.css">
-	<link rel="stylesheet" href="css/jquery.fancybox-1.3.4.css">
+	<link rel="stylesheet" href="css/menu.css"> 
 	<link rel="stylesheet" href="css/slick.css">
+	<link rel="stylesheet" href="css/lightbox.css">
+	<link rel="stylesheet" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -77,20 +77,22 @@
 
 				<h1 class="text-center">Últimos Eventos</h1>	
  
-
 				<div class="slick">
-					<div><a rel="albuns1" class="fancy" href="img/eventos/evento1.jpeg"><img class="thumnails" src="img/eventos/evento1.jpeg"></a></div>
-					<div><a rel="albuns1" class="fancy" href="img/eventos/evento2.jpeg"><img class="thumnails" src="img/eventos/evento2.jpeg"></a></div>
-					<div><a rel="albuns1" class="fancy" href="img/eventos/evento3.jpeg"><img class="thumnails" src="img/eventos/evento3.jpeg"></a></div>
-					<div><a rel="albuns1" class="fancy" href="img/eventos/evento4.jpeg"><img class="thumnails" src="img/eventos/evento4.jpeg"></a></div>
-					<div><a rel="albuns1" class="fancy" href="img/eventos/evento5.jpeg"><img class="thumnails" src="img/eventos/evento5.jpeg"></a></div>
-					<!-- <div><a class="fancy" href="img/eventos/evento6.jpeg"><img class="thumnails" src="img/eventos/evento6.jpeg"></a></div> -->
-					<div><a rel="albuns1" class="fancy" href="img/eventos/evento7.jpeg"><img class="thumnails" src="img/eventos/evento7.jpeg"></a></div>
-					<div><a rel="albuns1" class="fancy" href="img/eventos/evento8.jpeg"><img class="thumnails" src="img/eventos/evento8.jpeg"></a></div>
-					<div><a rel="albuns1" class="fancy" href="img/eventos/evento9.jpeg"><img class="thumnails" src="img/eventos/evento9.jpeg"></a></div>
-					<div><a rel="albuns1" class="fancy" href="img/eventos/evento10.jpeg"><img class="thumnails" src="img/eventos/evento10.jpeg"></a></div>
-				    
+
+					<div><a href="img/eventos/evento1.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento1.jpeg"></a></div>
+					<div><a href="img/eventos/evento2.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento2.jpeg"></a></div>
+					<div><a href="img/eventos/evento3.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento3.jpeg"></a></div>
+					<div><a href="img/eventos/evento4.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento4.jpeg"></a></div>
+					<div><a href="img/eventos/evento5.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento5.jpeg"></a></div>
+					<!-- <div><a href="img/eventos/evento6.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento6.jpeg"></a></div> -->
+					<div><a href="img/eventos/evento7.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento7.jpeg"></a></div>
+					<!-- <div><a href="img/eventos/evento8.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento8.jpeg"></a></div> -->
+					<div><a href="img/eventos/evento9.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento9.jpeg"></a></div>
+					<div><a href="img/eventos/evento10.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento10.jpeg"></a></div>
 				</div><!-- slick -->
+ 
+				    
+				
 <h1 class="text-center">Últimos Videos</h1>	
 			</div><!--container--> 
 		</section>
@@ -201,12 +203,18 @@
 				</div>
 			</div>
 		</section>
-
-		<script src="js/jquery-1.4.3.min.js"></script>
-		<script src="js/jquery.fancybox-1.3.4.js"></script>
+ 
+ 
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.js"></script>
 		<script src="js/slick.js"></script>
+		<script src="js/lightbox.js"></script>
 		<script src="js/functions.js"></script>
+
+
+	<script>
+ 
+</script>
+
 	</body>
 	</html>

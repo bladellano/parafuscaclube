@@ -19,6 +19,15 @@ $( document ).ready(function() {
 		arrows:false,
 		responsive: [    
 		{
+			breakpoint: 1024,
+			settings: {
+				slidesToShow: 4,
+				slidesToScroll: 1,
+				arrows:false
+
+			}
+		},
+			{
 			breakpoint: 768,
 			settings: {
 				slidesToShow: 2,
@@ -30,8 +39,11 @@ $( document ).ready(function() {
 	});
 
 
-	//Plugin FancyBox
- 	$j('a.fancy').fancybox();
+	//Plugin Lightbox
+	lightbox.option({
+		'resizeDuration': 200,
+		'wrapAround': true
+	})
 		 
 
 });

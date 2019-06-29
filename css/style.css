@@ -6,9 +6,10 @@
 .thumnails {
 
 	height: 200px;
-	padding-left: 2px;
+	/*padding-left: 2px;*/
 	width: 240px;
-	border-radius: 8px;
+	/*border-radius: 8px;*/
+	border: solid 5px #eee;
 }
 
 h1{
