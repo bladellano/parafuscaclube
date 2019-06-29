@@ -16,7 +16,10 @@ $( document ).ready(function() {
 		slidesToScroll: 1,
 		autoplay: true,
 		autoplaySpeed: 3000,
-		arrows:false,
+		arrows:true,
+		centerMode: true,
+		
+
 		responsive: [    
 		{
 			breakpoint: 1024,

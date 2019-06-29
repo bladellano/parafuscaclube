@@ -12,8 +12,24 @@
 	border: solid 5px #eee;
 }
 
-h1{
-	font-family: 'Righteous', cursive;
+h1 {
+ margin-bottom: 40px;
+}
+h1 > span {
+ 
+ border-bottom: 10px solid #d91e18;
+ padding-bottom: 8px;
+}
+.btn-danger {
+		font-family: 'Righteous', cursive;
+		color: #fff;
+		text-transform: uppercase;
+		width: 200px;
+}
+
+.damiao{
+	font-family: 'Dancing Script', cursive;
+	font-size: 38px;
 }
 
 .header-site{
