@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="css/slick.css">
 	<link rel="stylesheet" href="css/slick-theme.css"/>
 	<link rel="stylesheet" href="css/lightbox.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
 	<link rel="stylesheet" href="css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
@@ -59,8 +61,9 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-12">
-						<h1 class="text-center">Bem-vindo</h1>
+					<div class="col-xs-12 text-center">
+						<!-- <h1 class="text-center">Bem-vindo<br> -->
+							<img src="img/logo.png" alt="Logo Pará Fusca Clube"></h1>
 						<p class="lead text-center">
 						Somos verdadeiros apaixonados pelo fusca! E dessa paixão surgiu o Pará Fusca Clube que foi criado com o objetivo de reunir pessoas amantes desse veículo. </p>
 						<p class="text-center">
@@ -79,14 +82,34 @@
 					<h1 class="text-center"><span>Últimos Eventos</span></h1>	
 
 					<div class="slick">
-						<div><a href="img/eventos/evento1.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento1.jpeg"></a></div>
-						<div><a href="img/eventos/evento2.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento2.jpeg"></a></div>
-						<div><a href="img/eventos/evento3.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento3.jpeg"></a></div>
-						<div><a href="img/eventos/evento4.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento4.jpeg"></a></div>
-						<div><a href="img/eventos/evento5.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento5.jpeg"></a></div>
-						<div><a href="img/eventos/evento7.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento7.jpeg"></a></div>
-						<div><a href="img/eventos/evento9.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento9.jpeg"></a></div>
-						<div><a href="img/eventos/evento10.jpeg" data-lightbox="roadtrip"><img class="thumnails" src="img/eventos/evento10.jpeg"></a></div>
+
+						<?php
+							//LISTANDO ARQUIVOS IMAGEM DAS PASTAS
+						$path = "img/eventos/dia-mundial-fusca-23-06-19/";							
+						$diretorio = dir($path);
+						while($arquivo = $diretorio -> read()){
+
+							if($arquivo != '.' && $arquivo != '..'){
+								echo '<div><a href="'.$path.$arquivo.'" data-lightbox="roadtrip">
+								<img class="thumnails" src="'.$path.$arquivo.'"></a></div>';
+							}
+						}
+						// $diretorio -> close();						
+						?>
+
+						<?php
+						$path = "img/eventos/dia-nacional-fusca-20-01-19/";
+						$diretorio = dir($path);
+						while($arquivo = $diretorio -> read()){
+							if($arquivo != '.' && $arquivo != '..'){
+
+								echo '<div><a href="'.$path.$arquivo.'" data-lightbox="roadtrip">
+								<img class="thumnails" src="'.$path.$arquivo.'"></a></div>';
+							}
+						}
+						$diretorio -> close();
+						?>
+
 					</div><!-- slick -->
 				</div><!--container--> 
 			</section>
@@ -112,7 +135,7 @@
 				</div>	
 				<div class="row">
 					<div class="col-xs-12 text-center">
-						<button type="button" class="btn btn-danger">Todos os Videos</button>
+						<a href="https://www.youtube.com/channel/UCi6kCppWOEc8aVZMF_68nog" class="btn btn-danger" target="_blank">Todos os Videos</a>
 					</div>
 				</div>
 			</section>
@@ -121,7 +144,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12">
-							<h1 class="text-center">Membros PFC</h1>
+							<h1 class="text-center"><span>Membros PFC</span></h1>
 							<p class="text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make</p>
 							<br>
 						</div>
@@ -129,9 +152,9 @@
 					<div class="row">						 
 						<div class="col-sm-3">
 							<div class="thumbnail">
-								<!-- <img class="img-circle" src="img/membro1.jpeg" alt=""> -->
+								<img class="img-circle" src="img/membros/edson-marata.jpg" alt="">
 								<div class="caption text-center">
-									<h3>Rosana Ferreira</h3>
+									<h3>Edson Maratá</h3>
 									<p>Lorem Ipsum is simply dummy text</p>
 								</div>
 							</div>
@@ -139,9 +162,9 @@
 
 						<div class="col-sm-3">
 							<div class="thumbnail">
-								<!-- <img class="img-circle" src="img/membro1.jpeg" alt=""> -->
+								<img class="img-circle" src="img/membros/fabricio.jpg" alt="">
 								<div class="caption text-center">
-									<h3>Rosana Ferreira</h3>
+									<h3>Fabrício</h3>
 									<p>Lorem Ipsum is simply dummy text</p>
 								</div>
 							</div>
@@ -149,9 +172,9 @@
 
 						<div class="col-sm-3">
 							<div class="thumbnail">
-								<!-- <img class="img-circle" src="img/membro1.jpeg" alt=""> -->
+								<img class="img-circle" src="img/membros/yrapuan.jpg" alt="">
 								<div class="caption text-center">
-									<h3>Rosana Ferreira</h3>
+									<h3>Yrapuan</h3>
 									<p>Lorem Ipsum is simply dummy text</p>
 								</div>
 							</div>
@@ -159,66 +182,41 @@
 
 						<div class="col-sm-3">
 							<div class="thumbnail">
-								<!-- <img class="img-circle" src="img/membro1.jpeg" alt=""> -->
+								<img class="img-circle" src="img/membros/oliveira.jpg" alt="">
 								<div class="caption text-center">
-									<h3>Rosana Ferreira</h3>
+									<h3>Damião Oliveira</h3>
 									<p>Lorem Ipsum is simply dummy text</p>
 								</div>
 							</div>
 						</div>
 
 					</div>
-					<div class="row">						 
-						<div class="col-sm-3">
-							<div class="thumbnail">
-								<!-- <img class="img-circle" src="img/membro1.jpeg" alt=""> -->
-								<div class="caption text-center">
-									<h3>Rosana Ferreira</h3>
-									<p>Lorem Ipsum is simply dummy text</p>
-								</div>
-							</div>
-						</div>
 
-						<div class="col-sm-3">
-							<div class="thumbnail">
-								<!-- <img class="img-circle" src="img/membro1.jpeg" alt=""> -->
-								<div class="caption text-center">
-									<h3>Rosana Ferreira</h3>
-									<p>Lorem Ipsum is simply dummy text</p>
-								</div>
-							</div>
-						</div>
 
-						<div class="col-sm-3">
-							<div class="thumbnail">
-								<!-- <img class="img-circle" src="img/membro1.jpeg" alt=""> -->
-								<div class="caption text-center">
-									<h3>Rosana Ferreira</h3>
-									<p>Lorem Ipsum is simply dummy text</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-3">
-							<div class="thumbnail">
-								<!-- <img class="img-circle" src="img/membro1.jpeg" alt=""> -->
-								<div class="caption text-center">
-									<h3>Rosana Ferreira</h3>
-									<p>Lorem Ipsum is simply dummy text</p>
-								</div>
-							</div>
-						</div>
-
-					</div>
 
 				</div>
 			</section>
 
+			<div class="rodape-column">
+				<h3>Sobre o Pará Fusca Clube</h3>
+				<p class="texto-rodape-esquerda">Minha historia  foi amor a primeira vista, foi quando observei um Fusca de perto logo fiquei apaixonado pelo carro, e o meu primeiro automóvel nao poderia ser outro a não ser  o fusquinha branco, que ate hoje nao o desprezo, e para completar  morava no Ceara quando me casei e vim com a minha esposa logo de mudança para Belém Pará no  meu querido fusquinha branco, que  é o nosso inseparável xodó . e foi ai que tudo começou, so alegrias para os dois, no nosso xodozinho Fusquinha, branco.</p>
+
+			</div>
+			<div class="rodape-column">
+				<h3>Mais informações</h3>
+				<p><i class="far fa-envelope"></i> E-mail: contato@parafuscaclube.com.br</p>
+				<p><i class="fas fa-phone"></i> Telefone/WhatsApp: (91) 98333-1201</p>
+				<p><i class="far fa-clock"></i> De segunda a sábado.</p>
+			</div>
+
 			<section class="footer-site">
 				<div class="container">
 					<div class="row">
-						<div class="col-xs-12">
-							<p class="text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+						<div class="col-xs-6 text-left">
+							<p>© 2019 - Pará Fusca Clube. Todos os direitos reservados.</p>
+						</div>
+						<div class="col-xs-6 text-right">
+							<p>Desenvolvido por <img src="img/fire-logo.png" alt=""></p>
 						</div>
 					</div>
 				</div>

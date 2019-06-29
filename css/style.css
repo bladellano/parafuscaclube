@@ -11,20 +11,30 @@
 	/*border-radius: 8px;*/
 	border: solid 5px #eee;
 }
-
+.img-circle {
+	width: 180px;
+}
+.thumbnail {
+	background-color: rgba(225,225,225,0.4); 
+}
+h3 {
+	color: #000;
+	letter-spacing: -1px;
+	font-size: 2em;
+}
 h1 {
- margin-bottom: 40px;
+	margin-bottom: 40px;
 }
 h1 > span {
- 
- border-bottom: 10px solid #d91e18;
- padding-bottom: 8px;
+
+	border-bottom: 10px solid #d91e18;
+	padding-bottom: 8px;
 }
 .btn-danger {
-		font-family: 'Righteous', cursive;
-		color: #fff;
-		text-transform: uppercase;
-		width: 200px;
+	font-family: 'Righteous', cursive;
+	color: #fff;
+	text-transform: uppercase;
+	width: 200px;
 }
 
 .damiao{
@@ -33,15 +43,15 @@ h1 > span {
 }
 
 .header-site{
- 
+
 	background-image: url('../img/bg-fundo.jpg');
 	position: center top;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 	color: #fff;
-	padding-top: 200px;
-	padding-bottom: 200px;
+	padding-top: 80px;
+	padding-bottom: 80px;
 }
 .content-site {
 	padding-top: 50px;
@@ -59,10 +69,37 @@ h1 > span {
 }
 
 .footer-site {
-	background-color: #333;
+	background-color: #1f3a93;
 	color: #fff;
-	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.rodape-column {
+
+	background-color: #3a539b;
+	width: 50%;
+	float: left;
+	color:#fff;
+	text-align: center;
+	height: 228px;
+	padding: 20px 0;  
+}
+.texto-rodape-esquerda {
+
+	width: 420px;
+	text-align: justify;
+	display: inline-block;
+	font-size: 1.1em;
+}
+.rodape-column h3 {
+	color:#fff;
+	font-family: 'Righteous', cursive;
+}
+.rodape-column p {
+	font-size: 0.9em;
+} 
+.col-xs-6.text-left {
+	padding-top: 20px;
 }
 
 @media screen and (max-width: 768px){
@@ -70,5 +107,13 @@ h1 > span {
 		height: 150px;
 		padding-left: 2px;
 		width: 218px;
+	}
+
+	.rodape-column {
+		
+		width: 100%;
+		display:block;
+		padding: 2px; 
+		
 	}
 }
