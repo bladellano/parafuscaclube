@@ -98,7 +98,7 @@ h1 > span {
 .rodape-column p {
 	font-size: 0.9em;
 } 
-.col-xs-6.text-left {
+.col-md-6.text-left {
 	padding-top: 20px;
 }
 
@@ -115,5 +115,16 @@ h1 > span {
 		display:block;
 		padding: 2px; 
 		
+	}
+	.texto-rodape-esquerda {
+
+		width: 90%;
+		/*text-align: justify;*/
+		/*display: inline-block;*/
+		/*font-size: 1.1em;*/
+	}
+	.col-md-6.text-right, .col-md-6.text-left{
+		text-align: center;
+
 	}
 }

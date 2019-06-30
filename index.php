@@ -115,9 +115,9 @@
 			</section>
 
 			<section class="content-site" style="background-color: #eee">
+						<h1 class="text-center"><span>Últimos Videos</span></h1>	
 				<div class="container">
 					<div class="row">
-						<h1 class="text-center"><span>Últimos Videos</span></h1>	
 						<div class="col-md-4 text-center">
 							<iframe width="100%" height="200px" src="https://www.youtube.com/embed/-96Le5XuALA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 							<h4>Pará Fusca Clube - Dia Nacional do Fusca 2015 Parte 02</h4>
@@ -132,12 +132,12 @@
 							<h4>Pará Fusca Clube e Carros Antigos do Pará</h4>
 						</div>
 					</div>
-				</div>	
 				<div class="row">
 					<div class="col-xs-12 text-center">
 						<a href="https://www.youtube.com/channel/UCi6kCppWOEc8aVZMF_68nog" class="btn btn-danger" target="_blank">Todos os Videos</a>
 					</div>
 				</div>
+				</div>	
 			</section>
 
 			<section class="img-site">
@@ -212,10 +212,10 @@
 			<section class="footer-site">
 				<div class="container">
 					<div class="row">
-						<div class="col-xs-6 text-left">
+						<div class="col-md-6 text-left">
 							<p>© 2019 - Pará Fusca Clube. Todos os direitos reservados.</p>
 						</div>
-						<div class="col-xs-6 text-right">
+						<div class="col-md-6 text-right">
 							<p>Desenvolvido por <img src="img/fire-logo.png" alt=""></p>
 						</div>
 					</div>

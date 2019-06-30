@@ -22,18 +22,9 @@ $( document ).ready(function() {
 
 		responsive: [    
 		{
-			breakpoint: 1024,
-			settings: {
-				slidesToShow: 4,
-				slidesToScroll: 1,
-				arrows:false
-
-			}
-		},
-			{
 			breakpoint: 768,
 			settings: {
-				slidesToShow: 2,
+				slidesToShow: 1,
 				slidesToScroll: 1,
 				arrows:false
 
@@ -47,6 +38,6 @@ $( document ).ready(function() {
 		'resizeDuration': 200,
 		'wrapAround': true
 	})
-		 
+
 
 });
