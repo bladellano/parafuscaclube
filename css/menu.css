@@ -74,7 +74,12 @@ label[for="bt_menu"]{
 		.active ul li ul li a {
 			color: #fff;
 		}
-
+.redes-sociais li a {
+	color:#fff;
+}
+.redes-sociais li a:hover {
+	color:#f22613;
+}
 @media(max-width: 768px) {
 
 	label[for="bt_menu"]{

@@ -17,6 +17,12 @@
 </head>
 <body id="home">
 
+	<!-- botao topo -->
+	<div class="topo">    
+<i class="fas fa-arrow-up"></i>
+	</div> 
+	<!-- topo -->
+
 	<!-- CRIANDO MENU -->
 
 	<input type="checkbox" id="bt_menu">
@@ -77,7 +83,7 @@
 						
 						<p>Ferdinand Porsche, nascido em 1875 numa cidade do império Austro-Húngaro e exímio projetista de veículos, idealizou a criação de um carro popular, o que era para muitos uma ilusão. Porém, em 1933, quando o Partido Nazista chegou ao poder, tal idéia encantou o seu então chefe, Adolph Hitler, que tinha traçado como uma de suas metas a motorização de toda a população alemã</p>
 						<div class="row text-center">
-								<a href="https://www.youtube.com/channel/UCi6kCppWOEc8aVZMF_68nog" class="btn btn-danger" target="_blank">LEIA MAIS...</a>
+							<a href="#" class="btn btn-danger" target="_blank">LEIA MAIS...</a>
 
 						</div>
 						<!-- <p>Com o apoio do governo, Porsche recebeu a quantia de 200 mil marcos para desenvolver um automóvel com as seguintes características: trafegar continuamente a 100 km/h, transportar quatro pessoas e suas malas e custar no máximo 1.000 marcos imperiais. Ao final de um período de 10 meses, entregou os primeiros protótipos Volkswagen, os VW-3.</p>
@@ -90,12 +96,25 @@
 					</div>
 				</section>
 
-				<section class="content-site">
+				<section class="content-site" id="fotos">
 					<div class="container">
 						<h1 class="text-center"><span>Últimos Eventos</span></h1>	
 
 						<div class="slick">
 
+							<?php
+							//LISTANDO ARQUIVOS IMAGEM DAS PASTAS
+							$path = "img/eventos/reliquias-vii-graopara-29-06-19/";							
+							$diretorio = dir($path);
+							while($arquivo = $diretorio -> read()){
+
+								if($arquivo != '.' && $arquivo != '..'){
+									echo '<div><a href="'.$path.$arquivo.'" data-lightbox="roadtrip">
+									<img class="thumnails" src="'.$path.$arquivo.'"></a></div>';
+								}
+							}
+						// $diretorio -> close();						
+							?>
 							<?php
 							//LISTANDO ARQUIVOS IMAGEM DAS PASTAS
 							$path = "img/eventos/dia-mundial-fusca-23-06-19/";							
@@ -127,7 +146,7 @@
 					</div><!--container--> 
 				</section>
 
-				<section class="content-site" style="background-color: #ddd">
+				<section class="content-site" style="background-color: #ddd" id="videos">
 					<h1 class="text-center"><span>Últimos Videos</span></h1>	
 					<div class="container">
 						<div class="row">
@@ -158,61 +177,125 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<h1 class="text-center"><span>Membros PFC</span></h1>
-								<p class="text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make</p>
+
 								<br>
 							</div>
 						</div>
 						<div class="row">	
-
-
-
 							<div class="slick-membros">
 								
-							<div class="col-sm-3">
-								<div class="thumbnail">
-									<img class="img-circle" src="img/membros/edson-marata.jpg" alt="">
-									<div class="caption text-center">
-										<h3>Edson Maratá</h3>
-										<p>Fusca Itamar/1995</p>
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/edson-marata.jpg" alt="">
+										<div class="caption text-center">
+											<h3>Edson Maratá</h3>
+											
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="thumbnail">
-									<img class="img-circle" src="img/membros/fabricio.jpg" alt="">
-									<div class="caption text-center">
-										<h3>Fabrício</h3>
-										<p>Fusca Itamar/1995</p>
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/fabricio.jpg" alt="">
+										<div class="caption text-center">
+											<h3>Fabrício</h3>
+											
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="thumbnail">
-									<img class="img-circle" src="img/membros/yrapuan.jpg" alt="">
-									<div class="caption text-center">
-										<h3>Yrapuan</h3>
-										<p>Fusca Itamar/1995</p>
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/yrapuan.jpg" alt="">
+										<div class="caption text-center">
+											<h3>Yrapuan</h3>
+											
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="thumbnail">
-									<img class="img-circle" src="img/membros/oliveira.jpg" alt="">
-									<div class="caption text-center">
-										<h3>Damião Oliveira</h3>
-										<p>Fusca Itamar/1995</p>
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/oliveira.jpg" alt="">
+										<div class="caption text-center">
+											<h3>Damião Oliveira</h3>
+											
+										</div>
 									</div>
 								</div>
-							</div>
 
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/adiel.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Adial</h3>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/agenor.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Agenor</h3>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/alex-carvalho.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Alex Carvalho</h3>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/camargo.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Camargo</h3>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/cristiano-paiva.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Cristiano Paiva</h3>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/luiz.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Luiz</h3>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/mateus-ueoka.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Mateus Ueoka</h3>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/silva.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Silva</h3>
+											
+										</div>
+									</div>
+								</div>
 							</div><!--slick-membros-->
 
-
-
 						</div>
-
-
-
 					</div>
 				</section>
 
@@ -230,37 +313,38 @@
 
 						<ul class="redes-sociais">
 							<li><i class="fab fa-instagram"></i></li>
-							<li><i class="fab fa-whatsapp"></i></li>
-							<li><i class="fab fa-facebook-square"></i></li>
-							<li><i class="fab fa-youtube"></i></li>
-						</ul>
-					</p>
-				</div>
+							<li><a href="https://www.youtube.com/channel/UCi6kCppWOEc8aVZMF_68nog" target="_blank"><i class="fab fa-youtube"></i></li>
+								<li><a href="https://www.facebook.com/parafuscaclubeoficial/?ref=br_rs" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
 
-				<section class="footer-site">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-6 text-left">
-								<p>© 2019 - Pará Fusca Clube. Todos os direitos reservados.</p>
-							</div>
-							<div class="col-md-6 text-right">
-								<p>Desenvolvido por <img src="img/fire-logo.png" alt=""></p>
+								<li><a href="https://api.whatsapp.com/send?phone=5591983331201" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+							</ul>
+						</p>
+					</div>
+
+					<section class="footer-site" id="contato">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-6 text-left">
+									<p>© 2019 - Pará Fusca Clube. Todos os direitos reservados.</p>
+								</div>
+								<div class="col-md-6 text-right">
+									<p>Desenvolvido por <img src="img/fire-logo.png" alt=""></p>
+								</div>
 							</div>
 						</div>
-					</div>
-				</section>
+					</section>
 
 
-				<script src="js/jquery.min.js"></script>
-				<script src="js/bootstrap.js"></script>
-				<script src="js/slick.js"></script>
-				<script src="js/lightbox.js"></script>
-				<script src="js/functions.js"></script>
+					<script src="js/jquery.min.js"></script>
+					<script src="js/bootstrap.js"></script>
+					<script src="js/slick.js"></script>
+					<script src="js/lightbox.js"></script>
+					<script src="js/functions.js"></script>
 
 
-				<script>
+					<script>
 
-				</script>
+					</script>
 
-			</body>
-			</html>
+				</body>
+				</html>

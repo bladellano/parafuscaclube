@@ -68,6 +68,23 @@ $( document ).ready(function() {
 		}, 1200);
 	});
 
+	//Botão subir p/ topo
+	$('.topo').hide();
+	$(window).scroll(function(event) {
+		if($(this).scrollTop() > 0){
+			$('.topo').fadeIn();
+		} else {
+			$('.topo').fadeOut();
+		}
+	});
+
+	// Scroll suave para o topo
+	$('.topo').click(function(e){
+		e.preventDefault();
+		$('html, body').animate({
+			scrollTop: 0
+		}, 500)
+	});
 
 
 });

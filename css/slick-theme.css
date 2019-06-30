@@ -63,8 +63,21 @@
     opacity: .25;
 }
 
-.slick-prev:before,
-.slick-next:before
+.slick-membros .slick-prev:before,
+.slick-membros .slick-next:before
+{
+    font-family: 'slick';
+    font-size: 30px;
+    line-height: 1;
+
+    opacity: .75;
+    color: #fff;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.slick .slick-prev:before,
+.slick .slick-next:before
 {
     font-family: 'slick';
     font-size: 20px;
