@@ -102,6 +102,24 @@ h1 > span {
 	padding-top: 20px;
 }
 
+.redes-sociais {
+
+	list-style: none;
+	font-size: 2.1em;
+}
+.redes-sociais li {
+	width: 49px;
+	display: inline-block;
+}
+section.content-site .container p{
+	line-height: 2em;
+	text-indent: 2em;
+}
+section.content-site .container p:first-letter{
+	font-size: 28px;
+	font-family: 'Dancing Script', cursive;
+}
+
 @media screen and (max-width: 768px){
 	.thumnails {
 		height: 150px;

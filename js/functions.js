@@ -18,8 +18,6 @@ $( document ).ready(function() {
 		autoplaySpeed: 3000,
 		arrows:true,
 		centerMode: true,
-		
-
 		responsive: [    
 		{
 			breakpoint: 768,
@@ -38,6 +36,18 @@ $( document ).ready(function() {
 		'resizeDuration': 200,
 		'wrapAround': true
 	})
+
+	// Scroll suave para link interno	
+	$('.menu ul li a[href^="#"]').click(function(e){
+		e.preventDefault();
+		var id = $(this).attr('href'),
+		menuHeight = $('nav').innerHeight(),
+		targetOffset = $(id).offset().top; e;
+		$('html, body').animate({
+			scrollTop: targetOffset - menuHeight
+		}, 1200);
+	});
+
 
 
 });
