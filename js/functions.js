@@ -30,6 +30,26 @@ $( document ).ready(function() {
 		}]
 	});
 
+	$('.slick-membros').slick({
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 3000,
+		arrows:true,
+		centerMode: true,
+		responsive: [    
+		{
+			breakpoint: 768,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				arrows:false
+
+			}
+		}]
+	});
+
+
 
 	//Plugin Lightbox
 	lightbox.option({

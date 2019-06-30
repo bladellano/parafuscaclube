@@ -13,9 +13,12 @@
 }
 .img-circle {
 	width: 180px;
+	border: 1px solid #fff;
+	box-shadow: 2px 2px #333;
 }
 .thumbnail {
-	background-color: rgba(225,225,225,0.4); 
+	
+	background-color: rgba(58,83,155,0.0	); 
 }
 h3 {
 	color: #000;
@@ -24,6 +27,7 @@ h3 {
 }
 h1 {
 	margin-bottom: 40px;
+	font-family: 'Righteous', cursive;
 }
 h1 > span {
 
@@ -58,7 +62,7 @@ h1 > span {
 	padding-bottom: 50px;
 }
 .img-site{
-	background-image: url('../img/bg-fusca.jpeg');
+	background-image: url('../img/bg-fundo.jpg');
 	position: center top;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -119,7 +123,18 @@ section.content-site .container p:first-letter{
 	font-size: 28px;
 	font-family: 'Dancing Script', cursive;
 }
-
+.slick-membros .col-sm-3 .thumbnail h3{
+	font-family: 'Dancing Script', cursive;
+	font-size: 2.7em;
+	color:#fff;
+	text-shadow: 1px 1px #222;
+}
+.slick-membros .col-sm-3 .thumbnail p{
+	/*font-family: 'Dancing Script', cursive;*/
+	/*font-size: 2.7em;*/
+	color:#fff;
+	/*text-shadow: 1px 1px #222;*/
+}
 @media screen and (max-width: 768px){
 	.thumnails {
 		height: 150px;

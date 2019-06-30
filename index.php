@@ -68,18 +68,24 @@
 				</section>
 
 				<!-- HISTORIA -->
-				<section class="content-site" style="background-color: #6bb9f0; color:#333; text-align: justify;" id="historia">
+				<section class="content-site" style="background-color: #3a539b; color:#fff; text-align: justify;" id="historia">
+					<h1 class="text-center"><span>História</span></h1>
 					<div class="container">
 						<p>Criado na década de 30, o fusca se espalhou em mais de 150 países, nos quatro cantos do planeta. Não há dúvidas de que, por onde passou, tornou-se um ícone, seja como Käfer, Coccinelle, Escarabajo, Vocho, Maggiolino, Fusca, Beetle ou Bug.
 						Segundo o livro "The Volkswagen Beetle", a idéia de um "carro do povo" - tradução literal da palavra alemã Volkswagen para o Português - é tão antiga quanto a existência dos automóveis.</p>
 						<p>Os carros "populares" da época eram extremamente pequenos, no entanto, o seu tamanho e simplicidade não significavam serem acessíveis às pessoas comuns.</p>
+						
 						<p>Ferdinand Porsche, nascido em 1875 numa cidade do império Austro-Húngaro e exímio projetista de veículos, idealizou a criação de um carro popular, o que era para muitos uma ilusão. Porém, em 1933, quando o Partido Nazista chegou ao poder, tal idéia encantou o seu então chefe, Adolph Hitler, que tinha traçado como uma de suas metas a motorização de toda a população alemã</p>
-						<p>Com o apoio do governo, Porsche recebeu a quantia de 200 mil marcos para desenvolver um automóvel com as seguintes características: trafegar continuamente a 100 km/h, transportar quatro pessoas e suas malas e custar no máximo 1.000 marcos imperiais. Ao final de um período de 10 meses, entregou os primeiros protótipos Volkswagen, os VW-3.</p>
+						<div class="row text-center">
+								<a href="https://www.youtube.com/channel/UCi6kCppWOEc8aVZMF_68nog" class="btn btn-danger" target="_blank">LEIA MAIS...</a>
+
+						</div>
+						<!-- <p>Com o apoio do governo, Porsche recebeu a quantia de 200 mil marcos para desenvolver um automóvel com as seguintes características: trafegar continuamente a 100 km/h, transportar quatro pessoas e suas malas e custar no máximo 1.000 marcos imperiais. Ao final de um período de 10 meses, entregou os primeiros protótipos Volkswagen, os VW-3.</p>
 						<p>Em 1937, é criada uma empresa estatal para a fabricação dos automóveis desenvolvidos por Porsche, cujo capital inicial de 50 milhões de marcos foi proveniente do Sindicato Trabalhista Alemão e de um de seus departamentos, a KdF - Kraft durch Freude (Força pela Alegria), o que originou o nome original do fusca, o KdF-Wagen</p>
 						<p>Para a apresentação do KdF-Wagen e lançamento da pedra fundamental da fábrica de Wolfsburg, o governo alemão programou uma grande festa, com a presença de seu líder, em maio de 1938. Na ocasião foram apresentados três modelos: um convencional, um cabriolet (conversível) e um com teto solar.</p>
 						<p>Muito interessante também era a forma como esses automóveis iam ser vendidos: metade do seu valor deveria vir do preenchimento de um álbum de selos, comprados semanalmente.</p>
 						<p>Anos depois, na década de 70, os possuidores destes "'álbuns de figurinhas" recorreram às Cortes Alemães para reaver o seu poder de compra. O resultado: um desconto na compra de um novo VW ou um pequeno reembolso.</p>
-						<p>Veio a 2a. Guerra Mundial e com ela a substituição da fabricação dos KdF-Wagen por veículos militares. Os mais conhecidos são o jipe  Kübelwagen, que teve uma produção de cerca de 55 mil unidades e o anfíbio Schiwimmwagen.</p>
+						<p>Veio a 2a. Guerra Mundial e com ela a substituição da fabricação dos KdF-Wagen por veículos militares. Os mais conhecidos são o jipe  Kübelwagen, que teve uma produção de cerca de 55 mil unidades e o anfíbio Schiwimmwagen.</p> -->
 
 					</div>
 				</section>
@@ -121,7 +127,7 @@
 					</div><!--container--> 
 				</section>
 
-				<section class="content-site" style="background-color: #eee">
+				<section class="content-site" style="background-color: #ddd">
 					<h1 class="text-center"><span>Últimos Videos</span></h1>	
 					<div class="container">
 						<div class="row">
@@ -156,46 +162,52 @@
 								<br>
 							</div>
 						</div>
-						<div class="row">						 
+						<div class="row">	
+
+
+
+							<div class="slick-membros">
+								
 							<div class="col-sm-3">
 								<div class="thumbnail">
 									<img class="img-circle" src="img/membros/edson-marata.jpg" alt="">
 									<div class="caption text-center">
 										<h3>Edson Maratá</h3>
-										<p>Lorem Ipsum is simply dummy text</p>
+										<p>Fusca Itamar/1995</p>
 									</div>
 								</div>
 							</div>
-
 							<div class="col-sm-3">
 								<div class="thumbnail">
 									<img class="img-circle" src="img/membros/fabricio.jpg" alt="">
 									<div class="caption text-center">
 										<h3>Fabrício</h3>
-										<p>Lorem Ipsum is simply dummy text</p>
+										<p>Fusca Itamar/1995</p>
 									</div>
 								</div>
 							</div>
-
 							<div class="col-sm-3">
 								<div class="thumbnail">
 									<img class="img-circle" src="img/membros/yrapuan.jpg" alt="">
 									<div class="caption text-center">
 										<h3>Yrapuan</h3>
-										<p>Lorem Ipsum is simply dummy text</p>
+										<p>Fusca Itamar/1995</p>
 									</div>
 								</div>
 							</div>
-
 							<div class="col-sm-3">
 								<div class="thumbnail">
 									<img class="img-circle" src="img/membros/oliveira.jpg" alt="">
 									<div class="caption text-center">
 										<h3>Damião Oliveira</h3>
-										<p>Lorem Ipsum is simply dummy text</p>
+										<p>Fusca Itamar/1995</p>
 									</div>
 								</div>
 							</div>
+
+							</div><!--slick-membros-->
+
+
 
 						</div>
 
@@ -206,7 +218,7 @@
 
 				<div class="rodape-column">
 					<h3>Sobre o Pará Fusca Clube</h3>
-					<p class="texto-rodape-esquerda">Minha historia  foi amor a primeira vista, foi quando observei um Fusca de perto logo fiquei apaixonado pelo carro, e o meu primeiro automóvel nao poderia ser outro a não ser  o fusquinha branco, que ate hoje nao o desprezo, e para completar  morava no Ceara quando me casei e vim com a minha esposa logo de mudança para Belém Pará no  meu querido fusquinha branco, que  é o nosso inseparável xodó . e foi ai que tudo começou, so alegrias para os dois, no nosso xodozinho Fusquinha, branco.</p>
+					<p class="texto-rodape-esquerda">Minha historia  foi amor a primeira vista, foi quando observei um Fusca de perto logo fiquei apaixonado pelo carro, e o meu primeiro automóvel nao poderia ser outro a não ser  o fusquinha branco, que ate hoje nao o desprezo, e para completar  morava no Ceará quando me casei e vim com a minha esposa logo de mudança para Belém Pará no  meu querido fusquinha branco, que  é o nosso inseparável xodó . e foi ai que tudo começou, so alegrias para os dois, no nosso xodozinho Fusquinha, branco.</p>
 
 				</div>
 				<div class="rodape-column">
@@ -218,9 +230,9 @@
 
 						<ul class="redes-sociais">
 							<li><i class="fab fa-instagram"></i></li>
+							<li><i class="fab fa-whatsapp"></i></li>
 							<li><i class="fab fa-facebook-square"></i></li>
 							<li><i class="fab fa-youtube"></i></li>
-							<!-- <li><i class="fab fa-youtube"></i></li> -->
 						</ul>
 					</p>
 				</div>
