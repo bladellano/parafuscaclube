@@ -18,7 +18,11 @@
 	box-shadow: 2px 2px #333;
 	z-index: 4;
 }
-
+.historia {
+	background-color: #3a539b; 
+	color:#fff; 
+	text-align: justify;
+}
 .thumnails {
 
 	height: 200px;
