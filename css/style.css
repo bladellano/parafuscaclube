@@ -4,7 +4,7 @@
 }
 
 .topo {
-	background-color: #1f3a93;
+	background-color: #000;
 	width: 40px;
 	height: 40px;
 	color:#fff;
@@ -23,7 +23,7 @@
 	padding-top: 46px;
 }
 .historia {
-	background-color: #3a539b; 
+	background-color: #000; 
 	color:#fff; 
 	text-align: justify;
 }
@@ -72,7 +72,7 @@ h1 > span {
 
 .header-site{
 
-	background-image: url('../img/bg-fundo.jpg');
+	background-image: url('../img/fundo-oliveira.jpg');
 	position: center top;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -97,14 +97,14 @@ h1 > span {
 }
 
 .footer-site {
-	background-color: #1f3a93;
+	background-color: #444;
 	color: #fff;
 	padding-top: 2px;
 	padding-bottom: 2px;
 }
 .rodape-column {
 
-	background-color: #3a539b;
+	background-color: #000;
 	width: 50%;
 	float: left;
 	color:#fff;
@@ -154,10 +154,8 @@ section.content-site .container p:first-letter{
 	text-shadow: 1px 1px #222;
 }
 .slick-membros .col-sm-3 .thumbnail p{
-	/*font-family: 'Dancing Script', cursive;*/
-	/*font-size: 2.7em;*/
 	color:#fff;
-	/*text-shadow: 1px 1px #222;*/
+
 }
 @media screen and (max-width: 768px){
 	.thumnails {
@@ -174,11 +172,8 @@ section.content-site .container p:first-letter{
 		
 	}
 	.texto-rodape-esquerda {
-
 		width: 90%;
-		/*text-align: justify;*/
-		/*display: inline-block;*/
-		/*font-size: 1.1em;*/
+
 	}
 	.col-md-6.text-right, .col-md-6.text-left{
 		text-align: center;

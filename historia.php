@@ -1,6 +1,6 @@
  
 <div class="container content-center">
-	<a href="javascript:history.back(1);"><i class="fa fa-arrow-circle-left"></i></a><h1>História</h1>
+	<h1>História</h1>
 	<p>Criado na década de 30, o fusca se espalhou em mais de 150 países, nos quatro cantos do planeta. Não há dúvidas de que, por onde passou, tornou-se um ícone, seja como Käfer, Coccinelle, Escarabajo, Vocho, Maggiolino, Fusca, Beetle ou Bug.
 	Segundo o livro "The Volkswagen Beetle", a idéia de um "carro do povo" - tradução literal da palavra alemã Volkswagen para o Português - é tão antiga quanto a existência dos automóveis.</p>
 	<p>Os carros "populares" da época eram extremamente pequenos, no entanto, o seu tamanho e simplicidade não significavam serem acessíveis às pessoas comuns.</p>

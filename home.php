@@ -1,6 +1,6 @@
 <?php 
 // include '_header.php';
- ?>
+?>
 
 <section class="header-site">
 
@@ -144,7 +144,7 @@
 								</div>
 								<div class="col-sm-3">
 									<div class="thumbnail">
-										<img class="img-circle" src="img/membros/fabricio.jpg" alt="">
+										<img class="img-circle" src="img/membros/fabricio.jpeg" alt="">
 										<div class="caption text-center">
 											<h3>Fabrício</h3>
 											
@@ -153,7 +153,7 @@
 								</div>
 								<div class="col-sm-3">
 									<div class="thumbnail">
-										<img class="img-circle" src="img/membros/yrapuan.jpg" alt="">
+										<img class="img-circle" src="img/membros/yrapuan.jpeg" alt="">
 										<div class="caption text-center">
 											<h3>Yrapuan</h3>
 											
@@ -162,7 +162,7 @@
 								</div>
 								<div class="col-sm-3">
 									<div class="thumbnail">
-										<img class="img-circle" src="img/membros/oliveira.jpg" alt="">
+										<img class="img-circle" src="img/membros/oliveira.jpeg" alt="">
 										<div class="caption text-center">
 											<h3>Damião Oliveira</h3>
 											
@@ -174,7 +174,7 @@
 									<div class="thumbnail">
 										<img class="img-circle" src="img/membros/adiel.jpeg" alt="">
 										<div class="caption text-center">
-											<h3>Adial</h3>
+											<h3>Adiel</h3>
 											
 										</div>
 									</div>
@@ -208,9 +208,9 @@
 								</div>
 								<div class="col-sm-3">
 									<div class="thumbnail">
-										<img class="img-circle" src="img/membros/cristiano-paiva.jpeg" alt="">
+										<img class="img-circle" src="img/membros/cristiane-paiva.jpeg" alt="">
 										<div class="caption text-center">
-											<h3>Cristiano Paiva</h3>
+											<h3>Cristiane Paiva</h3>
 											
 										</div>
 									</div>
@@ -228,8 +228,7 @@
 									<div class="thumbnail">
 										<img class="img-circle" src="img/membros/mateus-ueoka.jpeg" alt="">
 										<div class="caption text-center">
-											<h3>Mateus Ueoka</h3>
-											
+											<h3>Mateus Ueoka</h3>											
 										</div>
 									</div>
 								</div>
@@ -237,8 +236,78 @@
 									<div class="thumbnail">
 										<img class="img-circle" src="img/membros/silva.jpeg" alt="">
 										<div class="caption text-center">
-											<h3>Silva</h3>
-											
+											<h3>Silva</h3>											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/everaldo.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Everaldo</h3>											
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/affonso-henrique.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Afonso Henrique</h3>											
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/edson-castro-fusca-83.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Edson Castro</h3>
+											<p>Fusca 1983</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/thiago-peralta-fusca-1500-bravo-1973.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Thiago Peralta</h3>
+											<p>Fusca 1500 1973</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/fernando-albuquerque-fusca-1982-1300.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Fernando Albuquerque</h3>
+											<p>Fusca 1300 1982</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/lindomar.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Lindomar</h3>
+											<!-- <p>Fusca 1300 1982</p> -->
+										</div>
+									</div>
+								</div>A
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/solano.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Solano</h3>									 
+										</div>
+									</div>
+								</div>	
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/mauro-nunes.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Mauro Nunes</h3>									 
 										</div>
 									</div>
 								</div>
@@ -252,4 +321,4 @@
 
 				 // include '_footer.php'; 
 
-				 ?>
+				?>

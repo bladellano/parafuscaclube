@@ -61,8 +61,18 @@ $( document ).ready(function() {
 	$('.menu ul li a[href^="#"]').click(function(e){
 		e.preventDefault();
 		var id = $(this).attr('href'),
-		menuHeight = $('nav').innerHeight(),
-		targetOffset = $(id).offset().top; e;
+		menuHeight = $('nav').innerHeight();
+
+
+		var url = window.location.href.split('/');
+		url.pop();
+		if(typeof $(id).offset()  == 'undefined'){
+			urlAtual = url.join('/')+"/"+id;
+			location.replace(urlAtual);
+			return false;
+		}
+
+		targetOffset = $(id).offset().top; 
 		$('html, body').animate({
 			scrollTop: targetOffset - menuHeight
 		}, 1200);
