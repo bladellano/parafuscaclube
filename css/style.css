@@ -18,6 +18,10 @@
 	box-shadow: 2px 2px #333;
 	z-index: 4;
 }
+
+.content-center{
+	padding-top: 46px;
+}
 .historia {
 	background-color: #3a539b; 
 	color:#fff; 
