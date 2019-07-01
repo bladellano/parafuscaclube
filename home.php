@@ -1,4 +1,6 @@
-<?php include '_header.php'; ?>
+<?php 
+// include '_header.php';
+ ?>
 
 <section class="header-site">
 
@@ -30,7 +32,7 @@
 
 				<p>Ferdinand Porsche, nascido em 1875 numa cidade do império Austro-Húngaro e exímio projetista de veículos, idealizou a criação de um carro popular, o que era para muitos uma ilusão. Porém, em 1933, quando o Partido Nazista chegou ao poder, tal idéia encantou o seu então chefe, Adolph Hitler, que tinha traçado como uma de suas metas a motorização de toda a população alemã</p>
 				<div class="row text-center">
-					<a href="historia" class="btn btn-danger" target="_blank">LEIA MAIS...</a>
+					<a href="historia" class="btn btn-danger">LEIA MAIS...</a>
 
 				</div>
 						<!-- <p>Com o apoio do governo, Porsche recebeu a quantia de 200 mil marcos para desenvolver um automóvel com as seguintes características: trafegar continuamente a 100 km/h, transportar quatro pessoas e suas malas e custar no máximo 1.000 marcos imperiais. Ao final de um período de 10 meses, entregou os primeiros protótipos Volkswagen, os VW-3.</p>
@@ -246,4 +248,8 @@
 					</div>
 				</section>
 
-				<?php include '_footer.php'; ?>
+				<?php
+
+				 // include '_footer.php'; 
+
+				 ?>
