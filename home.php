@@ -310,6 +310,14 @@
 											<h3>Mauro Nunes</h3>									 
 										</div>
 									</div>
+								</div>	
+								<div class="col-sm-3">
+									<div class="thumbnail">
+										<img class="img-circle" src="img/membros/backenbauer.jpeg" alt="">
+										<div class="caption text-center">
+											<h3>Backenbauer</h3>									 
+										</div>
+									</div>
 								</div>
 							</div><!--slick-membros-->
 
