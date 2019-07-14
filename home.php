@@ -51,9 +51,26 @@
 
 						<div class="slick">
 
+
+							<?php 
+
+							require_once "admin/models/Fotos.php";
+							require_once "admin/models/Albuns.php";
+
+							$objFotos = new Fotos();
+							$objAlbum = new Albuns();
+
+							foreach ($objFotos->paginacao()["objItens"] as $foto) {
+
+								echo '<div><a href="admin/upload/'.$foto["nomeFoto"].'" data-lightbox="roadtrip">
+								<img class="thumnails" src="admin/upload/thumbnail_'.$foto["nomeFoto"].'" alt=""></a></div>';
+							}
+
+							?>
+
 							<?php
 							//LISTANDO ARQUIVOS IMAGEM DAS PASTAS
-							$path = "img/eventos/reliquias-vii-graopara-29-06-19/";							
+							/*path = "img/eventos/reliquias-vii-graopara-29-06-19/";							
 							$diretorio = dir($path);
 							while($arquivo = $diretorio -> read()){
 
@@ -61,35 +78,10 @@
 									echo '<div><a href="'.$path.$arquivo.'" data-lightbox="roadtrip">
 									<img class="thumnails" src="'.$path.$arquivo.'"></a></div>';
 								}
-							}
-						// $diretorio -> close();						
-							?>
-							<?php
-							//LISTANDO ARQUIVOS IMAGEM DAS PASTAS
-							$path = "img/eventos/dia-mundial-fusca-23-06-19/";							
-							$diretorio = dir($path);
-							while($arquivo = $diretorio -> read()){
-
-								if($arquivo != '.' && $arquivo != '..'){
-									echo '<div><a href="'.$path.$arquivo.'" data-lightbox="roadtrip">
-									<img class="thumnails" src="'.$path.$arquivo.'"></a></div>';
-								}
-							}
-						// $diretorio -> close();						
+							}*/
+							// $diretorio -> close();						
 							?>
 
-							<?php
-							$path = "img/eventos/dia-nacional-fusca-20-01-19/";
-							$diretorio = dir($path);
-							while($arquivo = $diretorio -> read()){
-								if($arquivo != '.' && $arquivo != '..'){
-
-									echo '<div><a href="'.$path.$arquivo.'" data-lightbox="roadtrip">
-									<img class="thumnails" src="'.$path.$arquivo.'"></a></div>';
-								}
-							}
-							$diretorio -> close();
-							?>
 
 						</div><!-- slick -->
 					</div><!--container--> 

@@ -1,0 +1,113 @@
+<?php 
+
+class Conexao {
+
+	protected $db;
+
+	protected $table;
+
+	protected $lines_per_page = 8; //quantidade de registros por página.
+
+	protected $line_size = 4; //quantidade de numeros para listar item-página.
+
+
+	public function __construct($table = null){
+		$this->table = $table; 
+		$this->db = $this->conectar();
+
+	}
+
+	private function conectar(){
+		try {
+			
+			$host = 'localhost';
+			$dbname = 'bd_pfc';
+			$user = 'root';
+			$pass = '';
+
+			$con = new PDO("mysql:host={$host};dbname={$dbname}",$user,$pass);
+			$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$con->exec('SET CHARACTER SET UTF8');
+			// echo "CONECTADO!";
+
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+		}
+		return $con; 
+	}
+
+
+	public function paginacao(){
+
+		$i = 1;
+		$query = $this->db->query("SELECT * FROM $this->table LIMIT $this->lines_per_page");		
+
+		$query_pg = $this->db->query("SELECT * FROM $this->table");
+		$count = $query_pg->rowCount();
+		$calculate = ceil(($count/($this->lines_per_page*10))*10);
+
+		if(isset($_GET['page']) == $i){
+			$url = $_GET['page'];
+			$mody = $url*5 - 5;
+			$query = $this->db->query("SELECT * FROM $this->table LIMIT $this->lines_per_page OFFSET $mody");
+			$offset = $this->db->query("SELECT * FROM $this->table LIMIT $this->lines_per_page OFFSET $mody");
+		}
+
+		if(isset($offset)){  
+			$offset_count = count($offset->fetchAll());
+		}
+		
+		//gerando os botões...
+
+		$page_back = @$_GET['page'] - 1;
+		$page_go = @$_GET['page'] + 1;
+		$tbn_value = @$_GET['page'];		
+
+		$cont = count($query_pg->fetchAll());		
+
+		$html = "";
+
+		if($cont < $this->lines_per_page) { //nao gera os numeros de paginas no rodape
+
+			$html = "";
+
+		} else { 
+
+			if(@$_GET['page'] != 1 && isset($_GET['page'])){
+
+				$html .= "<a href='?page=$page_back' class='btn_pg'>←</a>";
+			}
+
+			while($i <= $calculate) {		
+
+				$html .= "<a href='?page=$i' class='btn_pg'>$i</a>";
+			 
+				$i++;
+				if($i > $this->line_size){
+					$html .=  "<a class='btn_pg' style=\"color:#fff\">...</>";
+
+					if(@$_GET['page'] > $this->line_size + 1){
+						$html .= "<a href='?page=$tbn_value' class='btn_pg'>$tbn_value</a>";
+					} else {
+						$html .= "<a href='?page=".($this->line_size + 1)."' class='btn_pg'>".($this->line_size + 1)."</a>";
+					}
+					if(@$_GET['page'] < $calculate){
+						$html .= "<a href='?page=$page_go' class='btn_pg'>→</a>";
+					}
+					break;
+
+				}
+					} // fim while	
+
+				}
+				return array("objItens"=> $query,
+					"botoesPaginacao" => $html,
+					"totalResult" => $count
+					);
+
+	} // fim metodo paginacao
+
+
+}//fim classe
+
+// new Conexao();
