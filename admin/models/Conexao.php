@@ -10,7 +10,6 @@ class Conexao {
 
 	protected $line_size = 4; //quantidade de numeros para listar item-página.
 
-
 	public function __construct($table = null){
 		$this->table = $table; 
 		$this->db = $this->conectar();
@@ -28,11 +27,11 @@ class Conexao {
 			$con = new PDO("mysql:host={$host};dbname={$dbname}",$user,$pass);
 			$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$con->exec('SET CHARACTER SET UTF8');
-			// echo "CONECTADO!";
 
 		} catch (PDOException $e) {
 			echo $e->getMessage();
 		}
+
 		return $con; 
 	}
 
@@ -81,7 +80,7 @@ class Conexao {
 			while($i <= $calculate) {		
 
 				$html .= "<a href='?page=$i' class='btn_pg'>$i</a>";
-			 
+
 				$i++;
 				if($i > $this->line_size){
 					$html .=  "<a class='btn_pg' style=\"color:#fff\">...</>";
@@ -103,7 +102,7 @@ class Conexao {
 				return array("objItens"=> $query,
 					"botoesPaginacao" => $html,
 					"totalResult" => $count
-					);
+				);
 
 	} // fim metodo paginacao
 
