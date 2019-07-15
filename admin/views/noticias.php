@@ -3,10 +3,12 @@
 require_once "../models/Noticias.php";
 require_once "../models/Albuns.php";
 require_once "../models/Fotos.php";
+require_once "../models/Videos.php";
 
 $objNoticia = new Noticias();
 $objAlbum = new Albuns();
 $objFoto = new Fotos();
+$objVideo = new Videos();
 
 ?>
 
@@ -26,36 +28,28 @@ $objFoto = new Fotos();
 	<link rel="stylesheet" type="text/css" href="../css/alertify.css">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<style>
-		
-		label {
-			/*display: block;*/
-		}
-	</style>
 </head>
 <body>
 	
 	<div class="container">
 
 		<!-- Modal -->
-		<div class="modal fade" id="atualizarFoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal fade" id="atualizarNoticia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog modal-sm" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">Atualizar Foto</h4>
+						<h4 class="modal-title" id="myModalLabel">Atualizar título da notícia</h4>
 					</div>
 					<div class="modal-body">
-						<form id="frmFotoU">
-							<input type="text" hidden="" id="idfotoU" name="idfotoU">
-							<label>Foto</label>
-							<input type="text" id="titulofotoU" name="titulofotoU" class="form-control input-sm">
+						<form id="frmNoticiaU">
+							<input type="text" hidden="" id="idNoticiaU" name="idNoticiaU">
+							<label>Título</label>
+							<input type="text" id="tituloNoticiaU" name="tituloNoticiaU" class="form-control input-sm">
 						</form>
-
 					</div>
 					<div class="modal-footer">
-						<button type="button" id="btnAtualizaFoto" class="btn btn-warning" data-dismiss="modal">Salvar</button>
-
+						<button type="button" id="btnAtualizaNoticia" class="btn btn-warning" data-dismiss="modal">Salvar</button>
 					</div>
 				</div>
 			</div>
@@ -66,7 +60,6 @@ $objFoto = new Fotos();
 		<fieldset><legend>CADASTRAR NOTÍCIAS</legend>
 
 			<form id="form-noticia" method="POST" enctype="multipart/form-data">
-
 
 				<label for="tituloNoticia">Titulo:</label>
 				<input type="text" id="tituloNoticia" name="tituloNoticia" required=""><br>
@@ -85,63 +78,49 @@ $objFoto = new Fotos();
 					<?php endforeach;  ?>
 				</select><br>
 
+
 				<label for="idVideo">Video: </label>
 				<select name="idVideo" id="idVideo">
 					<option value="">SELECIONE</option>
-					<?php foreach($objAlbum->listarAlbuns() as $album): ?>
-						<option value="<?php echo $album["idAlbum"] ?>"><?php echo $album["nomeAlbum"] ?></option>
+					<?php foreach($objVideo->listarVideos() as $video): ?>
+						<option value="<?php echo $video["idVideo"] ?>"><?php echo $video["tituloVideo"] ?></option>
 					<?php endforeach;  ?>
 				</select><br>
+
+
+
+
+
 				<label for="tipoNoticia">Tipo Notícia:</label>
 				<select name="tipoNoticia" id="tipoNoticia">
 					<!-- <option value="">SELECIONE</option> -->
 					<option value="N">Notícia</option>
 					<option value="A">Agenda</option>
 					<option value="E">Evento</option>
-				</select>
-
+				</select><br>
 				
-<!-- 
-				<label for="tituloFoto">Título Foto: </label><input type="text" name="tituloFoto" id="tituloFoto" required>
-				<br>
-				<label for="idAlbum">Album: </label>
-				<select name="idAlbum" id="idAlbum" required="">
-					<option value="">SELECIONE</option>
-					<?php foreach($objAlbum->listarAlbuns() as $album): ?>
-						<option value="<?php echo $album["idAlbum"] ?>"><?php echo $album["nomeAlbum"] ?></option>
-					<?php endforeach;  ?>
-				</select>
-				<br>
-
-				Fotos: <label for="arquivo">Arquivo(s):</label>
-				<input type="file" multiple="" name="arquivo" id="arquivo" required=""> -->
-
-				<br>
-
-
-
-
-
 				<input type="submit" value="Salvar">
 			</form>
 
 		</fieldset>
 
-
 		<span id='response'></span>
+
 		<hr>
 		<?php  
+
 		if($objNoticia->paginacao()["totalResult"] > 0):
+
 			?>
 
 			<fieldset>
-				<legend>LISTA DE ŃOTÍCIAS</legend>
+				<legend>LISTA DE NOTÍCIAS</legend>
 				<table>
 					<thead>		
 						<tr>
-							<th>Titulo</th>
-							<th>Nome Arquivo</th>
-							<th>Id Album</th>
+							<th>Notícia</th>
+							<th>Imagem</th>
+							<th>Album</th>
 							<th>Entrada</th>
 							<th>Ação</th>
 						</tr>
@@ -154,11 +133,11 @@ $objFoto = new Fotos();
 
 								echo '<tr>';
 								echo '<td>'.$noticia["tituloNoticia"].'</td>'; 	
-								echo '<td><img width="80" src="../'.$objFoto->selecionarFoto($noticia["idFoto"])->urlFoto.'" alt=""></td>';
+								echo '<td><img width="80" src="../upload/thumbnail_'.$objFoto->selecionarFoto($noticia["idFoto"])->nomeFoto.'" alt=""></td>';
 								echo '<td>'.$objAlbum->selecionarAlbum($noticia["idAlbum"])->nomeAlbum.'</td>'; 			
 								echo '<td>'.date('d/m/Y H:i:s', strtotime($noticia["dataCaptura"])).'</td>'; 				 
 								echo '<td><a class="idNoticia apagar btn btn-danger" href='.$noticia["idNoticia"].'>Apagar</a> '; 
-								echo ' <span class="btn btn-success" data-toggle="modal" data-target="#atualizarFoto" 
+								echo ' <span class="btn btn-success" data-toggle="modal" data-target="#atualizarNoticia" 
 								onclick="adicionarDado('.$noticia["idNoticia"].',\''.$noticia["tituloNoticia"].'\')">Editar</span></td>';	
 								echo '</tr>';
 							}
@@ -193,13 +172,13 @@ $objFoto = new Fotos();
 
 		<script type="text/javascript">		
 
-			// setando o campo titulo da foto com uma sugestão
-			$('#tituloFoto').val($('table tr td').eq(0).text());
+			// setando o campo titulo da noticia com uma sugestão de novo
+			$('#tituloNoticia').val($('table tr td').eq(0).text());
 
-			function adicionarDado(idfoto,titulofoto){
+			function adicionarDado(idnoticia,titulonoticia){
 
-				$('#idfotoU').val(idfoto);
-				$('#titulofotoU').val(titulofoto);
+				$('#idNoticiaU').val(idnoticia);
+				$('#tituloNoticiaU').val(titulonoticia);
 			}
 		</script>
 

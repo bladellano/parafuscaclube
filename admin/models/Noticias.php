@@ -14,12 +14,13 @@ class Noticias extends Conexao {
 	}
 
 	public function salvarNoticia($titulo_noticia, $conteudo, $arquivo_name, $arquivo_tmp_name, $arquivo_type, $id_album, $id_video, $tipo_noticia){
-		/*trata a foto*/
 
 		$this->titulo_noticia = $titulo_noticia;
 		$this->conteudo = $conteudo;
 
-		$idFoto = $this->salvarFoto($titulo_noticia,$arquivo_type,$arquivo_name, $arquivo_tmp_name);
+		// echo $id_album; exit;
+
+		$idFoto = $this->salvarFoto($titulo_noticia,$arquivo_type,$arquivo_name, $arquivo_tmp_name,$id_album);
 
 		try {
 			$sql  = "INSERT INTO tb_noticias (tituloNoticia, conteudo, idFoto, idAlbum, idVideo, tipoNoticia) VALUES (?,?,?,?,?,?)";
@@ -51,8 +52,7 @@ class Noticias extends Conexao {
 				return false;
 
 			} else {
-				return $this->db->lastInsertId();
-				// return true;
+				return $this->db->lastInsertId();		 
 			}
 
 		} catch (PDOException $e) {
@@ -73,17 +73,14 @@ class Noticias extends Conexao {
 			$altura_original = imagesy($imagem_temporaria);	
 			$nova_largura = $largura_original*$proporcao;
 			$nova_altura =  $altura_original*$proporcao;
-
 			$imagem_redimensionada = imagecreatetruecolor($nova_largura, $nova_altura);
-
 			imagecopyresampled($imagem_redimensionada, $imagem_temporaria,0,0,0,0,$nova_largura,$nova_altura,$largura_original,$altura_original);
-
 			imagejpeg($imagem_redimensionada, $folder.'thumbnail_'.$name);
 
 			break;
 
 			default:
-		# code...
+		# FALTA COLOCAR VALIDAÇÃO PARA PNG.
 			break;
 		}
 		// echo 'Criou thumbnail com sucesso!';
@@ -97,13 +94,12 @@ class Noticias extends Conexao {
 		return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);	
 	}
 
-	public function atualizarFoto($id, $titulo_foto){
-		$sql = "UPDATE tb_fotos SET tituloFoto = ? WHERE idFoto = ?";
+	public function atualizarNoticia($id, $titulo_noticia){
+		$sql = "UPDATE tb_noticias SET tituloNoticia = ? WHERE idNoticia = ?";
 		$result = $this->db->prepare($sql);
-		$result->execute([$titulo_foto, $id]);
-		return $result->rowCount() > 0 ? true:false;	
+		$result->execute([$titulo_noticia, $id]);
+		return $result->rowCount() > 0 ? true : false;	
 	}
-
 
 
 

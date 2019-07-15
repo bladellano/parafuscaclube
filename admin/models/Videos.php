@@ -2,7 +2,7 @@
 
 require_once "Conexao.php";
 
-class Fotos extends Conexao {
+class Videos extends Conexao {
 
 	protected $titulo_foto;
 	protected $novo_nome;
@@ -72,9 +72,10 @@ class Fotos extends Conexao {
 	}
 
 
-	public function listarFotos(){
+	public function listarVideos(){
 
-		$sql = "SELECT * FROM tb_fotos ORDER BY dataCaptura";	
+		$sql = "SELECT * FROM tb_videos ORDER BY dataCaptura";
+	 
 		return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);	
 	}
 
@@ -122,7 +123,7 @@ class Fotos extends Conexao {
 	public function selecionarFoto($id){
 
 		$sql  = "SELECT * FROM tb_fotos WHERE idFoto = $id";
- 
+
 		return $this->db->query($sql)->fetch(PDO::FETCH_OBJ);	
 	}
 

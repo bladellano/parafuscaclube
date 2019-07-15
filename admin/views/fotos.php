@@ -87,11 +87,6 @@ $objAlbum = new Albuns();
 
 		<?php  
 
-// print_r( $fotos->paginacao()["totalResult"] );
-
-// exit;
-
-
 		if($fotos->paginacao()["totalResult"] > 0):
 
 			?>
@@ -103,7 +98,7 @@ $objAlbum = new Albuns();
 						<tr>
 							<th>Titulo</th>
 							<th>Nome Arquivo</th>
-							<th>Id Album</th>
+							<th>Album</th>
 							<th>Entrada</th>
 							<th>Ação</th>
 						</tr>

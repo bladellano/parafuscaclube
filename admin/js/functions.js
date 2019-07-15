@@ -115,6 +115,32 @@ $('#form-noticia').submit(function(e){
     })
 
 
+ //atualizar titulo not[icia]
+    $('#btnAtualizaNoticia').click(function(){
+
+        dados = $('#frmNoticiaU').serialize();
+        $.ajax({
+            type:"POST",
+            data:dados,
+            url:"../atualiza-noticia.php",
+            success:function(r){
+
+                if(r==1){
+
+                    alertify.success("Atualizado com Sucesso :)");
+                    setTimeout(function(){ 
+                        location.reload();
+                    }, 1500);
+
+                }else{
+                    alertify.error("Não foi possível atualizar :(");
+                }
+            }
+        });
+    });
+
+
+
     //atualizar foto
     $('#btnAtualizaFoto').click(function(){
 
@@ -313,10 +339,10 @@ $('#form-noticia').submit(function(e){
 		})			
 	});
 
-    function adicionarDado(idfoto,titulofoto){
+    // function adicionarDado(idfoto,titulofoto){
 
-        $('#idfotoU').val(idfoto);
-        $('#titulofotoU').val(titulofoto);
-    }
+    //     $('#idfotoU').val(idfoto);
+    //     $('#titulofotoU').val(titulofoto);
+    // }
 
 }); //fim function
