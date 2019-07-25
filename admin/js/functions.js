@@ -22,7 +22,7 @@ $(function(){
     });
 
 
-//inseri album
+//insere noticia
 
 $('#form-noticia').submit(function(e){
     e.preventDefault();
@@ -61,6 +61,7 @@ $('#form-noticia').submit(function(e){
 
         if(r == 1) {     
          alertify.success('Inserido com sucesso!');
+
                     $('#form-noticia')[0].reset(); //reseta formulário  
 
                     setTimeout(function(){ 
@@ -82,7 +83,7 @@ $('#form-noticia').submit(function(e){
 
 
 
-    //inseri album
+    //insere album
 
     $('#form-album').submit(function(e){
         e.preventDefault();
@@ -113,7 +114,7 @@ $('#form-noticia').submit(function(e){
     })
 
 
- //atualizar titulo not[icia]
+ //atualiza titulo da noticia
     $('#btnAtualizaNoticia').click(function(){
 
         dados = $('#frmNoticiaU').serialize();
@@ -139,7 +140,6 @@ $('#form-noticia').submit(function(e){
     });
 
 
- 
 
     //atualizar foto
     $('#btnAtualizaFoto').click(function(){
@@ -183,7 +183,6 @@ $('#form-noticia').submit(function(e){
         console.log(respStringInt);
 
         $('label[for="foto"],label[for="arquivo"]').text(respStringInt);
-
 
         var size_arquivos = 0;
 
@@ -296,15 +295,6 @@ $('#form-noticia').submit(function(e){
 
         });        
     });
-
-
-
-
-
-
-
-
-
 
 
 	//excluindo foto

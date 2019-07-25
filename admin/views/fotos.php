@@ -23,6 +23,8 @@ $objNoticia = new Noticias();
 
 	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
 
+	<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="../css/alertify.css">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -58,106 +60,112 @@ $objNoticia = new Noticias();
 		<!-- fim Modal -->
 
 
-		<fieldset><legend>UPLOAD DE FOTOS</legend>
+		<div class="row">
+			<div class="col-md-4 text-center">
 
-			<form id="form-upload" method="POST" enctype="multipart/form-data">
+				<h3>UPLOAD DE FOTOS</h3>
+				<form id="form-upload" method="POST" enctype="multipart/form-data">
+
+					<label for="tituloFoto">Título Foto: </label>
+					<input type="text" name="tituloFoto" id="tituloFoto" class="form-control" required>
+
+					<label for="idAlbum">Album: </label>
+					<select name="idAlbum" id="idAlbum" required="" class="form-control">
+						<option value="">SELECIONE</option>
+						<?php foreach($objAlbum->listarAlbuns() as $album): ?>
+							<option value="<?php echo $album["idAlbum"] ?>"><?php echo $album["nomeAlbum"] ?></option>
+						<?php endforeach;  ?>
+					</select>	 
+
+					<label for="arquivo"><ion-icon name="document"></ion-icon> Selecionar arquivo(s):</label>
+					<input type="file" multiple="" name="arquivo" id="arquivo" required="">
+
+					<input type="submit" class="btn btn-primary" value="Salvar">
+
+				</form>
+			</div> <!--col-md-6-->
+			<div class="col-md-8 text-center">
+				<?php  
+
+				if($fotos->paginacao()["totalResult"] > 0):
+
+					?>
+
+					<h3>LISTA DE FOTOS</h3>
+					<table class="table table-striped">
+						<thead >		
+							<tr>
+								<th>Titulo</th>
+								<th>Foto</th>
+								<th>Album</th>
+								<th>Entrada</th>
+								<th>Ação</th>
+							</tr>
+						</thead>
+						<tbody>		
+							<tr>
+
+								<?php 
+
+								foreach ($fotos->paginacao()["objItens"] as $foto) {
+
+									echo '<tr>';
+									echo '<td>'.$foto["tituloFoto"].'</td>'; 	
+									echo '<td><img width="50" src="../upload/thumbnail_'.$foto["nomeFoto"].'" alt=""></td>'; 			
+									echo '<td>'.$objAlbum->selecionarAlbum($foto["idAlbum"]).'</td>'; 			
+									echo '<td>'.date('d/m/Y H:i:s', strtotime($foto["dataCaptura"])).'</td>'; 	
+
+										if(!$objNoticia->verifyFotoNoticia($foto["idFoto"])): //Verifica se tem foto de notícia na tabela.
+
+										echo '<td>
+										<a class="idFoto apagar btn btn-danger" href='.$foto["idFoto"].'><ion-icon name="close-circle"></ion-icon></a>
+										<span class="btn btn-success" data-toggle="modal" data-target="#atualizarFoto" 
+										onclick="adicionarDado('.$foto["idFoto"].',\''.$foto["tituloFoto"].'\')"><ion-icon name="options"></ion-icon></span>
+										</td>'; 							
+
+									else:
+
+										echo '<td>
+
+										<span class="btn btn-success" data-toggle="modal" data-target="#atualizarFoto" 
+										onclick="adicionarDado('.$foto["idFoto"].',\''.$foto["tituloFoto"].'\')"><ion-icon name="options"></ion-icon></span>
+										</td>'; 		
+
+									endif;
+
+									echo '</tr>';
+
+								}
+
+								?>
+
+							</tbody>
+						</table>
+						<!-- mostrando os botoes da paginação -->
+						<?php echo $fotos->paginacao()["botoesPaginacao"] ?>
+						<?php 
+
+					else:
+
+						echo "Não há registro(s).";
+
+					endif; ?>
+				</div><!--col-md-6-->
+			</div>
+
+			<span id='response'></span>
 
 
-				<label for="tituloFoto">Título Foto: </label><input type="text" name="tituloFoto" id="tituloFoto" required>
-				<br>
-				<label for="idAlbum">Album: </label>
-				<select name="idAlbum" id="idAlbum" required="">
-					<option value="">SELECIONE</option>
-					<?php foreach($objAlbum->listarAlbuns() as $album): ?>
-						<option value="<?php echo $album["idAlbum"] ?>"><?php echo $album["nomeAlbum"] ?></option>
-					<?php endforeach;  ?>
-				</select>
-				<br>
 
-				Fotos: <label for="arquivo">Arquivo(s):</label>
-				<input type="file" multiple="" name="arquivo" id="arquivo" required="">
-
-				<br>
-				<input type="submit" value="Salvar">
-			</form>
-
-		</fieldset>
+		</div> <!-- fim containter -->
+		<footer class="footer mt-auto py-3">
+			<div class="container text-center">
+				<span class="text-muted">Copyright © 2019 Firefly Sites - Todos os direitos reservados.</span>
+			</div>
+		</footer>
 
 
-		<span id='response'></span>
-		<hr>
-
-		<?php  
-
-		if($fotos->paginacao()["totalResult"] > 0):
-
-			?>
-
-			<fieldset>
-				<legend>LISTA DE FOTOS</legend>
-				<table>
-					<thead class="thead-dark">		
-						<tr>
-							<th>Titulo</th>
-							<th>Nome Arquivo</th>
-							<th>Album</th>
-							<th>Entrada</th>
-							<th>Ação</th>
-						</tr>
-					</thead>
-					<tbody>		
-						<tr>
-
-
-							<?php 
-
-							foreach ($fotos->paginacao()["objItens"] as $foto) {
-
-								echo '<tr>';
-								echo '<td>'.$foto["tituloFoto"].'</td>'; 	
-								echo '<td><img width="50" src="../upload/thumbnail_'.$foto["nomeFoto"].'" alt=""></td>'; 			
-								echo '<td>'.$objAlbum->selecionarAlbum($foto["idAlbum"]).'</td>'; 			
-								echo '<td>'.date('d/m/Y H:i:s', strtotime($foto["dataCaptura"])).'</td>'; 	
-
-								if(!$objNoticia->verifyFotoNoticia($foto["idFoto"])): //Verifica se tem foto de notícia na tabela.
-
-								echo '<td><a class="idFoto apagar btn btn-danger" href='.$foto["idFoto"].'>Apagar</a><td>'; 
-								
-								else:
-								
-								echo '<td>--<td>'; 
-
-								endif;
-
-							echo '<span class="btn btn-success" data-toggle="modal" data-target="#atualizarFoto" 
-							onclick="adicionarDado('.$foto["idFoto"].',\''.$foto["tituloFoto"].'\')">Editar</span></td>'; 
-							echo '</tr>';
-
-						}
-
-						?>
-
-					</tbody>
-				</table>
-				<!-- mostrando os botoes da paginação -->
-				<?php echo $fotos->paginacao()["botoesPaginacao"] ?>
-
-			</fieldset>
-
-
-			<?php 
-
-
-		else:
-
-			echo "Não há registro(s).";
-
-		endif; ?>
-
-
-	</div> <!-- fim containter -->
-
-	<script type="text/javascript">		
+		<script type="text/javascript">		
 
 			// setando o campo titulo da foto com uma sugestão
 			$('#tituloFoto').val($('table tr td').eq(0).text());

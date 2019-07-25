@@ -5,7 +5,7 @@ require_once "models/Noticias.php";
 $objNoticia = new Noticias();
 
 $titulo_noticia = addslashes($_POST['tituloNoticia']);
-$conteudo = addslashes($_POST['conteudo']);
+$conteudo = ($_POST['conteudo']);
 $id_album = (int) $_POST['idAlbum'];
 $id_video = (int) $_POST['idVideo'];
 $tipo_noticia = addslashes($_POST['tipoNoticia']); 

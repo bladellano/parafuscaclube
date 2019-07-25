@@ -39,7 +39,7 @@ $objVideo = new Videos();
 </head>
 <body>
 	
-	<div class="container">
+	<div class="container" style="margin-bottom: 80px;">
 
 		<!-- Modal -->
 		<div class="modal fade" id="atualizarNoticia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -47,7 +47,7 @@ $objVideo = new Videos();
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">Atualizar Foto</h4>
+						<h4 class="modal-title" id="myModalLabel">Atualizar Título</h4>
 					</div>
 					<div class="modal-body">
 						<form id="frmNoticiaU">
@@ -110,7 +110,7 @@ $objVideo = new Videos();
 				</div>
 				<div class="col-md-6">
 
-					<label for="foto" >Anexar Foto</label>
+					<label for="foto" ><ion-icon name="document"></ion-icon> Adicionar uma Foto</label>
 					<input type="file" id="foto" name="foto">
 				</div>
 			</div>
@@ -181,8 +181,13 @@ $objVideo = new Videos();
 
 			?>
 
-
 		</div> <!-- fim containter -->
+
+		<footer class="footer mt-auto py-3">
+			<div class="container text-center">
+				<span class="text-muted">Copyright © 2019 Firefly Sites - Todos os direitos reservados.</span>
+			</div>
+		</footer>
 
 		<script type="text/javascript">	
 
