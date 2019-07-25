@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 15-Jul-2019 às 13:49
--- Versão do servidor: 10.1.37-MariaDB
--- versão do PHP: 5.6.38
+-- Host: localhost
+-- Tempo de geração: 24/07/2019 às 22:30
+-- Versão do servidor: 10.1.40-MariaDB
+-- Versão do PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bd_pfc`
+-- Banco de dados: `bd_pfc`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_albuns`
+-- Estrutura para tabela `tb_albuns`
 --
 
 CREATE TABLE `tb_albuns` (
@@ -36,16 +36,18 @@ CREATE TABLE `tb_albuns` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_albuns`
+-- Despejando dados para a tabela `tb_albuns`
 --
 
 INSERT INTO `tb_albuns` (`idAlbum`, `idUsuario`, `nomeAlbum`, `dataCaptura`) VALUES
-(17, 0, 'Dia Mundial do Fusca - 23 de Junho de 2019', '2019-07-14 01:25:34');
+(17, 0, 'Dia Mundial do Fusca - 23 de Junho de 2019', '2019-07-14 01:25:34'),
+(19, 0, 'Condominio', '2019-07-24 22:21:54'),
+(20, 0, 'Bom Sucesso', '2019-07-24 22:22:05');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_fotos`
+-- Estrutura para tabela `tb_fotos`
 --
 
 CREATE TABLE `tb_fotos` (
@@ -59,22 +61,20 @@ CREATE TABLE `tb_fotos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_fotos`
+-- Despejando dados para a tabela `tb_fotos`
 --
 
 INSERT INTO `tb_fotos` (`idFoto`, `tituloFoto`, `nomeFoto`, `urlFoto`, `idUsuario`, `idAlbum`, `dataCaptura`) VALUES
-(89, 'Nova noticia..', 'foto-unama (19).jpg', 'upload/foto-unama (19).jpg', 0, 17, '2019-07-15 01:09:31'),
-(90, 'Aniversário em casa II', 'Tulips.jpg', 'upload/Tulips.jpg', 0, 17, '2019-07-15 11:01:38'),
-(91, 'Confra da Unama 3', 'Penguins.jpg', 'upload/Penguins.jpg', 0, 17, '2019-07-15 11:12:22'),
-(92, 'Confra da Unama 3', 'Penguins.jpg', 'upload/Penguins.jpg', 0, 17, '2019-07-15 11:13:18'),
-(96, 'Confra da Unama', 'Penguins.jpg', 'upload/Penguins.jpg', 0, 17, '2019-07-15 11:36:07'),
-(98, 'Teste de varias fotos.', 'Chrysanthemum.jpg', 'upload/Chrysanthemum.jpg', 0, 17, '2019-07-15 11:40:46'),
-(99, 'Teste de varias fotos.', 'Desert.jpg', 'upload/Desert.jpg', 0, 17, '2019-07-15 11:40:46');
+(89, 'Nova noticia', 'foto-unama (19).jpg', 'upload/foto-unama (19).jpg', 0, 17, '2019-07-15 01:09:31'),
+(99, 'Teste de varias fotos', 'Desert.jpg', 'upload/Desert.jpg', 0, 17, '2019-07-15 11:40:46'),
+(105, 'Rave II', 'IMG-20170920-WA0065.jpg', 'upload/IMG-20170920-WA0065.jpg', 0, 19, '2019-07-24 22:22:46'),
+(122, 'HH', 'IMG_20170916_211906069_TOP.jpg', 'upload/IMG_20170916_211906069_TOP.jpg', 0, 0, '2019-07-24 23:14:27'),
+(124, 'ASD', 'IMG_20170916_211906069_TOP.jpg', 'upload/IMG_20170916_211906069_TOP.jpg', 0, 17, '2019-07-24 23:15:08');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_membros`
+-- Estrutura para tabela `tb_membros`
 --
 
 CREATE TABLE `tb_membros` (
@@ -84,7 +84,7 @@ CREATE TABLE `tb_membros` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_newsletter`
+-- Estrutura para tabela `tb_newsletter`
 --
 
 CREATE TABLE `tb_newsletter` (
@@ -94,7 +94,7 @@ CREATE TABLE `tb_newsletter` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_noticias`
+-- Estrutura para tabela `tb_noticias`
 --
 
 CREATE TABLE `tb_noticias` (
@@ -112,18 +112,17 @@ CREATE TABLE `tb_noticias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_noticias`
+-- Despejando dados para a tabela `tb_noticias`
 --
 
 INSERT INTO `tb_noticias` (`idNoticia`, `tituloNoticia`, `conteudo`, `idUsuario`, `idFoto`, `idAlbum`, `idVideo`, `tipoNoticia`, `dataCaptura`, `dataModificado`, `status`) VALUES
-(44, 'Confra da Unama', 'Novo conteudo...', NULL, 89, 17, 17, 'N', '2019-07-14 22:09:31', NULL, 1),
-(45, 'Aniversário em casa ', 'Lorem ipsum', NULL, 90, 17, 17, 'N', '2019-07-15 08:01:38', NULL, 1),
-(52, 'Confra da Unama', 'teste', NULL, 96, 17, 1, 'N', '2019-07-15 08:36:07', NULL, 1);
+(72, 'Lorem ipsum 233s', 'HH', NULL, 122, 0, 0, 'N', '2019-07-24 20:14:27', NULL, 1),
+(74, 'Lorem ipsum 32', 'ASD', NULL, 124, 17, 0, 'N', '2019-07-24 20:15:09', NULL, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_usuarios`
+-- Estrutura para tabela `tb_usuarios`
 --
 
 CREATE TABLE `tb_usuarios` (
@@ -140,7 +139,7 @@ CREATE TABLE `tb_usuarios` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_videos`
+-- Estrutura para tabela `tb_videos`
 --
 
 CREATE TABLE `tb_videos` (
@@ -152,111 +151,110 @@ CREATE TABLE `tb_videos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_videos`
+-- Despejando dados para a tabela `tb_videos`
 --
 
 INSERT INTO `tb_videos` (`idVideo`, `tituloVideo`, `codVideo`, `urlVideo`, `dataCaptura`) VALUES
 (1, 'Linux consumindo muita memória', 'BxrXzcB90Mg', 'https://www.youtube.com/watch?v=BxrXzcB90Mg&t=109s', '2019-07-15 08:32:35');
 
 --
--- Indexes for dumped tables
+-- Índices de tabelas apagadas
 --
 
 --
--- Indexes for table `tb_albuns`
+-- Índices de tabela `tb_albuns`
 --
 ALTER TABLE `tb_albuns`
   ADD PRIMARY KEY (`idAlbum`);
 
 --
--- Indexes for table `tb_fotos`
+-- Índices de tabela `tb_fotos`
 --
 ALTER TABLE `tb_fotos`
-  ADD PRIMARY KEY (`idFoto`),
-  ADD KEY `idAlbum` (`idAlbum`);
+  ADD PRIMARY KEY (`idFoto`);
 
 --
--- Indexes for table `tb_membros`
+-- Índices de tabela `tb_membros`
 --
 ALTER TABLE `tb_membros`
   ADD PRIMARY KEY (`idMembro`);
 
 --
--- Indexes for table `tb_newsletter`
+-- Índices de tabela `tb_newsletter`
 --
 ALTER TABLE `tb_newsletter`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indexes for table `tb_noticias`
+-- Índices de tabela `tb_noticias`
 --
 ALTER TABLE `tb_noticias`
   ADD PRIMARY KEY (`idNoticia`);
 
 --
--- Indexes for table `tb_usuarios`
+-- Índices de tabela `tb_usuarios`
 --
 ALTER TABLE `tb_usuarios`
   ADD PRIMARY KEY (`idUsuario`);
 
 --
--- Indexes for table `tb_videos`
+-- Índices de tabela `tb_videos`
 --
 ALTER TABLE `tb_videos`
   ADD PRIMARY KEY (`idVideo`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas apagadas
 --
 
 --
--- AUTO_INCREMENT for table `tb_albuns`
+-- AUTO_INCREMENT de tabela `tb_albuns`
 --
 ALTER TABLE `tb_albuns`
-  MODIFY `idAlbum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idAlbum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `tb_fotos`
+-- AUTO_INCREMENT de tabela `tb_fotos`
 --
 ALTER TABLE `tb_fotos`
-  MODIFY `idFoto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `idFoto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
--- AUTO_INCREMENT for table `tb_membros`
+-- AUTO_INCREMENT de tabela `tb_membros`
 --
 ALTER TABLE `tb_membros`
   MODIFY `idMembro` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tb_newsletter`
+-- AUTO_INCREMENT de tabela `tb_newsletter`
 --
 ALTER TABLE `tb_newsletter`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tb_noticias`
+-- AUTO_INCREMENT de tabela `tb_noticias`
 --
 ALTER TABLE `tb_noticias`
-  MODIFY `idNoticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `idNoticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
--- AUTO_INCREMENT for table `tb_usuarios`
+-- AUTO_INCREMENT de tabela `tb_usuarios`
 --
 ALTER TABLE `tb_usuarios`
   MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tb_videos`
+-- AUTO_INCREMENT de tabela `tb_videos`
 --
 ALTER TABLE `tb_videos`
   MODIFY `idVideo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Constraints for dumped tables
+-- Restrições para dumps de tabelas
 --
 
 --
--- Limitadores para a tabela `tb_fotos`
+-- Restrições para tabelas `tb_fotos`
 --
 ALTER TABLE `tb_fotos`
   ADD CONSTRAINT `tb_fotos_ibfk_1` FOREIGN KEY (`idAlbum`) REFERENCES `tb_albuns` (`idAlbum`) ON DELETE CASCADE ON UPDATE CASCADE;
