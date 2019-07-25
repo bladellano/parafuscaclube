@@ -54,12 +54,20 @@ class Albuns extends Conexao {
 
 	public function selecionarAlbum($id){
 
-		$sql  = "SELECT * FROM tb_albuns WHERE idAlbum = $id";
-		return $this->db->query($sql)->fetch(PDO::FETCH_OBJ);	
+		if($id != 0):
+
+			$sql  = "SELECT * FROM tb_albuns WHERE idAlbum = $id";
+			$stmt = $this->db->prepare($sql);
+			$stmt->execute();
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);  
+
+			return substr($result['nomeAlbum'],0,20)."...";
+
+		endif;
+
+		return '--';
+
 	}
 
 }//fim classe
-
-// $foto = new Fotos();
-// echo $foto->selecionarFoto(50)->urlFoto;
-// $foto->excluirFoto(16);
+ 

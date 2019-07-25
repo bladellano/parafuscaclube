@@ -17,10 +17,6 @@ class Fotos extends Conexao {
 	public function salvarFoto($titulo_foto, $type, $arquivo_nome, $arquivo_tmp_nome, $id_album){
 		/*trata a foto*/
 		$this->titulo_foto = $titulo_foto;		 
-		/*$extensao = strtolower(substr($arquivo_nome, -4));
-		$extensao = explode(".", $arquivo_nome);
-		$this->novo_nome = md5(time()).$this->extensao;
-		$novo_nome = md5(time()).".".$extensao[1];*/
 
 		$this->criaThumbnails($type, $arquivo_tmp_nome, $arquivo_nome, self::pasta);
 

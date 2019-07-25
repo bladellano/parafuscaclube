@@ -2,9 +2,11 @@
 
 require_once "../models/Fotos.php";
 require_once "../models/Albuns.php";
+require_once "../models/Noticias.php";
 
 $fotos = new Fotos();
 $objAlbum = new Albuns();
+$objNoticia = new Noticias();
 
 ?>
 
@@ -94,7 +96,7 @@ $objAlbum = new Albuns();
 			<fieldset>
 				<legend>LISTA DE FOTOS</legend>
 				<table>
-					<thead>		
+					<thead class="thead-dark">		
 						<tr>
 							<th>Titulo</th>
 							<th>Nome Arquivo</th>
@@ -105,45 +107,57 @@ $objAlbum = new Albuns();
 					</thead>
 					<tbody>		
 						<tr>
+
+
 							<?php 
 
 							foreach ($fotos->paginacao()["objItens"] as $foto) {
-								
+
 								echo '<tr>';
 								echo '<td>'.$foto["tituloFoto"].'</td>'; 	
 								echo '<td><img width="50" src="../upload/thumbnail_'.$foto["nomeFoto"].'" alt=""></td>'; 			
-								echo '<td>'.$objAlbum->selecionarAlbum($foto["idAlbum"])->nomeAlbum.'</td>'; 			
-								echo '<td>'.date('d/m/Y H:i:s', strtotime($foto["dataCaptura"])).'</td>'; 				 
-								echo '<td><a class="idFoto apagar btn btn-danger" href='.$foto["idFoto"].'>Apagar</a> '; 
-								echo ' <span class="btn btn-success" data-toggle="modal" data-target="#atualizarFoto" 
-								onclick="adicionarDado('.$foto["idFoto"].',\''.$foto["tituloFoto"].'\')">Editar</span></td>'; 	
+								echo '<td>'.$objAlbum->selecionarAlbum($foto["idAlbum"]).'</td>'; 			
+								echo '<td>'.date('d/m/Y H:i:s', strtotime($foto["dataCaptura"])).'</td>'; 	
 
-								echo '</tr>';
-							}
+								if(!$objNoticia->verifyFotoNoticia($foto["idFoto"])): //Verifica se tem foto de notícia na tabela.
 
-							?>
+								echo '<td><a class="idFoto apagar btn btn-danger" href='.$foto["idFoto"].'>Apagar</a><td>'; 
+								
+								else:
+								
+								echo '<td>--<td>'; 
 
-						</tbody>
-					</table>
-					<!-- mostrando os botoes da paginação -->
-					<?php echo $fotos->paginacao()["botoesPaginacao"] ?>
+								endif;
 
-				</fieldset>
+							echo '<span class="btn btn-success" data-toggle="modal" data-target="#atualizarFoto" 
+							onclick="adicionarDado('.$foto["idFoto"].',\''.$foto["tituloFoto"].'\')">Editar</span></td>'; 
+							echo '</tr>';
+
+						}
+
+						?>
+
+					</tbody>
+				</table>
+				<!-- mostrando os botoes da paginação -->
+				<?php echo $fotos->paginacao()["botoesPaginacao"] ?>
+
+			</fieldset>
 
 
-				<?php 
+			<?php 
 
 
-			else:
+		else:
 
-				echo "Não há registro(s).";
+			echo "Não há registro(s).";
 
-			endif; ?>
+		endif; ?>
 
 
-		</div> <!-- fim containter -->
+	</div> <!-- fim containter -->
 
-		<script type="text/javascript">		
+	<script type="text/javascript">		
 
 			// setando o campo titulo da foto com uma sugestão
 			$('#tituloFoto').val($('table tr td').eq(0).text());

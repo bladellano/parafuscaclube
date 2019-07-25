@@ -13,17 +13,18 @@ class Noticias extends Conexao {
 		parent::__construct('tb_noticias');
 	}
 
-	public function salvarNoticia($titulo_noticia, $conteudo, $arquivo_name, $arquivo_tmp_name, $arquivo_type, $id_album, $id_video, $tipo_noticia){
+	public function salvarNoticia($titulo_noticia, $conteudo, $arquivo_name, $arquivo_tmp_name, $arquivo_type, $id_album = nulll, $id_video = null, $tipo_noticia){
 
 		$this->titulo_noticia = $titulo_noticia;
+
 		$this->conteudo = $conteudo;
 
-		// echo $id_album; exit;
-
-		$idFoto = $this->salvarFoto($titulo_noticia,$arquivo_type,$arquivo_name, $arquivo_tmp_name,$id_album);
+		$idFoto = $this->salvarFoto($titulo_noticia,$arquivo_type, $arquivo_name, $arquivo_tmp_name, $id_album);
 
 		try {
+
 			$sql  = "INSERT INTO tb_noticias (tituloNoticia, conteudo, idFoto, idAlbum, idVideo, tipoNoticia) VALUES (?,?,?,?,?,?)";
+			
 			$stmt = $this->db->prepare($sql);
 
 			if(!$stmt->execute([$titulo_noticia, $conteudo, $idFoto, $id_album, $id_video, $tipo_noticia])){
@@ -45,13 +46,17 @@ class Noticias extends Conexao {
 		move_uploaded_file($arquivo_tmp_nome, self::pasta.$arquivo_nome);
 		
 		try {
+
 			$sql  = "INSERT INTO tb_fotos (tituloFoto, nomeFoto, urlFoto, idAlbum) VALUES (?,?,?,?)";
+
 			$stmt = $this->db->prepare($sql);
 
 			if(!$stmt->execute([$titulo_foto, $arquivo_nome, self::pasta.$arquivo_nome, $id_album])){
+
 				return false;
 
 			} else {
+
 				return $this->db->lastInsertId();		 
 			}
 
@@ -98,46 +103,31 @@ class Noticias extends Conexao {
 		$sql = "UPDATE tb_noticias SET tituloNoticia = ? WHERE idNoticia = ?";
 		$result = $this->db->prepare($sql);
 		$result->execute([$titulo_noticia, $id]);
-		return $result->rowCount() > 0 ? true : false;	
+		return $result->rowCount();	
+		
 	}
 
 
-
 	public function excluirNoticia($id){
-		//pega caminho da foto.
 
-		/*$nome_arquivo = $this->selecionarFoto($id)->nomeFoto;
+		$id_foto = $this->getIdFoto($id);		 
 
-		$pasta = explode("/",$this->selecionarFoto($id)->urlFoto)[0]; 
-
-		$arquivo_principal = $pasta."/".$nome_arquivo;	 
-		$thumbnail = $pasta."/thumbnail_".$nome_arquivo;*/
-
+		$this->excluirFotoNoticia($id_foto);
 
 		try {
 
-		/*	if(file_exists($arquivo_principal) == true || file_exists($thumbnail)) {
+			$sql = "DELETE FROM tb_noticias WHERE idNoticia = :id";
+			$result = $this->db->prepare($sql);
+			$result->execute([':id' => $id]);
 
-				unlink($arquivo_principal);		
-				unlink($thumbnail);	*/
+			if(!$result->execute([':id' => $id])) {
 
-// echo __FUNCTION__; exit;
+				return false;
 
-				$sql = "DELETE FROM tb_noticias WHERE idNoticia = :id";
-				$result =$this->db->prepare($sql);
-				$result->execute([':id' => $id]);
-
-				if(!$result->execute([':id' => $id])) {
-					return false;
-				} else {
-
-					return true;	
-				}
-/*
 			} else {
 
-				return false;	
-			}	*/	
+				return true;	
+			}
 
 		} catch (PDOException $e) {
 
@@ -145,15 +135,74 @@ class Noticias extends Conexao {
 		}
 	}
 
-	public function selecionarFoto($id){
+	public function getIdFoto($id){
+
+		$sql  = "SELECT * FROM tb_noticias WHERE idNoticia = $id";
+		$stmt = $this->db->prepare($sql);
+		$stmt->execute();
+		$result = $stmt->fetch(PDO::FETCH_ASSOC);  
+
+		return $result['idFoto']; 
+
+	}
+
+	public function excluirFotoNoticia($id){
+
+		$nome_arquivo = $this->selecionarFotoNoticia($id)->nomeFoto;
+
+		$pasta = explode("/",$this->selecionarFotoNoticia($id)->urlFoto)[0]; 
+
+		$arquivo_principal = $pasta."/".$nome_arquivo;	
+
+		$thumbnail = $pasta."/thumbnail_".$nome_arquivo;
+
+
+		try {
+
+			if(file_exists($arquivo_principal) == true || file_exists($thumbnail)) {
+
+				unlink($arquivo_principal);	
+
+				unlink($thumbnail);	
+
+				$sql = "DELETE FROM tb_fotos WHERE idFoto= :id";
+				$result =$this->db->prepare($sql);
+				$result->execute([':id' => $id]);
+
+				return true;	
+
+			} else {
+				
+				return false;	
+			}		
+
+		} catch (PDOException $e) {
+
+			echo $e->getMessage();
+		}
+	}
+
+
+	public function selecionarFotoNoticia($id){
 
 		$sql  = "SELECT * FROM tb_fotos WHERE idFoto = $id";
+
 		return $this->db->query($sql)->fetch(PDO::FETCH_OBJ);	
+	}
+
+	public function verifyFotoNoticia($id){
+
+		$sql  = "SELECT * FROM tb_noticias WHERE idFoto = $id";
+		$stmt = $this->db->prepare($sql);
+		$stmt->execute();
+		$result = $stmt->fetch(PDO::FETCH_ASSOC);  
+		$count = $stmt->rowCount();     
+		return $count;
 	}
 
 	public function selecionarNoticia($id){
 
-		$sql  = "SELECT * FROM tb_fotos WHERE idFoto = $id";
+		$sql  = "SELECT * FROM tb_noticias WHERE idNoticia = $id";
 		return $this->db->query($sql)->fetch(PDO::FETCH_OBJ);	
 	}
 

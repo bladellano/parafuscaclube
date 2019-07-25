@@ -6,7 +6,7 @@ class Conexao {
 
 	protected $table;
 
-	protected $lines_per_page = 8; //quantidade de registros por página.
+	protected $lines_per_page = 5; //quantidade de registros por página.
 
 	protected $line_size = 4; //quantidade de numeros para listar item-página.
 

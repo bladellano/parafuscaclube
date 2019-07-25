@@ -22,8 +22,6 @@ $(function(){
     });
 
 
-
-
 //inseri album
 
 $('#form-noticia').submit(function(e){
@@ -119,6 +117,7 @@ $('#form-noticia').submit(function(e){
     $('#btnAtualizaNoticia').click(function(){
 
         dados = $('#frmNoticiaU').serialize();
+        
         $.ajax({
             type:"POST",
             data:dados,
@@ -140,6 +139,7 @@ $('#form-noticia').submit(function(e){
     });
 
 
+ 
 
     //atualizar foto
     $('#btnAtualizaFoto').click(function(){
@@ -250,7 +250,7 @@ $('#form-noticia').submit(function(e){
                         location.reload();
                     }, 1500);              
                 }  else {
-                    console.log('Houve algum problema.');
+                    // console.log('Houve algum problema.');
                     alertify.error('Houve algum problema.');    
                     return false;                
                 }
@@ -265,7 +265,7 @@ $('#form-noticia').submit(function(e){
 
 
 
-    //excluindo foto
+    //excluindo noticia
     $('.idNoticia.apagar').on('click', function(e){
         e.preventDefault();
         var id = $(this).attr('href');
