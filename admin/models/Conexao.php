@@ -20,7 +20,7 @@ class Conexao {
 		try {
 			
 			$host = 'localhost';
-			$dbname = 'bd_pfc';
+			$dbname = 'bdfusca';
 			$user = 'root';
 			$pass = '';
 

@@ -17,7 +17,7 @@ $objVideo = new Videos();
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
+	<title>Notícias</title>
 
 	<script src="../js/jquery.min.js" type="text/javascript"></script>
 	<script src="../js/alertify.js" type="text/javascript"></script>
@@ -194,7 +194,7 @@ $objVideo = new Videos();
 			CKEDITOR.replace( 'conteudo' );	
 
 			// setando o campo titulo da foto com uma sugestão
-			$('#tituloFoto').val($('table tr td').eq(0).text());
+			// $('#tituloFoto').val($('table tr td').eq(0).text());
 
 			function adicionarDado(idnoticia,titulofoto){
 

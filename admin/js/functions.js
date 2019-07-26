@@ -1,5 +1,62 @@
 $(function(){
 
+//login
+$('#entrarSistema').click(function(e){
+
+    e.preventDefault();
+
+    vazios=validarFormVazio('frmLogin');
+
+    if(vazios > 0){
+
+        alertify.error("Preencha os campos!!");
+
+        return false;
+    } 
+
+    dados = $('#frmLogin').serialize();
+
+    $.ajax({
+        type:"POST",
+        dataType: 'html',
+        data:dados,
+        url:"login.php",
+        success:function(r){
+            // alert(r);
+            if(r==1){
+                window.location="views/inicio.php";
+            }else{
+                // alertify.error("Usuário ou senha não confere :(");
+                alertify.alert('Alert Title', 'Alert Message!', function(){ alertify.success('Ok'); });
+
+ 
+
+            }
+        },
+        error: function (request, status, error) {
+            alert(request.responseText);
+        }
+    });
+});
+
+function validarFormVazio(formulario){
+    dados=$('#' + formulario).serialize();
+
+
+    d=dados.split('&');
+    vazios=0;
+    for(i=0;i< d.length;i++){
+        controles=d[i].split("=");
+        if(controles[1]=="A" || controles[1]==""){
+            vazios++;
+        }
+    }
+    return vazios;
+}
+
+
+
+
     //excluir album
     $('.idAlbum.apagar').on('click', function(e){
         e.preventDefault();
@@ -13,11 +70,11 @@ $(function(){
                 data: {id: id},
             })
             .done(function(r) {  
-             alertify.success('Excluído com sucesso!');
-             setTimeout(function(){ 
+               alertify.success('Excluído com sucesso!');
+               setTimeout(function(){ 
                 location.reload();
             }, 1500);
-         });
+           });
         })          
     });
 
@@ -59,8 +116,8 @@ $('#form-noticia').submit(function(e){
         success: function(r)
         {                
 
-        if(r == 1) {     
-         alertify.success('Inserido com sucesso!');
+            if(r == 1) {     
+               alertify.success('Inserido com sucesso!');
 
                     $('#form-noticia')[0].reset(); //reseta formulário  
 
@@ -115,29 +172,29 @@ $('#form-noticia').submit(function(e){
 
 
  //atualiza titulo da noticia
-    $('#btnAtualizaNoticia').click(function(){
+ $('#btnAtualizaNoticia').click(function(){
 
-        dados = $('#frmNoticiaU').serialize();
-        
-        $.ajax({
-            type:"POST",
-            data:dados,
-            url:"../atualiza-noticia.php",
-            success:function(r){
+    dados = $('#frmNoticiaU').serialize();
 
-                if(r==1){
+    $.ajax({
+        type:"POST",
+        data:dados,
+        url:"../atualiza-noticia.php",
+        success:function(r){
 
-                    alertify.success("Atualizado com Sucesso :)");
-                    setTimeout(function(){ 
-                        location.reload();
-                    }, 1500);
+            if(r==1){
 
-                }else{
-                    alertify.error("Não foi possível atualizar :(");
-                }
+                alertify.success("Atualizado com Sucesso :)");
+                setTimeout(function(){ 
+                    location.reload();
+                }, 1500);
+
+            }else{
+                alertify.error("Não foi possível atualizar :(");
             }
-        });
+        }
     });
+});
 
 
 
@@ -170,7 +227,7 @@ $('#form-noticia').submit(function(e){
     //carrega os arquivos para o objeto data(FormData);
 
     // document.getElementById("foto").onchange = function(e) {  
-       $("#foto, #arquivo").change(function(e){
+     $("#foto, #arquivo").change(function(e){
         data = new FormData();
         var nomeArquivo = [], respStringInt;
         for (var i = 0; i < e.target.files.length; i++) {
@@ -241,8 +298,8 @@ $('#form-noticia').submit(function(e){
             success: function(r)
             {            
 
-               if(r == 1) {     
-                 alertify.success('Inserido com sucesso!');
+             if(r == 1) {     
+               alertify.success('Inserido com sucesso!');
                     $('#form-upload')[0].reset(); //reseta formulário  
 
                     setTimeout(function(){ 
@@ -278,19 +335,19 @@ $('#form-noticia').submit(function(e){
             })
             .done(function(r) {  
 
-             if(r == true){
-               alertify.success('Excluído com sucesso!');
+               if(r == true){
+                 alertify.success('Excluído com sucesso!');
+                 setTimeout(function(){ 
+                    location.reload();
+                }, 1500);            
+
+             }   else {
+               alertify.error('Erro ao excluir o registro!');
                setTimeout(function(){ 
                 location.reload();
-            }, 1500);            
-
-           }   else {
-             alertify.error('Erro ao excluir o registro!');
-             setTimeout(function(){ 
-                location.reload();
             }, 1500);
-         } 
-     });
+           } 
+       });
 
 
         });        
@@ -311,19 +368,19 @@ $('#form-noticia').submit(function(e){
 			})
 			.done(function(r) {	 
 
-               if(r == true){
-                 alertify.success('Excluído com sucesso!');
-                 setTimeout(function(){ 
-                    location.reload();
-                }, 1500);            
-
-             }   else {
-               alertify.error('Erro ao excluir a foto!');
+             if(r == true){
+               alertify.success('Excluído com sucesso!');
                setTimeout(function(){ 
                 location.reload();
+            }, 1500);            
+
+           }   else {
+             alertify.error('Erro ao excluir a foto!');
+             setTimeout(function(){ 
+                location.reload();
             }, 1500);
-           } 
-       });
+         } 
+     });
 
 
 		})			

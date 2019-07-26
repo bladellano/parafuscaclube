@@ -168,7 +168,7 @@ $objNoticia = new Noticias();
 		<script type="text/javascript">		
 
 			// setando o campo titulo da foto com uma sugestão
-			$('#tituloFoto').val($('table tr td').eq(0).text());
+			// $('#tituloFoto').val($('table tr td').eq(0).text());
 
 			function adicionarDado(idfoto,titulofoto){
 
