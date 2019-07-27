@@ -24,6 +24,7 @@ class Fotos extends Conexao {
 		
 		try {
 			$sql  = "INSERT INTO tb_fotos (tituloFoto, nomeFoto, urlFoto, idAlbum) VALUES (?,?,?,?)";
+			
 			$stmt = $this->db->prepare($sql);
 
 			if(!$stmt->execute([$titulo_foto, $arquivo_nome, self::pasta.$arquivo_nome, $id_album])){

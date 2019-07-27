@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  
   <!-- <link rel="icon" href="../../../../favicon.ico"> -->
 
   <title>Login | Admin</title>
@@ -15,7 +16,7 @@
   <script src="js/alertify.js" type="text/javascript"></script>
   <script src="js/functions.js" type="text/javascript"></script>
   <script src="js/bootstrap.min.js" type="text/javascript"></script>
-  <script src="http://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+  <!-- <script src="http://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script> -->
   <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 
   <link rel="stylesheet" type="text/css" href="css/alertify.css">
@@ -27,10 +28,11 @@
 <body>
 
   <form class="form-signin" id="frmLogin" method="POST">
-    <div class="text-center mb-4">
-      <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Labels flutuantes</h1>
-      <p>Construa campos de formulário usando labels flutuantes, através do pseudo-elemento <code>:placeholder-shown</code>. <a href="https://caniuse.com/#feat=css-placeholder-shown">Funciona nas últimas versões do Chrome, Safari e Firefox.</a></p>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Login</h1>
+        <ion-icon name="contacts" size="large"></ion-icon>
+      </div>
     </div>
 
     <div class="form-label-group">
@@ -51,7 +53,7 @@
     </div>
     <button class="btn btn-lg btn-primary btn-block" id="entrarSistema" >Entrar</button>
     <!-- <span class="btn btn-primary btn-sm" id="entrarSistema">Entrar</span> -->
-    <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2018</p>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; 2018-2019</p>
   </form>
 
 </body>

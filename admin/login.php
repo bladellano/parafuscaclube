@@ -9,7 +9,6 @@ $dados = array(
 	$titulo = sha1( $_REQUEST['inputPassword'] )
 );
 
- echo $objUsuario->getIdUsuario($dados);
-
+echo $objUsuario->getIdUsuario($dados);
 
 ?>

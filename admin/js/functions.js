@@ -1,3 +1,5 @@
+
+
 $(function(){
 
 //login
@@ -26,10 +28,10 @@ $('#entrarSistema').click(function(e){
             if(r==1){
                 window.location="views/inicio.php";
             }else{
-                // alertify.error("Usuário ou senha não confere :(");
-                alertify.alert('Alert Title', 'Alert Message!', function(){ alertify.success('Ok'); });
+                alertify.error("Usuário ou senha não confere :(");
+                // alertify.alert('Alert Title', 'Alert Message!', function(){ alertify.success('Ok'); });
 
- 
+
 
             }
         },
@@ -40,8 +42,8 @@ $('#entrarSistema').click(function(e){
 });
 
 function validarFormVazio(formulario){
-    dados=$('#' + formulario).serialize();
 
+    dados=$('#' + formulario).serialize();
 
     d=dados.split('&');
     vazios=0;
@@ -60,7 +62,9 @@ function validarFormVazio(formulario){
     //excluir album
     $('.idAlbum.apagar').on('click', function(e){
         e.preventDefault();
+
         var id = $(this).attr('href');
+
         alertify.confirm('Deseja excluir o album?', function(){
 
             $.ajax({
@@ -70,13 +74,74 @@ function validarFormVazio(formulario){
                 data: {id: id},
             })
             .done(function(r) {  
-               alertify.success('Excluído com sucesso!');
-               setTimeout(function(){ 
+             alertify.success('Excluído com sucesso!');
+             setTimeout(function(){ 
                 location.reload();
             }, 1500);
-           });
+         });
         })          
     });
+
+
+
+//insere membro
+$('#form-membro').submit(function(e){
+
+    if($('#foto').val() =="") {alertify.error('Por favor insera uma foto!'); return false;}
+
+    e.preventDefault();
+
+    if(typeof data === 'object'){
+
+        var processData = false, cache = false, contentType =  false;
+  
+        var formCompleto = document.getElementById('form-membro');
+   
+        for(i = 0; i < formCompleto.length; i++) {
+
+            var campo = formCompleto[i].getAttribute('name');
+            var valor = formCompleto[i].value;
+
+            if(campo != 0 && campo != null && campo != "foto[]"){
+                data.append(campo, valor);
+            }
+        }
+
+    } else {
+
+        data = $(this).serializeArray(); 
+        // console.log('NADA') 
+    }
+
+    $.ajax({
+        url: '../salvar-membro.php',
+        data: data,        
+        type: $(this).attr('method'),    
+        dataType: 'html',
+        success: function(r)
+        {                
+
+            if(r == 1) {     
+
+             alertify.success('Inserido com sucesso!');
+
+                    $('#form-membro')[0].reset(); //reseta formulário  
+
+                    setTimeout(function(){ 
+                        location.reload();
+                    }, 1500);              
+                }  else {
+     
+                    alertify.error('Houve algum problema.');    
+                    return false;                
+                }
+            },
+            processData: false,
+            cache: false,
+            contentType: false
+        });
+
+})
 
 
 //insere noticia
@@ -117,7 +182,7 @@ $('#form-noticia').submit(function(e){
         {                
 
             if(r == 1) {     
-               alertify.success('Inserido com sucesso!');
+             alertify.success('Inserido com sucesso!');
 
                     $('#form-noticia')[0].reset(); //reseta formulário  
 
@@ -135,7 +200,81 @@ $('#form-noticia').submit(function(e){
             contentType: false
         });
 
-})
+});
+
+
+//Insere membro
+/*
+$('#form-membro').submit(function(e){
+
+    e.preventDefault();
+
+    data = $($(this)).serializeArray();
+
+    $.ajax({
+
+        type: $(this).attr('method'),     
+        url: '../salvar-membro.php',
+        dataType: 'html',
+        data: data,
+
+    })
+    .done(function(r) {
+
+        if(r == 1) { 
+
+            alertify.alert('Mensagem', 'Inserido com sucesso!', function(){ alertify.success('Ok'); });
+
+          $('#form-membro')[0].reset(); //reseta formulário
+
+      } else {
+
+        return false;
+      
+      }
+
+      setTimeout(function(){ 
+        location.reload();
+    }, 1500);
+
+  });
+
+})*/
+
+
+    //Insere video
+
+    $('#form-video').submit(function(e){
+
+        e.preventDefault();
+
+        data = $($(this)).serializeArray();
+
+        $.ajax({
+
+            type: $(this).attr('method'),     
+            url: '../salvar-video.php',
+            dataType: 'html',
+            data: data,
+
+        })
+        .done(function(r) {
+
+            if(r == 1) { 
+
+                alertify.alert('Mensagem', 'Inserido com sucesso!', function(){ alertify.success('Ok'); });
+
+            $('#form-video')[0].reset(); //reseta formulário
+            
+        }
+
+        setTimeout(function(){ 
+            location.reload();
+        }, 1500);
+        
+    });
+
+    })
 
 
 
@@ -144,6 +283,7 @@ $('#form-noticia').submit(function(e){
 
     $('#form-album').submit(function(e){
         e.preventDefault();
+
         data = $('#nomeAlbum').val();
 
         $.ajax({
@@ -157,7 +297,9 @@ $('#form-noticia').submit(function(e){
 
             if(r == 1) {
                 console.log(r);
-                alertify.success('Inserido com sucesso!');
+
+                alertify.alert('Aviso', 'Inserido com sucesso!', function(){ alertify.success('Ok'); });
+
             $('#form-album')[0].reset(); //reseta formulário
             
         }
@@ -169,6 +311,32 @@ $('#form-noticia').submit(function(e){
     });
 
     })
+
+
+ //atualiza titulo do video
+ $('#btnAtualizaVideo').click(function(){
+
+    dados = $('#frmVideoU').serialize();
+
+    $.ajax({
+        type:"POST",
+        data:dados,
+        url:"../atualiza-video.php",
+        success:function(r){
+
+            if(r==1){
+
+                alertify.success("Atualizado com Sucesso :)");
+                setTimeout(function(){ 
+                    location.reload();
+                }, 1500);
+
+            }else{
+                alertify.error("Não foi possível atualizar :(");
+            }
+        }
+    });
+});
 
 
  //atualiza titulo da noticia
@@ -227,7 +395,7 @@ $('#form-noticia').submit(function(e){
     //carrega os arquivos para o objeto data(FormData);
 
     // document.getElementById("foto").onchange = function(e) {  
-     $("#foto, #arquivo").change(function(e){
+       $("#foto, #arquivo").change(function(e){
         data = new FormData();
         var nomeArquivo = [], respStringInt;
         for (var i = 0; i < e.target.files.length; i++) {
@@ -298,8 +466,8 @@ $('#form-noticia').submit(function(e){
             success: function(r)
             {            
 
-             if(r == 1) {     
-               alertify.success('Inserido com sucesso!');
+               if(r == 1) {     
+                 alertify.success('Inserido com sucesso!');
                     $('#form-upload')[0].reset(); //reseta formulário  
 
                     setTimeout(function(){ 
@@ -320,6 +488,73 @@ $('#form-noticia').submit(function(e){
  }); // fim - form-upload
 
 
+//excluindo membro
+ $('.idMembro.apagar').on('click', function(e){
+    e.preventDefault();
+
+    var id = $(this).attr('href');
+
+    alertify.confirm('Deseja excluir o registro?', function(){
+
+        $.ajax({
+            url: '../excluir-membro.php',
+            type: 'POST',
+            dataType: 'html',
+            data: {id: id},
+        })
+        .done(function(r) {  
+
+         if(r == true){
+           alertify.success('Excluído com sucesso!');
+           setTimeout(function(){ 
+            location.reload();
+        }, 1500);            
+
+       }  else {
+         alertify.error('Erro ao excluir o registro!');
+         setTimeout(function(){ 
+            location.reload();
+        }, 1500);
+     } 
+ });
+
+
+    });        
+});
+
+ //excluindo video
+ $('.idVideo.apagar').on('click', function(e){
+    e.preventDefault();
+    var id = $(this).attr('href');
+
+    alertify.confirm('Deseja excluir o registro?', function(){
+
+        $.ajax({
+            url: '../excluir-video.php',
+            type: 'POST',
+            dataType: 'html',
+            data: {id: id},
+        })
+        .done(function(r) {  
+
+         if(r == true){
+           alertify.success('Excluído com sucesso!');
+           setTimeout(function(){ 
+            location.reload();
+        }, 1500);            
+
+       }   else {
+         alertify.error('Erro ao excluir o registro!');
+         setTimeout(function(){ 
+            location.reload();
+        }, 1500);
+     } 
+ });
+
+
+    });        
+});
+
 
     //excluindo noticia
     $('.idNoticia.apagar').on('click', function(e){
@@ -335,19 +570,19 @@ $('#form-noticia').submit(function(e){
             })
             .done(function(r) {  
 
-               if(r == true){
-                 alertify.success('Excluído com sucesso!');
-                 setTimeout(function(){ 
-                    location.reload();
-                }, 1500);            
-
-             }   else {
-               alertify.error('Erro ao excluir o registro!');
+             if(r == true){
+               alertify.success('Excluído com sucesso!');
                setTimeout(function(){ 
                 location.reload();
+            }, 1500);            
+
+           }   else {
+             alertify.error('Erro ao excluir o registro!');
+             setTimeout(function(){ 
+                location.reload();
             }, 1500);
-           } 
-       });
+         } 
+     });
 
 
         });        
@@ -368,28 +603,22 @@ $('#form-noticia').submit(function(e){
 			})
 			.done(function(r) {	 
 
-             if(r == true){
-               alertify.success('Excluído com sucesso!');
+               if(r == true){
+                 alertify.success('Excluído com sucesso!');
+                 setTimeout(function(){ 
+                    location.reload();
+                }, 1500);            
+
+             }   else {
+               alertify.error('Erro ao excluir a foto!');
                setTimeout(function(){ 
                 location.reload();
-            }, 1500);            
-
-           }   else {
-             alertify.error('Erro ao excluir a foto!');
-             setTimeout(function(){ 
-                location.reload();
             }, 1500);
-         } 
-     });
+           } 
+       });
 
 
 		})			
 	});
-
-    // function adicionarDado(idfoto,titulofoto){
-
-    //     $('#idfotoU').val(idfoto);
-    //     $('#titulofotoU').val(titulofoto);
-    // }
 
 }); //fim function

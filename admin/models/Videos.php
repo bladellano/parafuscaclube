@@ -4,115 +4,69 @@ require_once "Conexao.php";
 
 class Videos extends Conexao {
 
-	protected $titulo_foto;
-	protected $novo_nome;
-	protected $extensao;
+	protected $titulo_video;
+	protected $cod_video;
+	protected $url_video;
 
-	const pasta = "upload/";
+	const table = 'tb_videos';
 
 	public function __construct(){
-		parent::__construct('tb_fotos');
+
+		parent::__construct(self::table);
+
 	}
-
-	public function salvarFoto($titulo_foto, $type, $arquivo_nome, $arquivo_tmp_nome, $id_album){
-		/*trata a foto*/
-		$this->titulo_foto = $titulo_foto;		 
-		/*$extensao = strtolower(substr($arquivo_nome, -4));
-		$extensao = explode(".", $arquivo_nome);
-		$this->novo_nome = md5(time()).$this->extensao;
-		$novo_nome = md5(time()).".".$extensao[1];*/
-
-		$this->criaThumbnails($type, $arquivo_tmp_nome, $arquivo_nome, self::pasta);
-
-		move_uploaded_file($arquivo_tmp_nome, self::pasta.$arquivo_nome);
+	
+	public function salvarVideo($titulo_video,$cod_video,$url_video){
 		
+		$this->titulo_video = $titulo_video;
+		$this->cod_video = $cod_video;
+		$this->url_video = $url_video;
+
 		try {
-			$sql  = "INSERT INTO tb_fotos (tituloFoto, nomeFoto, urlFoto, idAlbum) VALUES (?,?,?,?)";
+
+			$sql  = "INSERT INTO tb_videos (tituloVideo,codVideo, urlVideo) VALUES (?,?,?)";
+
 			$stmt = $this->db->prepare($sql);
 
-			if(!$stmt->execute([$titulo_foto, $arquivo_nome, self::pasta.$arquivo_nome, $id_album])){
+			if(!$stmt->execute([$this->titulo_video, $this->cod_video, $this->url_video])){
+
 				return false;
 			} else {
 				return true;
 			}
 
 		} catch (PDOException $e) {
+
 			echo $e->getMessage();
+
 		}
 
 	}
-
-
-	function criaThumbnails($type, $tmp_name, $name, $folder){
-
-		$proporcao = 0.5;
-
-		switch ($type) {
-			case 'image/jpeg':
-			$imagem_temporaria = imagecreatefromjpeg($tmp_name);
-			$largura_original = imagesx($imagem_temporaria);
-			$altura_original = imagesy($imagem_temporaria);	
-			$nova_largura = $largura_original*$proporcao;
-			$nova_altura =  $altura_original*$proporcao;
-
-			$imagem_redimensionada = imagecreatetruecolor($nova_largura, $nova_altura);
-
-			imagecopyresampled($imagem_redimensionada, $imagem_temporaria,0,0,0,0,$nova_largura,$nova_altura,$largura_original,$altura_original);
-
-			imagejpeg($imagem_redimensionada, $folder.'thumbnail_'.$name);
-
-			break;
-
-			default:
-		# code...
-			break;
-		}
-		// echo 'Criou thumbnail com sucesso!';
-
-	}
-
 
 	public function listarVideos(){
 
-		$sql = "SELECT * FROM tb_videos ORDER BY dataCaptura";
-	 
+		$sql = "SELECT * FROM ".self::table." ORDER BY dataCaptura";	
+
 		return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);	
 	}
 
-	public function atualizarFoto($id, $titulo_foto){
-		$sql = "UPDATE tb_fotos SET tituloFoto = ? WHERE idFoto = ?";
+	public function atualizarVideo($id, $titulo_video){
+
+		$sql = "UPDATE ".self::table." SET tituloVideo = ? WHERE idVideo = ?";
 		$result = $this->db->prepare($sql);
-		$result->execute([$titulo_foto, $id]);
-		return $result->rowCount() > 0 ? true:false;	
+		$result->execute([$titulo_video, $id]);
+		return $result->rowCount() > 0 ? true : false;	
 	}
 
-	public function excluirFoto($id){
-		//pega caminho da foto.
-		$nome_arquivo = $this->selecionarFoto($id)->nomeFoto;
-
-		$pasta = explode("/",$this->selecionarFoto($id)->urlFoto)[0]; 
-
-		$arquivo_principal = $pasta."/".$nome_arquivo;	 
-		$thumbnail = $pasta."/thumbnail_".$nome_arquivo;
-
-
+	public function excluirVideo($id){
+		//VERIFICAR SE O ID DO VIDEO ESTA RELACIONADO A ALGUMA NOTICIA.
 		try {
+			
+			$sql = "DELETE FROM ".self::table." WHERE idVideo = :id";
+			$result =$this->db->prepare($sql);
+			$result->execute([':id' => $id]);
 
-			if(file_exists($arquivo_principal) == true || file_exists($thumbnail)) {
-
-				unlink($arquivo_principal);		
-				unlink($thumbnail);	
-
-				$sql = "DELETE FROM tb_fotos WHERE idFoto= :id";
-				$result =$this->db->prepare($sql);
-				$result->execute([':id'=>$id]);
-
-				return true;	
-
-			} else {
-				
-				return false;	
-			}		
+			return $result->rowCount() > 0 ? true : false;		
 
 		} catch (PDOException $e) {
 
@@ -120,9 +74,9 @@ class Videos extends Conexao {
 		}
 	}
 
-	public function selecionarFoto($id){
+	public function selecionarVideo($id){
 
-		$sql  = "SELECT * FROM tb_fotos WHERE idFoto = $id";
+		$sql  = "SELECT * FROM ".self::table." WHERE idVideo = $id";
 
 		return $this->db->query($sql)->fetch(PDO::FETCH_OBJ);	
 	}

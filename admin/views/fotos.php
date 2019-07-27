@@ -9,29 +9,11 @@ $objAlbum = new Albuns();
 $objNoticia = new Noticias();
 
 ?>
+<?php require_once "_header.php"; ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
+<?php require_once "menu.php"; ?>
 
-	<script src="../js/jquery.min.js" type="text/javascript"></script>
-	<script src="../js/alertify.js" type="text/javascript"></script>
-	<script src="../js/functions.js" type="text/javascript"></script>
-
-	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
-
-	<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-
-	<link rel="stylesheet" type="text/css" href="../css/alertify.css">
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
-
-</head>
-<body>
-	
+ 
 	<div class="container">
 
 		<!-- Modal -->
@@ -150,25 +132,15 @@ $objNoticia = new Noticias();
 						echo "Não há registro(s).";
 
 					endif; ?>
+					
 				</div><!--col-md-6-->
 			</div>
 
 			<span id='response'></span>
 
-
-
 		</div> <!-- fim containter -->
-		<footer class="footer mt-auto py-3">
-			<div class="container text-center">
-				<span class="text-muted">Copyright © 2019 Firefly Sites - Todos os direitos reservados.</span>
-			</div>
-		</footer>
-
 
 		<script type="text/javascript">		
-
-			// setando o campo titulo da foto com uma sugestão
-			// $('#tituloFoto').val($('table tr td').eq(0).text());
 
 			function adicionarDado(idfoto,titulofoto){
 
@@ -177,5 +149,6 @@ $objNoticia = new Noticias();
 			}
 		</script>
 
-	</body>
-	</html>
+<?php require_once "_footer.php"; ?>
+
+ 
