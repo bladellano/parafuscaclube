@@ -2,20 +2,29 @@
 
 $(function(){
 
-    $('.viewFoto').hover(function() {       
-        $('#caixa_'+$(this).attr('data-id')).show()
+
+    //Tooltip - Setando a posição da caixa exibindo quando passa em cima do nome.
+    $('.viewFoto').hover(function() {   
+
+        var objCaixa = $('#caixa_' + $(this).attr('data-id'));
+        var posTop = $(this).offset().top;
+        var postLeft = $(this).offset().left;
+
+        objCaixa.css({'top':posTop+(-30),'left':postLeft+130}).fadeIn();
 
     }, function() {
 
-       $('#caixa_'+$(this).attr('data-id')).hide()
-   });
+        $('#caixa_' + $(this).attr('data-id')).fadeOut();
+    });
 
-//login
+
+
+//Login
 $('#entrarSistema').click(function(e){
 
     e.preventDefault();
 
-    vazios=validarFormVazio('frmLogin');
+    vazios = validarFormVazio('frmLogin');
 
     if(vazios > 0){
 
@@ -38,9 +47,6 @@ $('#entrarSistema').click(function(e){
             }else{
                 alertify.error("Usuário ou senha não confere :(");
                 // alertify.alert('Alert Title', 'Alert Message!', function(){ alertify.success('Ok'); });
-
-
-
             }
         },
         error: function (request, status, error) {
@@ -49,9 +55,10 @@ $('#entrarSistema').click(function(e){
     });
 });
 
+//Função para validar formulários
 function validarFormVazio(formulario){
 
-    dados=$('#' + formulario).serialize();
+    dados = $('#' + formulario).serialize();
 
     d=dados.split('&');
     vazios=0;
@@ -67,7 +74,7 @@ function validarFormVazio(formulario){
 
 
 
-    //excluir album
+    //Excluindo um album
     $('.idAlbum.apagar').on('click', function(e){
         e.preventDefault();
 
@@ -92,7 +99,7 @@ function validarFormVazio(formulario){
 
 
 
-//insere membro
+//Insere membro
 $('#form-membro').submit(function(e){
 
     if($('#foto').val() =="") {alertify.error('Por favor insera uma foto!'); return false;}
@@ -118,7 +125,6 @@ $('#form-membro').submit(function(e){
     } else {
 
         data = $(this).serializeArray(); 
-        // console.log('NADA') 
     }
 
     $.ajax({
@@ -160,10 +166,8 @@ $('#form-noticia').submit(function(e){
     if(typeof data === 'object'){
 
         var processData = false, cache = false, contentType =  false;
-        // console.log(this); return false;
 
         var formCompleto = document.getElementById('form-noticia');
-        // var formCompleto = $(this);
 
         for(i = 0; i < formCompleto.length; i++) {
             var campo = formCompleto[i].getAttribute('name');
@@ -248,7 +252,7 @@ $('#form-noticia').submit(function(e){
 
 
 
-    //insere album
+    //Insere album
 
     $('#form-album').submit(function(e){
         e.preventDefault();
@@ -267,7 +271,7 @@ $('#form-noticia').submit(function(e){
             if(r == 1) {
                 console.log(r);
 
-                alertify.alert('Aviso', 'Inserido com sucesso!', function(){ alertify.success('Ok'); });
+                alertify.alert('Alerta', 'Inserido com sucesso!', function(){ alertify.success('Ok'); });
 
             $('#form-album')[0].reset(); //reseta formulário
             
@@ -283,12 +287,10 @@ $('#form-noticia').submit(function(e){
 
 
 
- //atualiza dados membros
+ //Atualiza dados do membro
  $('#btnAtualizaMembro').click(function(){
 
     dados = $('#frmMembroU').serializeArray();
-
-    // console.log(dados); return false;
 
     $.ajax({
         type:"POST",
@@ -305,6 +307,7 @@ $('#form-noticia').submit(function(e){
 
             }else{
                 alertify.error("Não foi possível atualizar :(");
+                return false;
             }
         }
     });
@@ -312,7 +315,7 @@ $('#form-noticia').submit(function(e){
 
 
 
- //atualiza titulo do video
+ //Atualiza titulo do video
  $('#btnAtualizaVideo').click(function(){
 
     dados = $('#frmVideoU').serialize();
@@ -332,13 +335,14 @@ $('#form-noticia').submit(function(e){
 
             }else{
                 alertify.error("Não foi possível atualizar :(");
+                return false;
             }
         }
     });
 });
 
 
- //atualiza titulo da noticia
+ //Atualiza titulo da noticia
  $('#btnAtualizaNoticia').click(function(){
 
     dados = $('#frmNoticiaU').serialize();
@@ -365,7 +369,7 @@ $('#form-noticia').submit(function(e){
 
 
 
-    //atualizar foto
+    //Atualizar dados de uma foto
     $('#btnAtualizaFoto').click(function(){
 
         dados = $('#frmFotoU').serialize();
@@ -391,9 +395,10 @@ $('#form-noticia').submit(function(e){
 
 
 
-    //carrega os arquivos para o objeto data(FormData);
+    //Carrega os arquivos para o objeto data(FormData);
 
-    // document.getElementById("foto").onchange = function(e) {  
+    // document.getElementById("foto").onchange = function(e) { 
+
        $("#foto, #arquivo").change(function(e){
         data = new FormData();
         var nomeArquivo = [], respStringInt;
@@ -403,7 +408,6 @@ $('#form-noticia').submit(function(e){
 
         (e.target.files.length > 1) ? respStringInt = e.target.files.length + " arquivo(s)" : respStringInt = nomeArquivo.join(", ");
 
-        // document.querySelector('label[for="foto"]').innerText = respStringInt;
         console.log(respStringInt);
 
         $('label[for="foto"],label[for="arquivo"]').text(respStringInt);
@@ -440,7 +444,7 @@ $('#form-noticia').submit(function(e){
 });
 
 
-	//upload de foto
+	//Upload de foto
 	$('#form-upload').submit(function(e){
 
 		e.preventDefault();
@@ -473,7 +477,6 @@ $('#form-noticia').submit(function(e){
                         location.reload();
                     }, 1500);              
                 }  else {
-                    // console.log('Houve algum problema.');
                     alertify.error('Houve algum problema.');    
                     return false;                
                 }
@@ -487,7 +490,7 @@ $('#form-noticia').submit(function(e){
  }); // fim - form-upload
 
 
-//excluindo membro
+//Excluindo membro
 $('.idMembro.apagar').on('click', function(e){
     e.preventDefault();
 
@@ -510,10 +513,10 @@ $('.idMembro.apagar').on('click', function(e){
         }, 1500);            
 
        }  else {
+
          alertify.error('Erro ao excluir o registro!');
-         setTimeout(function(){ 
-            location.reload();
-        }, 1500);
+
+         return false;
      } 
  });
 
@@ -521,7 +524,7 @@ $('.idMembro.apagar').on('click', function(e){
     });        
 });
 
- //excluindo video
+ //Excluindo video
  $('.idVideo.apagar').on('click', function(e){
     e.preventDefault();
     var id = $(this).attr('href');
@@ -555,7 +558,7 @@ $('.idMembro.apagar').on('click', function(e){
 });
 
 
-    //excluindo noticia
+    //Excluindo uma noticia
     $('.idNoticia.apagar').on('click', function(e){
         e.preventDefault();
         var id = $(this).attr('href');
@@ -588,7 +591,7 @@ $('.idMembro.apagar').on('click', function(e){
     });
 
 
-	//excluindo foto
+	//Excluindo uma foto
 	$('.idFoto.apagar').on('click', function(e){
 		e.preventDefault();
 		var id = $(this).attr('href');

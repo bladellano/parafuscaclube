@@ -9,9 +9,11 @@
     background-color:#fff;
     display: none;
     position: absolute;
-    left: 350px;
-    border: 1px solid #444;
+    /*left: 350px;*/
+    border: 1px solid #666;
     padding: 2px;
+    box-shadow: 2px 2px 10px #444;
+    border-radius: 4px;
 
   }
   .ajs-message.ajs-error, .ajs-message.ajs-success {
