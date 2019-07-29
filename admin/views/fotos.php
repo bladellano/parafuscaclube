@@ -93,16 +93,16 @@ $objNoticia = new Noticias();
 
 									echo '<tr>';
 									echo '<td>'.$foto["tituloFoto"].'</td>'; 	
-									echo '<td><img width="50" src="../upload/thumbnail_'.$foto["nomeFoto"].'" alt=""></td>'; 			
+									echo '<td><img width="50" src="../'.$foto["urlFoto"].'" alt=""></td>'; 			
 									echo '<td>'.$objAlbum->selecionarAlbum($foto["idAlbum"]).'</td>'; 			
 									echo '<td>'.date('d/m/Y H:i:s', strtotime($foto["dataCaptura"])).'</td>'; 	
 
 										if(!$objNoticia->verifyFotoNoticia($foto["idFoto"])): //Verifica se tem foto de notícia na tabela.
 
 										echo '<td>
-										<a class="idFoto apagar btn btn-danger" href='.$foto["idFoto"].'><ion-icon name="close-circle"></ion-icon></a>
+										<a class="idFoto apagar btn btn-danger" href='.$foto["idFoto"].'><i class="fa fa-close"></i></a>
 										<span class="btn btn-success" data-toggle="modal" data-target="#atualizarFoto" 
-										onclick="adicionarDado('.$foto["idFoto"].',\''.$foto["tituloFoto"].'\')"><ion-icon name="options"></ion-icon></span>
+										onclick="adicionarDado('.$foto["idFoto"].',\''.$foto["tituloFoto"].'\')"><i class="fa fa-edit"></i></span>
 										</td>'; 							
 
 									else:

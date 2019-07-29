@@ -41,8 +41,8 @@ class Membros extends Conexao {
 
 		array_push(
 			$aValues, 
-			self::pasta.$array_foto['arquivo_name'],
-			self::pasta."thumbnail_".$array_foto['arquivo_name']
+			self::pasta.$newNameFile,
+			self::pasta."thumbnail_".$newNameFile
 		);
 
 		try {
@@ -92,11 +92,11 @@ class Membros extends Conexao {
 	}
 
 
-	public function atualizarVideo($id, $titulo_video){
+	public function atualizarMembro($array_dados){
 
-		$sql = "UPDATE ".self::table." SET tituloVideo = ? WHERE idVideo = ?";
+		$sql = "UPDATE ".self::table." SET nomeMembro = ?, userMembro = ?, anoFusca = ? WHERE idMembro = ?";
 		$result = $this->db->prepare($sql);
-		$result->execute([$titulo_video, $id]);
+		$result->execute([$array_dados['nomeMembro'], $array_dados['userMembro'], $array_dados['anoFusca'], $array_dados['idMembro']]);
 		return $result->rowCount() > 0 ? true : false;	
 	}
 
@@ -117,9 +117,9 @@ class Membros extends Conexao {
 	}
 
 
-	public function selecionarVideo($id){
+	public function selecionarMembro($id){
 
-		$sql  = "SELECT * FROM ".self::table." WHERE idVideo = $id";
+		$sql  = "SELECT * FROM ".self::table." WHERE idMembro = $id";
 
 		return $this->db->query($sql)->fetch(PDO::FETCH_OBJ);	
 	}

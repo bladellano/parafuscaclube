@@ -2,6 +2,14 @@
 
 $(function(){
 
+    $('.viewFoto').hover(function() {       
+        $('#caixa_'+$(this).attr('data-id')).show()
+
+    }, function() {
+
+       $('#caixa_'+$(this).attr('data-id')).hide()
+   });
+
 //login
 $('#entrarSistema').click(function(e){
 
@@ -94,9 +102,9 @@ $('#form-membro').submit(function(e){
     if(typeof data === 'object'){
 
         var processData = false, cache = false, contentType =  false;
-  
+
         var formCompleto = document.getElementById('form-membro');
-   
+
         for(i = 0; i < formCompleto.length; i++) {
 
             var campo = formCompleto[i].getAttribute('name');
@@ -131,7 +139,7 @@ $('#form-membro').submit(function(e){
                         location.reload();
                     }, 1500);              
                 }  else {
-     
+
                     alertify.error('Houve algum problema.');    
                     return false;                
                 }
@@ -190,7 +198,7 @@ $('#form-noticia').submit(function(e){
                         location.reload();
                     }, 1500);              
                 }  else {
-                    // console.log('Houve algum problema.');
+
                     alertify.error('Houve algum problema.');    
                     return false;                
                 }
@@ -201,45 +209,6 @@ $('#form-noticia').submit(function(e){
         });
 
 });
-
-
-//Insere membro
-/*
-$('#form-membro').submit(function(e){
-
-    e.preventDefault();
-
-    data = $($(this)).serializeArray();
-
-    $.ajax({
-
-        type: $(this).attr('method'),     
-        url: '../salvar-membro.php',
-        dataType: 'html',
-        data: data,
-
-    })
-    .done(function(r) {
-
-        if(r == 1) { 
-
-            alertify.alert('Mensagem', 'Inserido com sucesso!', function(){ alertify.success('Ok'); });
-
-          $('#form-membro')[0].reset(); //reseta formulário
-
-      } else {
-
-        return false;
-      
-      }
-
-      setTimeout(function(){ 
-        location.reload();
-    }, 1500);
-
-  });
-
-})*/
 
 
     //Insere video
@@ -311,6 +280,36 @@ $('#form-membro').submit(function(e){
     });
 
     })
+
+
+
+ //atualiza dados membros
+ $('#btnAtualizaMembro').click(function(){
+
+    dados = $('#frmMembroU').serializeArray();
+
+    // console.log(dados); return false;
+
+    $.ajax({
+        type:"POST",
+        data:dados,
+        url:"../atualiza-membro.php",
+        success:function(r){
+
+            if(r==1){
+
+                alertify.success("Atualizado com Sucesso :)");
+                setTimeout(function(){ 
+                    location.reload();
+                }, 1500);
+
+            }else{
+                alertify.error("Não foi possível atualizar :(");
+            }
+        }
+    });
+});
+
 
 
  //atualiza titulo do video
@@ -489,7 +488,7 @@ $('#form-membro').submit(function(e){
 
 
 //excluindo membro
- $('.idMembro.apagar').on('click', function(e){
+$('.idMembro.apagar').on('click', function(e){
     e.preventDefault();
 
     var id = $(this).attr('href');

@@ -3,6 +3,17 @@
     position: relative;
   }  
 
+  div[id*="caixa_"]{
+    width: 134px;
+    height: 104px;
+    background-color:#fff;
+    display: none;
+    position: absolute;
+    left: 350px;
+    border: 1px solid #444;
+    padding: 2px;
+
+  }
   .ajs-message.ajs-error, .ajs-message.ajs-success {
     color: #fff !important;
     text-shadow: 2px 1px #333;

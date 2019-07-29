@@ -80,9 +80,9 @@ $objVideo = new Videos();
 							echo '<td>'.$video["tituloVideo"].'</td>'; 	
 							echo '<td>'.$video["codVideo"].'</td>'; 	
 							echo '<td>'.$video["urlVideo"].'</td>'; 	
-							echo '<td align="center"><a class="idVideo apagar btn btn-danger" href='.$video["idVideo"].'><ion-icon name="close-circle"></a> ';
+							echo '<td align="center"><a class="idVideo apagar btn btn-danger" href='.$video["idVideo"].'><i class="fa fa-close"></i></a> ';
 							echo '<span class="btn btn-success" data-toggle="modal" data-target="#atualizarVideo" 
-							onclick="adicionarDado('.$video["idVideo"].',\''.$video["tituloVideo"].'\')"><ion-icon name="options"></ion-icon></span></td>'; 
+							onclick="adicionarDado('.$video["idVideo"].',\''.$video["tituloVideo"].'\')"><i class="fa fa-edit"></i></span></td>'; 
 							echo '</tr>';
 						}
 						?>

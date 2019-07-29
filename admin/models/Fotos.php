@@ -16,18 +16,31 @@ class Fotos extends Conexao {
 
 	public function salvarFoto($titulo_foto, $type, $arquivo_nome, $arquivo_tmp_nome, $id_album){
 		/*trata a foto*/
-		$this->titulo_foto = $titulo_foto;		 
 
-		$this->criaThumbnails($type, $arquivo_tmp_nome, $arquivo_nome, self::pasta);
+		$nomeArquivo = uniqid('img_').".".pathinfo($arquivo_nome, PATHINFO_EXTENSION);
+		$newNameFile = $nomeArquivo; 
 
-		move_uploaded_file($arquivo_tmp_nome, self::pasta.$arquivo_nome);
+		$this->titulo_foto = $titulo_foto;
+		$this->novo_nome = $newNameFile;
+		$this->extensao = pathinfo($arquivo_nome, PATHINFO_EXTENSION);
+
+		$this->criaThumbnails(
+			$type, 
+			$arquivo_tmp_nome, 
+			$newNameFile, 
+			self::pasta
+		);
+
+		move_uploaded_file($arquivo_tmp_nome, self::pasta.$newNameFile);
+
 		
 		try {
-			$sql  = "INSERT INTO tb_fotos (tituloFoto, nomeFoto, urlFoto, idAlbum) VALUES (?,?,?,?)";
-			
+
+			$sql = "INSERT INTO tb_fotos (tituloFoto, nomeFoto, urlFoto, idAlbum) VALUES (?,?,?,?)";
+
 			$stmt = $this->db->prepare($sql);
 
-			if(!$stmt->execute([$titulo_foto, $arquivo_nome, self::pasta.$arquivo_nome, $id_album])){
+			if(!$stmt->execute([$titulo_foto, $arquivo_nome, self::pasta.$newNameFile, $id_album])){
 				return false;
 			} else {
 				return true;
@@ -84,13 +97,12 @@ class Fotos extends Conexao {
 
 	public function excluirFoto($id){
 		//pega caminho da foto.
-		$nome_arquivo = $this->selecionarFoto($id)->nomeFoto;
+		$url_foto = $this->selecionarFoto($id)->urlFoto;
 
 		$pasta = explode("/",$this->selecionarFoto($id)->urlFoto)[0]; 
 
-		$arquivo_principal = $pasta."/".$nome_arquivo;	 
-		$thumbnail = $pasta."/thumbnail_".$nome_arquivo;
-
+		$arquivo_principal = $url_foto;	 
+		$thumbnail = $pasta."/thumbnail_".explode("/",$url_foto)[1];
 
 		try {
 
@@ -119,7 +131,7 @@ class Fotos extends Conexao {
 	public function selecionarFoto($id){
 
 		$sql  = "SELECT * FROM tb_fotos WHERE idFoto = $id";
- 
+
 		return $this->db->query($sql)->fetch(PDO::FETCH_OBJ);	
 	}
 

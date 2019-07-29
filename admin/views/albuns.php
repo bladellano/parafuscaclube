@@ -69,9 +69,9 @@ $albuns = new Albuns();
 							echo '<tr>';
 							echo '<td align="center">'.$album["idAlbum"].'</td>';							
 							echo '<td>'.$album["nomeAlbum"].'</td>'; 	
-							echo '<td align="center"><a class="idAlbum apagar btn btn-danger" href='.$album["idAlbum"].'><ion-icon name="close-circle"></a> ';
+							echo '<td align="center"><a class="idAlbum apagar btn btn-danger" href='.$album["idAlbum"].'><i class="fa fa-close"></i></a> ';
 							echo '<span class="btn btn-success" data-toggle="modal" data-target="#atualizarFoto" 
-							onclick="adicionarDado('.$album["idAlbum"].',\''.$album["nomeAlbum"].'\')"><ion-icon name="options"></ion-icon></span></td>'; 	
+							onclick="adicionarDado('.$album["idAlbum"].',\''.$album["nomeAlbum"].'\')"><i class="fa fa-edit"></i></span></td>'; 	
 
 							echo '</tr>';
 						}

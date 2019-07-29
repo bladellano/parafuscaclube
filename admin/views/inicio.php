@@ -3,7 +3,7 @@
  <?php require_once "menu.php"; ?>
 
  <div class="container">
- 	Tela inicial
+ 	Seja bem-vindo <strong>USUÁRIO</strong>.
  </div>
 
  <?php require_once "_footer.php" ?>
