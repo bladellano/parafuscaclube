@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 29-Jul-2019 às 13:55
--- Versão do servidor: 10.1.37-MariaDB
--- versão do PHP: 5.6.38
+-- Host: localhost
+-- Tempo de geração: 30/07/2019 às 06:37
+-- Versão do servidor: 10.1.40-MariaDB
+-- Versão do PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bdfusca`
+-- Banco de dados: `bdfusca`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_albuns`
+-- Estrutura para tabela `tb_albuns`
 --
 
 CREATE TABLE `tb_albuns` (
@@ -36,16 +36,17 @@ CREATE TABLE `tb_albuns` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_albuns`
+-- Despejando dados para a tabela `tb_albuns`
 --
 
 INSERT INTO `tb_albuns` (`idAlbum`, `idUsuario`, `nomeAlbum`, `dataCaptura`) VALUES
-(25, 0, 'Album teste', '2019-07-29 01:16:25');
+(25, 0, 'Album teste', '2019-07-29 01:16:25'),
+(26, 0, NULL, '2019-07-30 01:27:53');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_fotos`
+-- Estrutura para tabela `tb_fotos`
 --
 
 CREATE TABLE `tb_fotos` (
@@ -59,18 +60,19 @@ CREATE TABLE `tb_fotos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_fotos`
+-- Despejando dados para a tabela `tb_fotos`
 --
 
 INSERT INTO `tb_fotos` (`idFoto`, `tituloFoto`, `nomeFoto`, `urlFoto`, `idUsuario`, `idAlbum`, `dataCaptura`) VALUES
 (142, 'Varios 3', 'WhatsApp Image 2019-07-14 at 3.45.15 PM.jpeg', 'upload/img_5d3e4cb11d271.jpeg', 0, 25, '2019-07-29 01:32:33'),
 (143, 'Varios', 'WhatsApp Image 2019-07-14 at 3.45.16 PM.jpeg', 'upload/img_5d3e4cb13b263.jpeg', 0, 25, '2019-07-29 01:32:33'),
-(145, 'TesteFoto', 'WhatsApp Image 2019-07-14 at 3.45.17 PM.jpeg', 'upload/img_5d3e4d4100f75.jpeg', 0, 25, '2019-07-29 01:34:57');
+(145, 'TesteFoto', 'WhatsApp Image 2019-07-14 at 3.45.17 PM.jpeg', 'upload/img_5d3e4d4100f75.jpeg', 0, 25, '2019-07-29 01:34:57'),
+(147, 'Teste Session', 'IMG_20180611_231125.jpg', 'upload/img_5d3f9ae8f094e.jpg', 1, 25, '2019-07-30 01:18:33');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_membros`
+-- Estrutura para tabela `tb_membros`
 --
 
 CREATE TABLE `tb_membros` (
@@ -87,7 +89,7 @@ CREATE TABLE `tb_membros` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_membros`
+-- Despejando dados para a tabela `tb_membros`
 --
 
 INSERT INTO `tb_membros` (`idMembro`, `nomeMembro`, `userMembro`, `passMembro`, `anoFusca`, `foto`, `thumb_foto`, `dataCaptura`, `dataModificado`, `status`) VALUES
@@ -97,7 +99,7 @@ INSERT INTO `tb_membros` (`idMembro`, `nomeMembro`, `userMembro`, `passMembro`, 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_newsletter`
+-- Estrutura para tabela `tb_newsletter`
 --
 
 CREATE TABLE `tb_newsletter` (
@@ -107,7 +109,7 @@ CREATE TABLE `tb_newsletter` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_noticias`
+-- Estrutura para tabela `tb_noticias`
 --
 
 CREATE TABLE `tb_noticias` (
@@ -127,7 +129,7 @@ CREATE TABLE `tb_noticias` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_usuarios`
+-- Estrutura para tabela `tb_usuarios`
 --
 
 CREATE TABLE `tb_usuarios` (
@@ -142,7 +144,7 @@ CREATE TABLE `tb_usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_usuarios`
+-- Despejando dados para a tabela `tb_usuarios`
 --
 
 INSERT INTO `tb_usuarios` (`idUsuario`, `nome`, `sobrenome`, `email`, `username`, `password`, `status`, `dataCaptura`) VALUES
@@ -151,7 +153,7 @@ INSERT INTO `tb_usuarios` (`idUsuario`, `nome`, `sobrenome`, `email`, `username`
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_videos`
+-- Estrutura para tabela `tb_videos`
 --
 
 CREATE TABLE `tb_videos` (
@@ -163,96 +165,96 @@ CREATE TABLE `tb_videos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexes for dumped tables
+-- Índices de tabelas apagadas
 --
 
 --
--- Indexes for table `tb_albuns`
+-- Índices de tabela `tb_albuns`
 --
 ALTER TABLE `tb_albuns`
   ADD PRIMARY KEY (`idAlbum`);
 
 --
--- Indexes for table `tb_fotos`
+-- Índices de tabela `tb_fotos`
 --
 ALTER TABLE `tb_fotos`
   ADD PRIMARY KEY (`idFoto`);
 
 --
--- Indexes for table `tb_membros`
+-- Índices de tabela `tb_membros`
 --
 ALTER TABLE `tb_membros`
   ADD PRIMARY KEY (`idMembro`);
 
 --
--- Indexes for table `tb_newsletter`
+-- Índices de tabela `tb_newsletter`
 --
 ALTER TABLE `tb_newsletter`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indexes for table `tb_noticias`
+-- Índices de tabela `tb_noticias`
 --
 ALTER TABLE `tb_noticias`
   ADD PRIMARY KEY (`idNoticia`);
 
 --
--- Indexes for table `tb_usuarios`
+-- Índices de tabela `tb_usuarios`
 --
 ALTER TABLE `tb_usuarios`
   ADD PRIMARY KEY (`idUsuario`);
 
 --
--- Indexes for table `tb_videos`
+-- Índices de tabela `tb_videos`
 --
 ALTER TABLE `tb_videos`
   ADD PRIMARY KEY (`idVideo`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas apagadas
 --
 
 --
--- AUTO_INCREMENT for table `tb_albuns`
+-- AUTO_INCREMENT de tabela `tb_albuns`
 --
 ALTER TABLE `tb_albuns`
-  MODIFY `idAlbum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `idAlbum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `tb_fotos`
+-- AUTO_INCREMENT de tabela `tb_fotos`
 --
 ALTER TABLE `tb_fotos`
-  MODIFY `idFoto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+  MODIFY `idFoto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
--- AUTO_INCREMENT for table `tb_membros`
+-- AUTO_INCREMENT de tabela `tb_membros`
 --
 ALTER TABLE `tb_membros`
   MODIFY `idMembro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `tb_newsletter`
+-- AUTO_INCREMENT de tabela `tb_newsletter`
 --
 ALTER TABLE `tb_newsletter`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tb_noticias`
+-- AUTO_INCREMENT de tabela `tb_noticias`
 --
 ALTER TABLE `tb_noticias`
-  MODIFY `idNoticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `idNoticia` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tb_usuarios`
+-- AUTO_INCREMENT de tabela `tb_usuarios`
 --
 ALTER TABLE `tb_usuarios`
   MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tb_videos`
+-- AUTO_INCREMENT de tabela `tb_videos`
 --
 ALTER TABLE `tb_videos`
-  MODIFY `idVideo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idVideo` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
