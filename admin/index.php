@@ -51,7 +51,7 @@
         <input type="checkbox" value="lembrar de mim"> Lembrar de mim
       </label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" id="entrarSistema" >Entrar</button>
+    <button class="btn btn-lg btn-primary btn-block" id="entrarSistema" type="submit">Entrar</button>
     <!-- <span class="btn btn-primary btn-sm" id="entrarSistema">Entrar</span> -->
     <p class="mt-5 mb-3 text-muted text-center">&copy; 2018-2019</p>
   </form>

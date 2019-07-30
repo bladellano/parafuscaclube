@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 require_once "Conexao.php";
 
 class Fotos extends Conexao {
@@ -36,11 +38,11 @@ class Fotos extends Conexao {
 		
 		try {
 
-			$sql = "INSERT INTO tb_fotos (tituloFoto, nomeFoto, urlFoto, idAlbum) VALUES (?,?,?,?)";
+			$sql = "INSERT INTO tb_fotos (tituloFoto, nomeFoto, urlFoto, idAlbum,idUsuario) VALUES (?,?,?,?,?)";
 
 			$stmt = $this->db->prepare($sql);
 
-			if(!$stmt->execute([$titulo_foto, $arquivo_nome, self::pasta.$newNameFile, $id_album])){
+			if(!$stmt->execute([$titulo_foto, $arquivo_nome, self::pasta.$newNameFile, $id_album, $_SESSION['iduser']])){
 				return false;
 			} else {
 				return true;

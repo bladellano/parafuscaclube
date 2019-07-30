@@ -10,7 +10,7 @@ $id_album = (int) $_POST['idAlbum'];
 $id_video = (int) $_POST['idVideo'];
 $tipo_noticia = addslashes($_POST['tipoNoticia']); 
 
-$arquivo_name = $_FILES['arquivo']['name'][0];
+$arquivo_name = $_FILES['arquivo']['name'][0];	
 $arquivo_tmp_name = $_FILES['arquivo']['tmp_name'][0];
 $arquivo_type = $_FILES['arquivo']['type'][0]; 
 
