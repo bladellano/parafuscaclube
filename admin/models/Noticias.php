@@ -14,12 +14,13 @@ class Noticias extends Conexao {
 	}
 
 	public function salvarNoticia($titulo_noticia, $conteudo, $arquivo_name, $arquivo_tmp_name, $arquivo_type, $id_album = nulll, $id_video = null, $tipo_noticia){
-
+        
+        echo 'entrou';exit;
 		$this->titulo_noticia = $titulo_noticia;
 
 		$this->conteudo = $conteudo;
 
-		$idFoto = $this->salvarFoto($titulo_noticia,$arquivo_type, $arquivo_name, $arquivo_tmp_name, $id_album);
+		$idFoto = $this->salvarFoto($titulo_noticia, $arquivo_type, $arquivo_name, $arquivo_tmp_name, $id_album);
 
 		try {
 
@@ -208,4 +209,3 @@ class Noticias extends Conexao {
 
 
 }//fim classe
-

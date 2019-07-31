@@ -1,153 +1,160 @@
-
-
-$(function(){
+$(function () {
 
 
     //Tooltip - Setando a posição da caixa exibindo quando passa em cima do nome.
-    $('.viewFoto').hover(function() {   
+    $('.viewFoto').hover(function () {
 
         var objCaixa = $('#caixa_' + $(this).attr('data-id'));
         var posTop = $(this).offset().top;
         var postLeft = $(this).offset().left;
 
-        objCaixa.css({'top':posTop+(-30),'left':postLeft+130}).fadeIn();
+        objCaixa.css({
+            'top': posTop + (-30),
+            'left': postLeft + 130
+        }).fadeIn();
 
-    }, function() {
+    }, function () {
 
         $('#caixa_' + $(this).attr('data-id')).fadeOut();
     });
 
 
 
-//Login
-$('#entrarSistema').click(function(e){
+    //Login
+    $('#entrarSistema').click(function (e) {
 
-    e.preventDefault();
+        e.preventDefault();
 
-    vazios = validarFormVazio('frmLogin');
+        vazios = validarFormVazio('frmLogin');
 
-    if(vazios > 0){
+        if (vazios > 0) {
 
-        alertify.error("Preencha os campos!!");
+            alertify.error("Preencha os campos!!");
 
-        return false;
-    } 
+            return false;
+        }
 
-    dados = $('#frmLogin').serialize();
+        dados = $('#frmLogin').serialize();
 
-    $.ajax({
-        type:"POST",
-        dataType: 'html',
-        data:dados,
-        url:"login.php",
-        success:function(r){
-            // alert(r);
-            if(r==1){
-                window.location="views/inicio.php";
-            }else{
-                alertify.error("Usuário ou senha não confere :(");
-                // alertify.alert('Alert Title', 'Alert Message!', function(){ alertify.success('Ok'); });
+        $.ajax({
+            type: "POST",
+            dataType: 'html',
+            data: dados,
+            url: "login.php",
+            success: function (r) {
+                // alert(r);
+                if (r == 1) {
+                    window.location = "views/inicio.php";
+                } else {
+                    alertify.error("Usuário ou senha não confere :(");
+                    // alertify.alert('Alert Title', 'Alert Message!', function(){ alertify.success('Ok'); });
+                }
+            },
+            error: function (request, status, error) {
+                alert(request.responseText);
             }
-        },
-        error: function (request, status, error) {
-            alert(request.responseText);
-        }
+        });
     });
-});
 
-//Função para validar formulários
-function validarFormVazio(formulario){
+    //Função para validar formulários
+    function validarFormVazio(formulario) {
 
-    dados = $('#' + formulario).serialize();
+        dados = $('#' + formulario).serialize();
 
-    d=dados.split('&');
-    vazios=0;
-    for(i=0;i< d.length;i++){
-        controles=d[i].split("=");
-        if(controles[1]=="A" || controles[1]==""){
-            vazios++;
+        d = dados.split('&');
+        vazios = 0;
+        for (i = 0; i < d.length; i++) {
+            controles = d[i].split("=");
+            if (controles[1] == "A" || controles[1] == "") {
+                vazios++;
+            }
         }
+        return vazios;
     }
-    return vazios;
-}
 
 
 
 
     //Excluindo um album
-    $('.idAlbum.apagar').on('click', function(e){
+    $('.idAlbum.apagar').on('click', function (e) {
         e.preventDefault();
 
         var id = $(this).attr('href');
 
-        alertify.confirm('Deseja excluir o album?', function(){
+        alertify.confirm('Deseja excluir o album?', function () {
 
             $.ajax({
-                url: '../excluir-album.php',
-                type: 'POST',
-                dataType: 'html',
-                data: {id: id},
-            })
-            .done(function(r) {  
-             alertify.success('Excluído com sucesso!');
-             setTimeout(function(){ 
-                location.reload();
-            }, 1500);
-         });
-        })          
+                    url: '../excluir-album.php',
+                    type: 'POST',
+                    dataType: 'html',
+                    data: {
+                        id: id
+                    },
+                })
+                .done(function (r) {
+                    alertify.success('Excluído com sucesso!');
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
+                });
+        })
     });
 
 
 
-//Insere membro
-$('#form-membro').submit(function(e){
+    //Insere membro
+    $('#form-membro').submit(function (e) {
 
-    if($('#foto').val() =="") {alertify.error('Por favor insera uma foto!'); return false;}
-
-    e.preventDefault();
-
-    if(typeof data === 'object'){
-
-        var processData = false, cache = false, contentType =  false;
-
-        var formCompleto = document.getElementById('form-membro');
-
-        for(i = 0; i < formCompleto.length; i++) {
-
-            var campo = formCompleto[i].getAttribute('name');
-            var valor = formCompleto[i].value;
-
-            if(campo != 0 && campo != null && campo != "foto[]"){
-                data.append(campo, valor);
-            }
+        if ($('#foto').val() == "") {
+            alertify.error('Por favor insera uma foto!');
+            return false;
         }
 
-    } else {
+        e.preventDefault();
 
-        data = $(this).serializeArray(); 
-    }
+        if (typeof data === 'object') {
 
-    $.ajax({
-        url: '../salvar-membro.php',
-        data: data,        
-        type: $(this).attr('method'),    
-        dataType: 'html',
-        success: function(r)
-        {                
+            var processData = false,
+                cache = false,
+                contentType = false;
 
-            if(r == 1) {     
+            var formCompleto = document.getElementById('form-membro');
 
-             alertify.success('Inserido com sucesso!');
+            for (i = 0; i < formCompleto.length; i++) {
+
+                var campo = formCompleto[i].getAttribute('name');
+                var valor = formCompleto[i].value;
+
+                if (campo != 0 && campo != null && campo != "foto[]") {
+                    data.append(campo, valor);
+                }
+            }
+
+        } else {
+
+            data = $(this).serializeArray();
+        }
+
+        $.ajax({
+            url: '../salvar-membro.php',
+            data: data,
+            type: $(this).attr('method'),
+            dataType: 'html',
+            success: function (r) {
+
+                if (r == 1) {
+
+                    alertify.success('Inserido com sucesso!');
 
                     $('#form-membro')[0].reset(); //reseta formulário  
 
-                    setTimeout(function(){ 
+                    setTimeout(function () {
                         location.reload();
-                    }, 1500);              
-                }  else {
+                    }, 1500);
+                } else {
 
-                    alertify.error('Houve algum problema.');    
-                    return false;                
+                    alertify.error('Houve algum problema.');
+                    return false;
                 }
             },
             processData: false,
@@ -155,56 +162,59 @@ $('#form-membro').submit(function(e){
             contentType: false
         });
 
-})
+    })
 
 
-//insere noticia
+    //Insere noticia
 
-$('#form-noticia').submit(function(e){
-    e.preventDefault();
+    $('#form-noticia').submit(function (e) {
+        e.preventDefault();
 
-    if(typeof data === 'object'){
+        if (typeof data === 'object') {
 
-        var processData = false, cache = false, contentType =  false;
+            var processData = false,
+                cache = false,
+                contentType = false;
 
-        var formCompleto = document.getElementById('form-noticia');
+            var formCompleto = document.getElementById('form-noticia');
 
-        for(i = 0; i < formCompleto.length; i++) {
-            var campo = formCompleto[i].getAttribute('name');
-            var valor = formCompleto[i].value;
+            for (i = 0; i < formCompleto.length; i++) {
+                var campo = formCompleto[i].getAttribute('name');
+                var valor = formCompleto[i].value;
 
-            if(campo != 0 && campo != null && campo != "arquivo[]"){
-                data.append(campo, valor);
+                if (campo != 0 && campo != null && campo != "arquivo[]") {
+                    data.append(campo, valor);
+                }
+
             }
+
+        } else {
+
+            data = $(this).serializeArray();
+            console.log(data);
+            return false;
 
         }
 
-    } else {
+        $.ajax({
+            url: '../salvar-noticia.php',
+            data: data,
+            type: 'post',
+            dataType: 'html',
+            success: function (r) {
 
-        data = $(this).serializeArray();  
-
-    }
-
-    $.ajax({
-        url: '../salvar-noticia.php',
-        data: data,        
-        type: 'post',    
-        dataType: 'html',
-        success: function(r)
-        {                
-
-            if(r == 1) {     
-             alertify.success('Inserido com sucesso!');
+                if (r == 1) {
+                    alertify.success('Inserido com sucesso!');
 
                     $('#form-noticia')[0].reset(); //reseta formulário  
 
-                    setTimeout(function(){ 
+                    setTimeout(function () {
                         location.reload();
-                    }, 1500);              
-                }  else {
+                    }, 1500);
+                } else {
 
-                    alertify.error('Houve algum problema.');    
-                    return false;                
+                    alertify.error('Houve algum problema.');
+                    return false;
                 }
             },
             processData: false,
@@ -212,12 +222,12 @@ $('#form-noticia').submit(function(e){
             contentType: false
         });
 
-});
+    });
 
 
     //Insere video
 
-    $('#form-video').submit(function(e){
+    $('#form-video').submit(function (e) {
 
         e.preventDefault();
 
@@ -225,27 +235,29 @@ $('#form-noticia').submit(function(e){
 
         $.ajax({
 
-            type: $(this).attr('method'),     
-            url: '../salvar-video.php',
-            dataType: 'html',
-            data: data,
+                type: $(this).attr('method'),
+                url: '../salvar-video.php',
+                dataType: 'html',
+                data: data,
 
-        })
-        .done(function(r) {
+            })
+            .done(function (r) {
 
-            if(r == 1) { 
+                if (r == 1) {
 
-                alertify.alert('Mensagem', 'Inserido com sucesso!', function(){ alertify.success('Ok'); });
+                    alertify.alert('Mensagem', 'Inserido com sucesso!', function () {
+                        alertify.success('Ok');
+                    });
 
-            $('#form-video')[0].reset(); //reseta formulário
-            
-        }
+                    $('#form-video')[0].reset(); //reseta formulário
 
-        setTimeout(function(){ 
-            location.reload();
-        }, 1500);
-        
-    });
+                }
+
+                setTimeout(function () {
+                    location.reload();
+                }, 1500);
+
+            });
 
     })
 
@@ -254,139 +266,141 @@ $('#form-noticia').submit(function(e){
 
     //Insere album
 
-    $('#form-album').submit(function(e){
+    $('#form-album').submit(function (e) {
         e.preventDefault();
 
         data = $('#nomeAlbum').val();
 
         $.ajax({
 
-            type: $(this).attr('method'),     
-            url: '../salvar-album.php',
-            dataType: 'html',
-            data: 'nomeAlbum=' + data,
-        })
-        .done(function(r) {
+                type: $(this).attr('method'),
+                url: '../salvar-album.php',
+                dataType: 'html',
+                data: 'nomeAlbum=' + data,
+            })
+            .done(function (r) {
 
-            if(r == 1) {
-                console.log(r);
+                if (r == 1) {
+                    console.log(r);
 
-                alertify.alert('Alerta', 'Inserido com sucesso!', function(){ alertify.success('Ok'); });
+                    alertify.alert('Alerta', 'Inserido com sucesso!', function () {
+                        alertify.success('Ok');
+                    });
 
-            $('#form-album')[0].reset(); //reseta formulário
-            
-        }
+                    $('#form-album')[0].reset(); //reseta formulário
 
-        setTimeout(function(){ 
-            location.reload();
-        }, 1500);
-        
-    });
+                }
+
+                setTimeout(function () {
+                    location.reload();
+                }, 1500);
+
+            });
 
     })
 
 
 
- //Atualiza dados do membro
- $('#btnAtualizaMembro').click(function(){
+    //Atualiza dados do membro
+    $('#btnAtualizaMembro').click(function () {
 
-    dados = $('#frmMembroU').serializeArray();
+        dados = $('#frmMembroU').serializeArray();
 
-    $.ajax({
-        type:"POST",
-        data:dados,
-        url:"../atualiza-membro.php",
-        success:function(r){
+        $.ajax({
+            type: "POST",
+            data: dados,
+            url: "../atualiza-membro.php",
+            success: function (r) {
 
-            if(r==1){
+                if (r == 1) {
 
-                alertify.success("Atualizado com Sucesso :)");
-                setTimeout(function(){ 
-                    location.reload();
-                }, 1500);
+                    alertify.success("Atualizado com Sucesso :)");
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
 
-            }else{
-                alertify.error("Não foi possível atualizar :(");
-                return false;
+                } else {
+                    alertify.error("Não foi possível atualizar :(");
+                    return false;
+                }
             }
-        }
+        });
     });
-});
 
 
 
- //Atualiza titulo do video
- $('#btnAtualizaVideo').click(function(){
+    //Atualiza titulo do video
+    $('#btnAtualizaVideo').click(function () {
 
-    dados = $('#frmVideoU').serialize();
+        dados = $('#frmVideoU').serialize();
 
-    $.ajax({
-        type:"POST",
-        data:dados,
-        url:"../atualiza-video.php",
-        success:function(r){
+        $.ajax({
+            type: "POST",
+            data: dados,
+            url: "../atualiza-video.php",
+            success: function (r) {
 
-            if(r==1){
+                if (r == 1) {
 
-                alertify.success("Atualizado com Sucesso :)");
-                setTimeout(function(){ 
-                    location.reload();
-                }, 1500);
+                    alertify.success("Atualizado com Sucesso :)");
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
 
-            }else{
-                alertify.error("Não foi possível atualizar :(");
-                return false;
+                } else {
+                    alertify.error("Não foi possível atualizar :(");
+                    return false;
+                }
             }
-        }
+        });
     });
-});
 
 
- //Atualiza titulo da noticia
- $('#btnAtualizaNoticia').click(function(){
+    //Atualiza titulo da noticia
+    $('#btnAtualizaNoticia').click(function () {
 
-    dados = $('#frmNoticiaU').serialize();
+        dados = $('#frmNoticiaU').serialize();
 
-    $.ajax({
-        type:"POST",
-        data:dados,
-        url:"../atualiza-noticia.php",
-        success:function(r){
+        $.ajax({
+            type: "POST",
+            data: dados,
+            url: "../atualiza-noticia.php",
+            success: function (r) {
 
-            if(r==1){
+                if (r == 1) {
 
-                alertify.success("Atualizado com Sucesso :)");
-                setTimeout(function(){ 
-                    location.reload();
-                }, 1500);
+                    alertify.success("Atualizado com Sucesso :)");
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
 
-            }else{
-                alertify.error("Não foi possível atualizar :(");
+                } else {
+                    alertify.error("Não foi possível atualizar :(");
+                }
             }
-        }
+        });
     });
-});
 
 
 
     //Atualizar dados de uma foto
-    $('#btnAtualizaFoto').click(function(){
+    $('#btnAtualizaFoto').click(function () {
 
         dados = $('#frmFotoU').serialize();
         $.ajax({
-            type:"POST",
-            data:dados,
-            url:"../atualiza-foto.php",
-            success:function(r){
+            type: "POST",
+            data: dados,
+            url: "../atualiza-foto.php",
+            success: function (r) {
 
-                if(r==1){
+                if (r == 1) {
 
                     alertify.success("Atualizado com Sucesso :)");
-                    setTimeout(function(){ 
+                    setTimeout(function () {
                         location.reload();
                     }, 1500);
 
-                }else{
+                } else {
                     alertify.error("Não foi possível atualizar :(");
                 }
             }
@@ -399,14 +413,15 @@ $('#form-noticia').submit(function(e){
 
     // document.getElementById("foto").onchange = function(e) { 
 
-       $("#foto, #arquivo").change(function(e){
+    $("#foto, #arquivo").change(function (e) {
         data = new FormData();
-        var nomeArquivo = [], respStringInt;
+        var nomeArquivo = [],
+            respStringInt;
         for (var i = 0; i < e.target.files.length; i++) {
             nomeArquivo[i] = e.target.files[i].name;
-        } 
+        }
 
-        (e.target.files.length > 1) ? respStringInt = e.target.files.length + " arquivo(s)" : respStringInt = nomeArquivo.join(", ");
+        (e.target.files.length > 1) ? respStringInt = e.target.files.length + " arquivo(s)": respStringInt = nomeArquivo.join(", ");
 
         console.log(respStringInt);
 
@@ -414,48 +429,48 @@ $('#form-noticia').submit(function(e){
 
         var size_arquivos = 0;
 
-        if(e.target.files != null && e.target.files.length != 0){
+        if (e.target.files != null && e.target.files.length != 0) {
 
-        //VERIFICA O TAMANHO E A EXTENSÃO DO ARQUIVO.
-        var arquivo = [];
-        var type = e.target.files;
-        for(i = 0; i < e.target.files.length; i++) {
+            //VERIFICA O TAMANHO E A EXTENSÃO DO ARQUIVO.
+            var arquivo = [];
+            var type = e.target.files;
+            for (i = 0; i < e.target.files.length; i++) {
 
-            if(type[i].type == "application/pdf" || type[i].type == "image/jpeg" || type[i].type == "image/png" ){//verifica tipo extensão
-                size_arquivos += e.target.files[i].size;
-                data.append("arquivo[]", e.target.files[i]);          
+                if (type[i].type == "application/pdf" || type[i].type == "image/jpeg" || type[i].type == "image/png") { //verifica tipo extensão
+                    size_arquivos += e.target.files[i].size;
+                    data.append("arquivo[]", e.target.files[i]);
 
-            } else {
-                alert('Tipo de arquivo não aceito!');
-                data.delete('arquivo[]');
+                } else {
+                    alert('Tipo de arquivo não aceito!');
+                    data.delete('arquivo[]');
+                }
             }
         }
-    }
 
-    var max_size = 10000000; //10000000 = 10MB
+        var max_size = 10000000; //10000000 = 10MB
 
-   /* if(size_arquivos > max_size) {
-        alert('Tamanho dos arquivos somados não poderá ultrapassar de 10MB.');
-        data.delete('arquivo[]');
-        return false;
+        /* if(size_arquivos > max_size) {
+             alert('Tamanho dos arquivos somados não poderá ultrapassar de 10MB.');
+             data.delete('arquivo[]');
+             return false;
 
-    }*/
-    
-});
+         }*/
+
+    });
 
 
-	//Upload de foto
-	$('#form-upload').submit(function(e){
+    //Upload de foto
+    $('#form-upload').submit(function (e) {
 
-		e.preventDefault();
+        e.preventDefault();
 
         var formCompleto = document.getElementById('form-upload');
 
-        for(i = 0; i < formCompleto.length; i++) {
+        for (i = 0; i < formCompleto.length; i++) {
             var campo = formCompleto[i].getAttribute('name');
             var valor = formCompleto[i].value;
 
-            if(campo != 0 && campo != null && campo != "arquivo[]"){
+            if (campo != 0 && campo != null && campo != "arquivo[]") {
                 data.append(campo, valor);
             }
 
@@ -466,19 +481,18 @@ $('#form-noticia').submit(function(e){
             data: data,
             type: 'post',
             dataType: 'html',
-            success: function(r)
-            {            
+            success: function (r) {
 
-               if(r == 1) {     
-                 alertify.success('Inserido com sucesso!');
+                if (r == 1) {
+                    alertify.success('Inserido com sucesso!');
                     $('#form-upload')[0].reset(); //reseta formulário  
 
-                    setTimeout(function(){ 
+                    setTimeout(function () {
                         location.reload();
-                    }, 1500);              
-                }  else {
-                    alertify.error('Houve algum problema.');    
-                    return false;                
+                    }, 1500);
+                } else {
+                    alertify.error('Houve algum problema.');
+                    return false;
                 }
 
             },
@@ -487,140 +501,148 @@ $('#form-noticia').submit(function(e){
             contentType: false
         });
 
- }); // fim - form-upload
+    }); // fim - form-upload
 
 
-//Excluindo membro
-$('.idMembro.apagar').on('click', function(e){
-    e.preventDefault();
-
-    var id = $(this).attr('href');
-
-    alertify.confirm('Deseja excluir o registro?', function(){
-
-        $.ajax({
-            url: '../excluir-membro.php',
-            type: 'POST',
-            dataType: 'html',
-            data: {id: id},
-        })
-        .done(function(r) {  
-
-         if(r == true){
-           alertify.success('Excluído com sucesso!');
-           setTimeout(function(){ 
-            location.reload();
-        }, 1500);            
-
-       }  else {
-
-         alertify.error('Erro ao excluir o registro!');
-
-         return false;
-     } 
- });
-
-
-    });        
-});
-
- //Excluindo video
- $('.idVideo.apagar').on('click', function(e){
-    e.preventDefault();
-    var id = $(this).attr('href');
-
-    alertify.confirm('Deseja excluir o registro?', function(){
-
-        $.ajax({
-            url: '../excluir-video.php',
-            type: 'POST',
-            dataType: 'html',
-            data: {id: id},
-        })
-        .done(function(r) {  
-
-         if(r == true){
-           alertify.success('Excluído com sucesso!');
-           setTimeout(function(){ 
-            location.reload();
-        }, 1500);            
-
-       }   else {
-         alertify.error('Erro ao excluir o registro!');
-         setTimeout(function(){ 
-            location.reload();
-        }, 1500);
-     } 
- });
-
-
-    });        
-});
-
-
-    //Excluindo uma noticia
-    $('.idNoticia.apagar').on('click', function(e){
+    //Excluindo membro
+    $('.idMembro.apagar').on('click', function (e) {
         e.preventDefault();
+
         var id = $(this).attr('href');
-        alertify.confirm('Deseja excluir o registro?', function(){
+
+        alertify.confirm('Deseja excluir o registro?', function () {
 
             $.ajax({
-                url: '../excluir-noticia.php',
-                type: 'POST',
-                dataType: 'html',
-                data: {id: id},
-            })
-            .done(function(r) {  
+                    url: '../excluir-membro.php',
+                    type: 'POST',
+                    dataType: 'html',
+                    data: {
+                        id: id
+                    },
+                })
+                .done(function (r) {
 
-             if(r == true){
-               alertify.success('Excluído com sucesso!');
-               setTimeout(function(){ 
-                location.reload();
-            }, 1500);            
+                    if (r == true) {
+                        alertify.success('Excluído com sucesso!');
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1500);
 
-           }   else {
-             alertify.error('Erro ao excluir o registro!');
-             setTimeout(function(){ 
-                location.reload();
-            }, 1500);
-         } 
-     });
+                    } else {
+
+                        alertify.error('Erro ao excluir o registro!');
+
+                        return false;
+                    }
+                });
 
 
-        });        
+        });
+    });
+
+    //Excluindo video
+    $('.idVideo.apagar').on('click', function (e) {
+        e.preventDefault();
+        var id = $(this).attr('href');
+
+        alertify.confirm('Deseja excluir o registro?', function () {
+
+            $.ajax({
+                    url: '../excluir-video.php',
+                    type: 'POST',
+                    dataType: 'html',
+                    data: {
+                        id: id
+                    },
+                })
+                .done(function (r) {
+
+                    if (r == true) {
+                        alertify.success('Excluído com sucesso!');
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1500);
+
+                    } else {
+                        alertify.error('Erro ao excluir o registro!');
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1500);
+                    }
+                });
+
+
+        });
     });
 
 
-	//Excluindo uma foto
-	$('.idFoto.apagar').on('click', function(e){
-		e.preventDefault();
-		var id = $(this).attr('href');
-		alertify.confirm('Deseja excluir a foto?', function(){
+    //Excluindo uma noticia
+    $('.idNoticia.apagar').on('click', function (e) {
+        e.preventDefault();
+        var id = $(this).attr('href');
+        alertify.confirm('Deseja excluir o registro?', function () {
 
-			$.ajax({
-				url: '../excluir-foto.php',
-				type: 'POST',
-				dataType: 'html',
-				data: {id: id},
-			})
-			.done(function(r) {	 
+            $.ajax({
+                    url: '../excluir-noticia.php',
+                    type: 'POST',
+                    dataType: 'html',
+                    data: {
+                        id: id
+                    },
+                })
+                .done(function (r) {
 
-               if(r == true){
-                 alertify.success('Excluído com sucesso!');
-                 setTimeout(function(){ 
-                    location.reload();
-                }, 1500);            
+                    if (r == true) {
+                        alertify.success('Excluído com sucesso!');
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1500);
 
-             }   else {
-               alertify.error('Erro ao excluir a foto!');
-               setTimeout(function(){ 
-                location.reload();
-            }, 1500);
-           } 
-       });
+                    } else {
+                        alertify.error('Erro ao excluir o registro!');
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1500);
+                    }
+                });
 
 
-		})			
-	});
+        });
+    });
+
+
+    //Excluindo uma foto
+    $('.idFoto.apagar').on('click', function (e) {
+        e.preventDefault();
+        var id = $(this).attr('href');
+        alertify.confirm('Deseja excluir a foto?', function () {
+
+            $.ajax({
+                    url: '../excluir-foto.php',
+                    type: 'POST',
+                    dataType: 'html',
+                    data: {
+                        id: id
+                    },
+                })
+                .done(function (r) {
+
+                    if (r == true) {
+                        alertify.success('Excluído com sucesso!');
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1500);
+
+                    } else {
+                        alertify.error('Erro ao excluir a foto!');
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1500);
+                    }
+                });
+
+
+        })
+    });
 
 }); //fim function
