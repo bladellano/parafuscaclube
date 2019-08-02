@@ -6,6 +6,7 @@ class Noticias extends Conexao {
 
 	protected $titulo_noticia;
 	protected $conteudo; 
+	protected $nome_arquivo_novo; 
 
 	const pasta = "upload/";
 
@@ -15,16 +16,6 @@ class Noticias extends Conexao {
 
 	public function salvarNoticia($titulo_noticia, $conteudo, $arquivo_name=null, $arquivo_tmp_name=null, $arquivo_type=null, $id_album = nulll, $id_video = null, $tipo_noticia){
         
-    /*    echo 'Entrou na classe Noticia';
-        echo "\n";
-        echo $arquivo_name;       
-        echo "\n";
-        echo $arquivo_tmp_name;
-        echo "\n";
-        echo $arquivo_type;
-
-        exit;*/
-
 				$newNameFile = "";
 
 				if(!empty($arquivo_name)){
@@ -45,8 +36,7 @@ class Noticias extends Conexao {
 
 		$this->titulo_noticia = $titulo_noticia;
 		$this->conteudo = $conteudo;
-
-		// $idFoto = $this->salvarFoto($titulo_noticia, $arquivo_type, $arquivo_name, $arquivo_tmp_name, $id_album);
+		$this->nome_arquivo_novo = $newNameFile;
 
 		try {
 
@@ -69,7 +59,7 @@ class Noticias extends Conexao {
 
 	}
 
-	public function salvarFoto($titulo_foto, $type, $arquivo_nome, $arquivo_tmp_nome, $id_album = null){
+/*	public function salvarFoto($titulo_foto, $type, $arquivo_nome, $arquivo_tmp_nome, $id_album = null){
 		
 		$this->criaThumbnails($type, $arquivo_tmp_nome, $arquivo_nome, self::pasta);
 
@@ -95,7 +85,7 @@ class Noticias extends Conexao {
 		}
 
 	}
-
+*/
 
 function criaThumbnails($type, $tmp_name, $name, $folder){
 
@@ -123,7 +113,6 @@ function criaThumbnails($type, $tmp_name, $name, $folder){
 	}
 
 
-
 	public function listarNoticias(){
 
 		$sql = "SELECT * FROM tb_noticias ORDER BY dataCaptura";	
@@ -141,13 +130,12 @@ function criaThumbnails($type, $tmp_name, $name, $folder){
 
 	public function excluirNoticia($id){
 
-		// $id_foto = $this->getIdFoto($id);	
+		if(self::selecionarNoticia($id)->imagem != 'upload/'){
 
-		echo 'Entrou no metodo excluirNoticia'; 
-		
-		exit;	 
+		unlink(self::selecionarNoticia($id)->imagem); // Apaga as fotos da pasta upload.	
+		unlink(self::selecionarNoticia($id)->thumb_imagem);
 
-		$this->excluirFotoNoticia($id_foto);
+		}
 
 		try {
 
@@ -166,7 +154,7 @@ function criaThumbnails($type, $tmp_name, $name, $folder){
 
 		} catch (PDOException $e) {
 
-			echo $e->getMessage();
+			return $e->getMessage();
 		}
 	}
 
@@ -242,4 +230,4 @@ function criaThumbnails($type, $tmp_name, $name, $folder){
 	}
 
 
-}//fim classe
+} // Fim classe

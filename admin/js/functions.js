@@ -593,7 +593,7 @@ $(function () {
                 })
                 .done(function (r) {
 
-                    if (r == true) {
+                        if (r == true) {
                         alertify.success('Excluído com sucesso!');
                         setTimeout(function () {
                             location.reload();
@@ -601,10 +601,7 @@ $(function () {
 
                     } else {
                         alertify.error('Erro ao excluir o registro!');
-                    /*    setTimeout(function () {
-                            location.reload();
-                        }, 1500);*/
-                    }
+                           }
                 });
 
 

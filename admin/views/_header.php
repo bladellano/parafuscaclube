@@ -1,7 +1,7 @@
 <?php  
 
-error_reporting(0);
-ini_set(“display_errors”, 0);
+// error_reporting(0);
+// ini_set(“display_errors”, 0);
 
 session_start();
 
@@ -33,7 +33,7 @@ if(!isset($_SESSION['usuario'])){ // Verifica se há sessão.
     <!-- <link rel="stylesheet" type="text/css" href="../css/bootstrap.css"> -->
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@3.0.4/js/froala_editor.pkgd.min.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@3.0.4/js/froala_editor.pkgd.min.js'></script>
 
     <link href='https://cdn.jsdelivr.net/npm/froala-editor@3.0.4/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
 
