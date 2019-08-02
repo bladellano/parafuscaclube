@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 31-Jul-2019 às 13:11
--- Versão do servidor: 10.1.37-MariaDB
--- versão do PHP: 5.6.38
+-- Host: localhost
+-- Tempo de geração: 01/08/2019 às 22:06
+-- Versão do servidor: 10.1.40-MariaDB
+-- Versão do PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bdfusca`
+-- Banco de dados: `bdfusca`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_albuns`
+-- Estrutura para tabela `tb_albuns`
 --
 
 CREATE TABLE `tb_albuns` (
@@ -36,7 +36,7 @@ CREATE TABLE `tb_albuns` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_albuns`
+-- Despejando dados para a tabela `tb_albuns`
 --
 
 INSERT INTO `tb_albuns` (`idAlbum`, `idUsuario`, `nomeAlbum`, `dataCaptura`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `tb_albuns` (`idAlbum`, `idUsuario`, `nomeAlbum`, `dataCaptura`) VAL
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_fotos`
+-- Estrutura para tabela `tb_fotos`
 --
 
 CREATE TABLE `tb_fotos` (
@@ -60,7 +60,7 @@ CREATE TABLE `tb_fotos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_fotos`
+-- Despejando dados para a tabela `tb_fotos`
 --
 
 INSERT INTO `tb_fotos` (`idFoto`, `tituloFoto`, `nomeFoto`, `urlFoto`, `idUsuario`, `idAlbum`, `dataCaptura`) VALUES
@@ -73,7 +73,7 @@ INSERT INTO `tb_fotos` (`idFoto`, `tituloFoto`, `nomeFoto`, `urlFoto`, `idUsuari
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_membros`
+-- Estrutura para tabela `tb_membros`
 --
 
 CREATE TABLE `tb_membros` (
@@ -90,7 +90,7 @@ CREATE TABLE `tb_membros` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_membros`
+-- Despejando dados para a tabela `tb_membros`
 --
 
 INSERT INTO `tb_membros` (`idMembro`, `nomeMembro`, `userMembro`, `passMembro`, `anoFusca`, `foto`, `thumb_foto`, `dataCaptura`, `dataModificado`, `status`) VALUES
@@ -100,7 +100,7 @@ INSERT INTO `tb_membros` (`idMembro`, `nomeMembro`, `userMembro`, `passMembro`, 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_newsletter`
+-- Estrutura para tabela `tb_newsletter`
 --
 
 CREATE TABLE `tb_newsletter` (
@@ -110,7 +110,7 @@ CREATE TABLE `tb_newsletter` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_noticias`
+-- Estrutura para tabela `tb_noticias`
 --
 
 CREATE TABLE `tb_noticias` (
@@ -120,7 +120,6 @@ CREATE TABLE `tb_noticias` (
   `idUsuario` int(11) DEFAULT NULL,
   `imagem` varchar(200) DEFAULT NULL,
   `thumb_imagem` varchar(200) DEFAULT NULL,
-  `idFoto` int(11) DEFAULT NULL,
   `idAlbum` int(11) DEFAULT NULL,
   `idVideo` int(11) DEFAULT NULL,
   `tipoNoticia` char(1) DEFAULT NULL COMMENT 'A = agenda, E = evento e N = notícia',
@@ -130,16 +129,22 @@ CREATE TABLE `tb_noticias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_noticias`
+-- Despejando dados para a tabela `tb_noticias`
 --
 
-INSERT INTO `tb_noticias` (`idNoticia`, `tituloNoticia`, `conteudo`, `idUsuario`, `imagem`, `thumb_imagem`, `idFoto`, `idAlbum`, `idVideo`, `tipoNoticia`, `dataCaptura`, `dataModificado`, `status`) VALUES
-(2, 'Noticia sem album', '', NULL, NULL, NULL, 149, 0, 0, 'N', '2019-07-30 08:06:09', NULL, 1);
+INSERT INTO `tb_noticias` (`idNoticia`, `tituloNoticia`, `conteudo`, `idUsuario`, `imagem`, `thumb_imagem`, `idAlbum`, `idVideo`, `tipoNoticia`, `dataCaptura`, `dataModificado`, `status`) VALUES
+(6, 'Titulo', 'Conteudo', NULL, 'upload/img_5d4381215429d.jpg', 'upload/thumbnail_img_5d4381215429d.jpg', 27, 0, 'N', '2019-08-01 21:17:37', NULL, 1),
+(7, 'Bolo', 'Receita', NULL, 'upload/img_5d4381a6b3297.jpg', 'upload/thumbnail_img_5d4381a6b3297.jpg', 27, 0, 'N', '2019-08-01 21:19:51', NULL, 1),
+(8, 'Brasil joga mal e não consegue acesso.', '<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining</p>', NULL, 'upload/img_5d43833ce5157.jpg', 'upload/thumbnail_img_5d43833ce5157.jpg', 25, 0, 'N', '2019-08-01 21:26:37', NULL, 1),
+(20, 'Com foto', '<p>Lorem</p>', NULL, 'upload/img_5d43878246d74.jpg', 'upload/thumbnail_img_5d43878246d74.jpg', 0, 0, 'N', '2019-08-01 21:44:51', NULL, 1),
+(21, 'ggg', '<p>ggg</p>', NULL, 'upload/', 'upload/thumbnail_', 0, 0, 'N', '2019-08-01 21:45:54', NULL, 1),
+(22, 'asdasd', '<p>asdasd</p>', NULL, 'upload/', 'upload/thumbnail_', 0, 0, 'N', '2019-08-01 21:53:31', NULL, 1),
+(23, 'Com foto de novo...', '<p>Lorem</p>', NULL, 'upload/img_5d438a879e59b.jpg', 'upload/thumbnail_img_5d438a879e59b.jpg', 0, 0, 'N', '2019-08-01 21:57:43', NULL, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_usuarios`
+-- Estrutura para tabela `tb_usuarios`
 --
 
 CREATE TABLE `tb_usuarios` (
@@ -154,7 +159,7 @@ CREATE TABLE `tb_usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_usuarios`
+-- Despejando dados para a tabela `tb_usuarios`
 --
 
 INSERT INTO `tb_usuarios` (`idUsuario`, `nome`, `sobrenome`, `email`, `username`, `password`, `status`, `dataCaptura`) VALUES
@@ -163,7 +168,7 @@ INSERT INTO `tb_usuarios` (`idUsuario`, `nome`, `sobrenome`, `email`, `username`
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_videos`
+-- Estrutura para tabela `tb_videos`
 --
 
 CREATE TABLE `tb_videos` (
@@ -175,93 +180,93 @@ CREATE TABLE `tb_videos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexes for dumped tables
+-- Índices de tabelas apagadas
 --
 
 --
--- Indexes for table `tb_albuns`
+-- Índices de tabela `tb_albuns`
 --
 ALTER TABLE `tb_albuns`
   ADD PRIMARY KEY (`idAlbum`);
 
 --
--- Indexes for table `tb_fotos`
+-- Índices de tabela `tb_fotos`
 --
 ALTER TABLE `tb_fotos`
   ADD PRIMARY KEY (`idFoto`);
 
 --
--- Indexes for table `tb_membros`
+-- Índices de tabela `tb_membros`
 --
 ALTER TABLE `tb_membros`
   ADD PRIMARY KEY (`idMembro`);
 
 --
--- Indexes for table `tb_newsletter`
+-- Índices de tabela `tb_newsletter`
 --
 ALTER TABLE `tb_newsletter`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indexes for table `tb_noticias`
+-- Índices de tabela `tb_noticias`
 --
 ALTER TABLE `tb_noticias`
   ADD PRIMARY KEY (`idNoticia`);
 
 --
--- Indexes for table `tb_usuarios`
+-- Índices de tabela `tb_usuarios`
 --
 ALTER TABLE `tb_usuarios`
   ADD PRIMARY KEY (`idUsuario`);
 
 --
--- Indexes for table `tb_videos`
+-- Índices de tabela `tb_videos`
 --
 ALTER TABLE `tb_videos`
   ADD PRIMARY KEY (`idVideo`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas apagadas
 --
 
 --
--- AUTO_INCREMENT for table `tb_albuns`
+-- AUTO_INCREMENT de tabela `tb_albuns`
 --
 ALTER TABLE `tb_albuns`
   MODIFY `idAlbum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT for table `tb_fotos`
+-- AUTO_INCREMENT de tabela `tb_fotos`
 --
 ALTER TABLE `tb_fotos`
   MODIFY `idFoto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
 
 --
--- AUTO_INCREMENT for table `tb_membros`
+-- AUTO_INCREMENT de tabela `tb_membros`
 --
 ALTER TABLE `tb_membros`
   MODIFY `idMembro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `tb_newsletter`
+-- AUTO_INCREMENT de tabela `tb_newsletter`
 --
 ALTER TABLE `tb_newsletter`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tb_noticias`
+-- AUTO_INCREMENT de tabela `tb_noticias`
 --
 ALTER TABLE `tb_noticias`
-  MODIFY `idNoticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idNoticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `tb_usuarios`
+-- AUTO_INCREMENT de tabela `tb_usuarios`
 --
 ALTER TABLE `tb_usuarios`
   MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tb_videos`
+-- AUTO_INCREMENT de tabela `tb_videos`
 --
 ALTER TABLE `tb_videos`
   MODIFY `idVideo` int(11) NOT NULL AUTO_INCREMENT;
