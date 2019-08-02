@@ -13,24 +13,53 @@ class Noticias extends Conexao {
 		parent::__construct('tb_noticias');
 	}
 
-	public function salvarNoticia($titulo_noticia, $conteudo, $arquivo_name, $arquivo_tmp_name, $arquivo_type, $id_album = nulll, $id_video = null, $tipo_noticia){
+	public function salvarNoticia($titulo_noticia, $conteudo, $arquivo_name=null, $arquivo_tmp_name=null, $arquivo_type=null, $id_album = nulll, $id_video = null, $tipo_noticia){
         
-        echo 'entrou';exit;
-		$this->titulo_noticia = $titulo_noticia;
+    /*    echo 'Entrou na classe Noticia';
+        echo "\n";
+        echo $arquivo_name;       
+        echo "\n";
+        echo $arquivo_tmp_name;
+        echo "\n";
+        echo $arquivo_type;
 
+        exit;*/
+
+				$newNameFile = "";
+
+				if(!empty($arquivo_name)){
+
+				$nomeArquivo = uniqid('img_').".".pathinfo($arquivo_name, PATHINFO_EXTENSION);
+				$newNameFile = $nomeArquivo;
+
+					$this->criaThumbnails(
+						$arquivo_type, 
+						$arquivo_tmp_name, 
+						$newNameFile, 
+						self::pasta
+					);
+
+				move_uploaded_file($arquivo_tmp_name, self::pasta.$newNameFile);
+			
+				}
+
+		$this->titulo_noticia = $titulo_noticia;
 		$this->conteudo = $conteudo;
 
-		$idFoto = $this->salvarFoto($titulo_noticia, $arquivo_type, $arquivo_name, $arquivo_tmp_name, $id_album);
+		// $idFoto = $this->salvarFoto($titulo_noticia, $arquivo_type, $arquivo_name, $arquivo_tmp_name, $id_album);
 
 		try {
 
-			$sql  = "INSERT INTO tb_noticias (tituloNoticia, conteudo, idFoto, idAlbum, idVideo, tipoNoticia) VALUES (?,?,?,?,?,?)";
+			$sql  = "INSERT INTO tb_noticias (tituloNoticia, conteudo, idAlbum, idVideo, tipoNoticia, imagem, thumb_imagem) VALUES (?,?,?,?,?,?,?)";
 			
 			$stmt = $this->db->prepare($sql);
 
-			if(!$stmt->execute([$titulo_noticia, $conteudo, $idFoto, $id_album, $id_video, $tipo_noticia])){
+			if(!$stmt->execute([$titulo_noticia, $conteudo, $id_album, $id_video, $tipo_noticia, self::pasta.$newNameFile, self::pasta."thumbnail_".$newNameFile])){
+
 				return false;
+
 			} else {
+
 				return true;
 			}
 
@@ -68,7 +97,7 @@ class Noticias extends Conexao {
 	}
 
 
-	function criaThumbnails($type, $tmp_name, $name, $folder){
+function criaThumbnails($type, $tmp_name, $name, $folder){
 
 		$proporcao = 0.5;
 
@@ -94,6 +123,7 @@ class Noticias extends Conexao {
 	}
 
 
+
 	public function listarNoticias(){
 
 		$sql = "SELECT * FROM tb_noticias ORDER BY dataCaptura";	
@@ -111,7 +141,11 @@ class Noticias extends Conexao {
 
 	public function excluirNoticia($id){
 
-		$id_foto = $this->getIdFoto($id);		 
+		// $id_foto = $this->getIdFoto($id);	
+
+		echo 'Entrou no metodo excluirNoticia'; 
+		
+		exit;	 
 
 		$this->excluirFotoNoticia($id_foto);
 

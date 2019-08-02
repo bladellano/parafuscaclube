@@ -6,9 +6,9 @@ class Conexao {
 
 	protected $table;
 
-	protected $lines_per_page = 5; //quantidade de registros por página.
+	protected $lines_per_page = 4; // Quantidade de registros por página.
 
-	protected $line_size = 4; //quantidade de numeros para listar item-página.
+	protected $line_size = 4; // Quantidade de numeros para listar item-página.
 
 	public function __construct($table = null){
 		$this->table = $table; 
@@ -39,7 +39,8 @@ class Conexao {
 	public function paginacao(){
 
 		$i = 1;
-		$query = $this->db->query("SELECT * FROM $this->table LIMIT $this->lines_per_page");		
+
+		$query = $this->db->query("SELECT * FROM $this->table ORDER BY dataCaptura DESC LIMIT $this->lines_per_page");		
 
 		$query_pg = $this->db->query("SELECT * FROM $this->table");
 		$count = $query_pg->rowCount();
@@ -48,15 +49,15 @@ class Conexao {
 		if(isset($_GET['page']) == $i){
 			$url = $_GET['page'];
 			$mody = $url*5 - 5;
-			$query = $this->db->query("SELECT * FROM $this->table LIMIT $this->lines_per_page OFFSET $mody");
-			$offset = $this->db->query("SELECT * FROM $this->table LIMIT $this->lines_per_page OFFSET $mody");
+			$query = $this->db->query("SELECT * FROM $this->table ORDER BY dataCaptura DESC LIMIT $this->lines_per_page OFFSET $mody");
+			$offset = $this->db->query("SELECT * FROM $this->table ORDER BY dataCaptura DESC LIMIT $this->lines_per_page OFFSET $mody");
 		}
 
 		if(isset($offset)){  
 			$offset_count = count($offset->fetchAll());
 		}
 		
-		//gerando os botões...
+		// Gerando os botões...
 
 		$page_back = @$_GET['page'] - 1;
 		$page_go = @$_GET['page'] + 1;
@@ -66,7 +67,7 @@ class Conexao {
 
 		$html = "";
 
-		if($cont < $this->lines_per_page) { //nao gera os numeros de paginas no rodape
+		if($cont < $this->lines_per_page) { // Não gera os números de paginas no rodape
 
 			$html = "";
 

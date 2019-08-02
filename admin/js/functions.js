@@ -191,8 +191,9 @@ $(function () {
         } else {
 
             data = $(this).serializeArray();
-            console.log(data);
-            return false;
+
+            // console.log(data);            
+            // return false;
 
         }
 
@@ -217,9 +218,9 @@ $(function () {
                     return false;
                 }
             },
-            processData: false,
-            cache: false,
-            contentType: false
+            processData: processData,
+            cache: cache,
+            contentType: contentType
         });
 
     });
@@ -600,9 +601,9 @@ $(function () {
 
                     } else {
                         alertify.error('Erro ao excluir o registro!');
-                        setTimeout(function () {
+                    /*    setTimeout(function () {
                             location.reload();
-                        }, 1500);
+                        }, 1500);*/
                     }
                 });
 

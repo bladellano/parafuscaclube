@@ -16,7 +16,7 @@ $objVideo = new Videos();
 
 <?php require_once "menu.php"; ?>
 
-<div class="container" style="margin-bottom: 80px;">
+<div class="container" style="margin-bottom: 140px;">
 
     <!-- Modal -->
     <div class="modal fade" id="atualizarNoticia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -126,7 +126,8 @@ $objVideo = new Videos();
 					foreach ($objNoticia->paginacao()["objItens"] as $noticia) {
 						echo '<tr>';
 						echo '<td>'.$noticia["tituloNoticia"].'</td>'; 	
-						echo '<td><img width="80" src="../'.$objFoto->selecionarFoto($noticia["idFoto"])->urlFoto.'" alt=""></td>';
+						// echo '<td><img width="80" src="../'.$objFoto->selecionarFoto($noticia["idFoto"])->urlFoto.'" alt=""></td>';
+                        echo '<td><img width="80" src="../'.$noticia["thumb_imagem"].'" alt=""></td>';
 						echo '<td>'.$objAlbum->selecionarAlbum($noticia["idAlbum"]).'</td>'; 			
 						echo '<td>'.date('d/m/Y H:i:s', strtotime($noticia["dataCaptura"])).'</td>'; 				 
 						echo '<td align="center"><a class="idNoticia apagar btn btn-danger" href='.$noticia["idNoticia"].'><i class="fa fa-close"></i></a> '; 
@@ -156,7 +157,10 @@ $objVideo = new Videos();
 </div> <!-- fim containter -->
 
 <script type="text/javascript">
-    CKEDITOR.replace('conteudo');
+    // CKEDITOR.replace('conteudo');
+
+    new FroalaEditor('textarea#conteudo')
+
 
     function adicionarDado(idnoticia, titulofoto) {
 
