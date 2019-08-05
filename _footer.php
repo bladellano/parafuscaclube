@@ -33,11 +33,14 @@
 						</div>
 					</section>
 
-					<script src="js/jquery.min.js"></script>
+					<!-- <script src="js/jquery.min.js"></script> -->
+
 					<script src="js/bootstrap.js"></script>
 					<script src="js/slick.js"></script>
 					<script src="js/lightbox.js"></script>
 					<script src="js/functions.js"></script>
+					
+						<!-- <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> -->
 
 
 					<script>

@@ -1,5 +1,6 @@
-$( document ).ready(function() {
-
+$(document).ready(function() {
+        
+ 
 	//ALTERA O FUNDO DO NAVMENU
 	$(window).scroll(function(event) {
 		if($(this).scrollTop() > 0){
@@ -97,4 +98,38 @@ $( document ).ready(function() {
 	});
 
 
+$('button[type=button][class="ui-dialog-titlebar-close"]').append("<i class=\"fas fa-times\"></i>");
 });
+
+
+function viewNoticia(id, tipo = 'Notícia'){
+
+ 	$.ajax({
+		url: 'admin/buscar-noticia.php',
+		type: 'POST',
+		dataType: 'html',
+		data: {id: id},
+	})
+	.done(function(r) {
+
+		dados = jQuery.parseJSON(r);
+
+           $('#boxMensagem').dialog('destroy').remove();
+
+		   $('<div id="boxMensagem">').load('modal/modalNoticia.php',{
+		   	id:id,
+		   	titulo: dados.tituloNoticia,
+		   	conteudo: dados.conteudo,
+		   	imagem: dados.thumb_imagem,
+		   	data: dados.dataCaptura
+		   }).dialog({
+                maximize : false,
+                modal : true,
+                title : tipo,
+                width : 650,
+                height : 500
+            });
+	});
+
+}
+

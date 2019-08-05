@@ -1,12 +1,7 @@
 <?php 
 
 require_once "models/Noticias.php";
-
-// echo '<pre>';
-// print_r($_POST); 
-// print_r($_FILES); 
-// exit;
-
+ 
 $objNoticia = new Noticias();
 
 $titulo_noticia = addslashes($_POST['tituloNoticia']);

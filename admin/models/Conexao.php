@@ -6,9 +6,9 @@ class Conexao {
 
 	protected $table;
 
-	protected $lines_per_page = 4; // Quantidade de registros por página.
+	protected $lines_per_page = 8; // Quantidade de registros por página.
 
-	protected $line_size = 4; // Quantidade de numeros para listar item-página.
+	protected $line_size = 5; // Quantidade de numeros para listar item-página.
 
 	public function __construct($table = null){
 		$this->table = $table; 

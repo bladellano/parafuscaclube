@@ -124,5 +124,13 @@ class Membros extends Conexao {
 		return $this->db->query($sql)->fetch(PDO::FETCH_OBJ);	
 	}
 
+
+	public function listarMembros(){
+
+		$sql = "SELECT * FROM ".self::table." ORDER BY dataCaptura";	
+
+		return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);	
+	}
+
 }//fim classe
 
