@@ -53,6 +53,7 @@ $objMembro = new Membros();
 
 		<section class="content-site" id="fotos">
 			<div class="container">
+
 				<h1 class="text-center"><span>Últimos Eventos</span></h1>	
 
 				<div class="slick">
@@ -95,7 +96,7 @@ $objMembro = new Membros();
 
 		</section>
 
-		<section style="margin-top: 20px;">
+		<section style="margin-top: 20px;" id="midias">
 			<!-- <div class="row"> -->
 				<div class="container">
 
@@ -168,27 +169,6 @@ $objMembro = new Membros();
 				<!-- </div> -->
 
 			</section> <!--Midias-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 			<section class="img-site" id="membros">

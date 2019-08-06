@@ -57,9 +57,10 @@
 
 				<li><a href="#">Mídias</a>
 					<ul>
+						<li><a href="albuns">Albuns</a></li>
 						<li><a href="#fotos">Fotos</a></li>
 						<li><a href="#videos">Videos</a></li>
-						<li><a href="#eventos">Eventos</a></li>
+						<li><a href="#midias">Agenda</a></li>
 					</ul>
 				</li>
 

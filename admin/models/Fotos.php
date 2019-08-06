@@ -84,10 +84,13 @@ class Fotos extends Conexao {
 	}
 
 
-	public function listarFotos(){
+	public function listarFotos($id=null){
 
-		$sql = "SELECT * FROM tb_fotos ORDER BY dataCaptura";	
-		return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);	
+		$aWhere = ($id != "") ? "WHERE idAlbum = $id" :"";
+
+		$sql = "SELECT * FROM tb_fotos $aWhere ORDER BY dataCaptura";
+
+	    return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);	
 	}
 
 	public function atualizarFoto($id, $titulo_foto){

@@ -59,33 +59,6 @@ class Noticias extends Conexao {
 
 	}
 
-/*	public function salvarFoto($titulo_foto, $type, $arquivo_nome, $arquivo_tmp_nome, $id_album = null){
-		
-		$this->criaThumbnails($type, $arquivo_tmp_nome, $arquivo_nome, self::pasta);
-
-		move_uploaded_file($arquivo_tmp_nome, self::pasta.$arquivo_nome);
-		
-		try {
-
-			$sql  = "INSERT INTO tb_fotos (tituloFoto, nomeFoto, urlFoto, idAlbum) VALUES (?,?,?,?)";
-
-			$stmt = $this->db->prepare($sql);
-
-			if(!$stmt->execute([$titulo_foto, $arquivo_nome, self::pasta.$arquivo_nome, $id_album])){
-
-				return false;
-
-			} else {
-
-				return $this->db->lastInsertId();		 
-			}
-
-		} catch (PDOException $e) {
-			echo $e->getMessage();
-		}
-
-	}
-*/
 
 	function criaThumbnails($type, $tmp_name, $name, $folder){
 
