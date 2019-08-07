@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 require_once "Conexao.php";
 
 class Videos extends Conexao {
@@ -24,11 +26,11 @@ class Videos extends Conexao {
 
 		try {
 
-			$sql  = "INSERT INTO tb_videos (tituloVideo,codVideo, urlVideo) VALUES (?,?,?)";
+			$sql  = "INSERT INTO tb_videos (tituloVideo,codVideo, urlVideo, idUsuario) VALUES (?,?,?,?)";
 
 			$stmt = $this->db->prepare($sql);
 
-			if(!$stmt->execute([$this->titulo_video, $this->cod_video, $this->url_video])){
+			if(!$stmt->execute([$this->titulo_video, $this->cod_video, $this->url_video, $_SESSION['iduser']])){
 
 				return false;
 			} else {
@@ -45,7 +47,7 @@ class Videos extends Conexao {
 
 	public function listarVideos(){
 
-		$sql = "SELECT * FROM ".self::table." ORDER BY dataCaptura LIMIT 3";	
+		$sql = "SELECT * FROM ".self::table." ORDER BY dataCaptura DESC LIMIT 3";	
 
 		return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);	
 	}

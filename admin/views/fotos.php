@@ -14,7 +14,42 @@ $objNoticia = new Noticias();
 
 <?php require_once "menu.php"; ?>
 
+<style>
+	#wait{
+		
+		display:none; 
+		position:absolute;
+		top:25%;
+		left:16%;
+		text-align:center;	
+		z-index: 9;
+	}
+	#wait img{
+		width: 25%;
+		border: 1px solid #999;
+		border-radius: 8px;
+		z-index: 8;
 
+	}	
+
+	.fundo{
+		background-color: #000;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		z-index: 4;
+		opacity: 0.8;
+		-webkit-transition: 2s;
+			   -moz-transition: 2s;
+			    -ms-transition: 2s;
+			     -o-transition: 2s;
+			        transition: 2s;	
+
+	}
+	
+</style>
+
+<div class="fundo" style="display: none"></div>
 <div class="container">
 
 	<!-- Modal -->
@@ -126,6 +161,10 @@ $objNoticia = new Noticias();
 		<span id='response'></span>
 
 	</div> <!-- fim containter -->
+
+	<div id="wait">
+		<img src='../img/loading.gif'/><br> Processando... 
+	</div>
 
 	<script type="text/javascript">		
 

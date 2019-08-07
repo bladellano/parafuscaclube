@@ -1,6 +1,12 @@
 $(function () {
 
 
+
+    $('#idAlbum').change(function(event) { // Seta o campo nomeFoto com mesmo nome do album.
+       $('#tituloFoto').val($(  '#idAlbum option:selected').text());
+    });
+
+
     //Tooltip - Setando a posição da caixa exibindo quando passa em cima do nome.
     $('.viewFoto').hover(function () {
 
@@ -246,9 +252,9 @@ $(function () {
 
                 if (r == 1) {
 
-                    alertify.alert('Mensagem', 'Inserido com sucesso!', function () {
-                        alertify.success('Ok');
-                    });
+                    // alertify.alert('Mensagem', 'Inserido com sucesso!', function () {
+                    // });
+                        alertify.success('Video inserido com sucesso!');
 
                     $('#form-video')[0].reset(); //reseta formulário
 
@@ -282,11 +288,10 @@ $(function () {
             .done(function (r) {
 
                 if (r == 1) {
-                    console.log(r);
-
-                    alertify.alert('Alerta', 'Inserido com sucesso!', function () {
-                        alertify.success('Ok');
-                    });
+                    // console.log(r);
+                    // alertify.alert('Alerta', 'Inserido com sucesso!', function () {
+                    alertify.success('Album inserido com sucesso!');
+                    // });
 
                     $('#form-album')[0].reset(); //reseta formulário
 
@@ -482,6 +487,11 @@ $(function () {
             data: data,
             type: 'post',
             dataType: 'html',
+            beforeSend: function(){
+                
+                $(".fundo").css("display", "block");
+                $("#wait").css("display", "block");     
+            },
             success: function (r) {
 
                 if (r == 1) {
@@ -491,6 +501,7 @@ $(function () {
                     setTimeout(function () {
                         location.reload();
                     }, 1500);
+
                 } else {
                     alertify.error('Houve algum problema.');
                     return false;
