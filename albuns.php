@@ -27,6 +27,7 @@
  </style>
 
  <div class="container content-center">
+ 	<h1>Album de Fotos</h1>
 
  	<?php 
 
@@ -36,8 +37,7 @@
 
  	$aAlbuns = $objAlbum->listarAlbuns();
 
- 	echo '<div class="container">
- 	<div class="row">';
+ 	echo '<div class="container"><div class="row">';
 
  	foreach ($aAlbuns as $value) {
 
@@ -55,15 +55,21 @@
  </div> <!--container-->
 
  <script>
+
  	$('a[data-id]').click(function(event) {
 
  		let id = $(this).attr('data-id');
 
- 		$( "#result" ).load( "listar-fotos.php?id="+id, function() {
+	 		$( "#result" ).load( "listar-fotos.php?id="+id, function() {
+	 		
+	 		var url = window.location.href;
+
+	 		location.replace(url + 'galeria');
 
  		});
 
  	});
+
  </script>
 
 

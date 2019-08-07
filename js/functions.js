@@ -1,7 +1,7 @@
 $(document).ready(function() {
         
  
-	//ALTERA O FUNDO DO NAVMENU
+	//Altera o fundo do navmenu
 	$(window).scroll(function(event) {
 		if($(this).scrollTop() > 0){
 			$('.menu').addClass('active');
@@ -51,7 +51,6 @@ $(document).ready(function() {
 	});
 
 
-
 	//Plugin Lightbox
 	lightbox.option({
 		'resizeDuration': 200,
@@ -98,7 +97,8 @@ $(document).ready(function() {
 	});
 
 
-$('button[type=button][class="ui-dialog-titlebar-close"]').append("<i class=\"fas fa-times\"></i>");
+$('button[type=button][class="ui-dialog-titlebar-close"]').append("<i class=\"fas fa-times\"></i>"); // Adiciona um 'x'
+
 });
 
 

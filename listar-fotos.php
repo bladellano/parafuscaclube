@@ -9,7 +9,7 @@
 	$objFotos = new Fotos();
 
 	echo '<div class="container">
-	<div class="row">';
+	<div class="row" ><a name="galeria"></a>';
 
 	foreach ($objFotos->listarFotos($id) as $value) {		
 

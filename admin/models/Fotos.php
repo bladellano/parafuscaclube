@@ -2,6 +2,12 @@
 
 session_start();
 
+/*upload_max_filesize = 10M
+max_file_uploads = 20
+post_max_size = 208M
+memory_limit = 216M
+*/
+
 require_once "Conexao.php";
 
 class Fotos extends Conexao {
@@ -101,7 +107,7 @@ class Fotos extends Conexao {
 	}
 
 	public function excluirFoto($id){
-		//pega caminho da foto.
+		//Pega caminho da foto.
 		$url_foto = $this->selecionarFoto($id)->urlFoto;
 
 		$pasta = explode("/",$this->selecionarFoto($id)->urlFoto)[0]; 
@@ -140,5 +146,5 @@ class Fotos extends Conexao {
 		return $this->db->query($sql)->fetch(PDO::FETCH_OBJ);	
 	}
 
-}//fim classe
+}//Fim classe
 

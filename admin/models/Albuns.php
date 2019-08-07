@@ -32,7 +32,7 @@ class Albuns extends Conexao {
 	}
 
 	public function listarAlbuns(){
-		$sql  = "SELECT * FROM tb_albuns ORDER BY dataCaptura ASC";
+		$sql  = "SELECT * FROM tb_albuns ORDER BY dataCaptura DESC";
 		return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);	
 	}
 
