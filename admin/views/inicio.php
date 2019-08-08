@@ -9,6 +9,7 @@
  <div class="container">
 
  	Seja bem-vindo <strong>USUÁRIO.</strong>
+ 	
  	<?php print_r($_SESSION); ?>
 
  </div>

@@ -94,7 +94,7 @@ class Fotos extends Conexao {
 
 		$aWhere = ($id != "") ? "WHERE idAlbum = $id" :"";
 
-		$sql = "SELECT * FROM tb_fotos $aWhere ORDER BY dataCaptura";
+		$sql = "SELECT * FROM tb_fotos $aWhere ORDER BY dataCaptura DESC";
 
 	    return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);	
 	}

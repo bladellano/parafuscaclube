@@ -14,7 +14,7 @@ $objNoticia = new Noticias();
 
 <?php require_once "menu.php"; ?>
 
-<style>
+<!-- <style>
 	#wait{
 		
 		display:none; 
@@ -45,9 +45,8 @@ $objNoticia = new Noticias();
 			     -o-transition: 2s;
 			        transition: 2s;	
 
-	}
-	
-</style>
+	}	
+</style> -->
 
 <div class="fundo" style="display: none"></div>
 <div class="container">
