@@ -19,6 +19,11 @@ class Conexao {
 	private function conectar(){
 		try {
 			
+			// $host = 'localhost';
+			// $dbname = 'parafusc_bd';
+			// $user = 'parafusc_root';
+			// $pass = 'nt1@2012';
+
 			$host = 'localhost';
 			$dbname = 'bdfusca';
 			$user = 'root';

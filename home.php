@@ -76,7 +76,9 @@ $objMembro = new Membros();
 			<div class="container">
 				<div class="row">
 					<?php 
-					foreach ($objVideo->listarVideos() as $video) {						 
+
+
+					foreach ($objVideo->listarVideos('LIMIT 3') as $video) {						 
 
 						echo '<div class="col-md-4 text-center">
 						<iframe width="100%" height="200px" src="https://www.youtube.com/embed/'.$video['codVideo'].'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -89,7 +91,8 @@ $objMembro = new Membros();
 				</div>
 				<div class="row">
 					<div class="col-xs-12 text-center">
-						<a href="https://www.youtube.com/channel/UCi6kCppWOEc8aVZMF_68nog" class="btn btn-danger" target="_blank">Todos os Videos</a>
+						<!-- <a href="https://www.youtube.com/channel/UCi6kCppWOEc8aVZMF_68nog" class="btn btn-danger" target="_blank">Todos os Videos</a> -->
+						<a href="videos" class="btn btn-danger" target="_blank">Todos os Videos</a>
 					</div>
 				</div>
 			</div>	

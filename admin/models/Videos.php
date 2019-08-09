@@ -45,9 +45,9 @@ class Videos extends Conexao {
 
 	}
 
-	public function listarVideos(){
+	public function listarVideos($limit=null){
 
-		$sql = "SELECT * FROM ".self::table." ORDER BY dataCaptura DESC LIMIT 3";	
+		$sql = "SELECT * FROM ".self::table." ORDER BY dataCaptura DESC $limit";	
 
 		return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);	
 	}
