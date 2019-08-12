@@ -78,7 +78,7 @@ $objMembro = new Membros();
 
 <div id="divAguarde"></div>
 
-<script src="https://www.google.comgit/recaptcha/api.js" async defer></script>
+     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <section class="header-site">
 
