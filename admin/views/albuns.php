@@ -12,17 +12,17 @@ $albuns = new Albuns();
 	
 	<div class="container" style="margin-bottom: 80px;">
 		<!-- Modal -->
-		<div class="modal fade" id="atualizarCategoria" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog modal-sm" role="document">
+		<div class="modal fade" id="atualizarAlbum" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 						<h4 class="modal-title" id="myModalLabel">Atualizar Album</h4>
 					</div>
 					<div class="modal-body">
-						<form id="frmFotoU">
+						<form id="frmAlbumU">
 							<input type="text" hidden="" id="idalbumU" name="idalbumU">
-							<label>Album </label>
+							<label>Título do Album: </label>
 							<input type="text" id="nomealbumU" name="nomealbumU" class="form-control input-sm">
 						</form>
 
@@ -70,7 +70,7 @@ $albuns = new Albuns();
 							echo '<td align="center">'.$album["idAlbum"].'</td>';							
 							echo '<td>'.$album["nomeAlbum"].'</td>'; 	
 							echo '<td align="center"><a class="idAlbum apagar btn btn-danger" href='.$album["idAlbum"].'><i class="fa fa-close"></i></a> ';
-							echo '<span class="btn btn-success" data-toggle="modal" data-target="#atualizarFoto" 
+							echo '<span class="btn btn-success" data-toggle="modal" data-target="#atualizarAlbum" 
 							onclick="adicionarDado('.$album["idAlbum"].',\''.$album["nomeAlbum"].'\')"><i class="fa fa-edit"></i></span></td>'; 	
 
 							echo '</tr>';
@@ -85,10 +85,10 @@ $albuns = new Albuns();
 	</div> <!-- fim containter -->
 
 	<script type="text/javascript">		
-		function adicionarDado(idfoto,titulofoto){
+		function adicionarDado(id,titulo){
 
-			$('#idfotoU').val(idfoto);
-			$('#titulofotoU').val(titulofoto);
+			$('#idalbumU').val(id);
+			$('#nomealbumU').val(titulo);
 		}
 	</script>
 

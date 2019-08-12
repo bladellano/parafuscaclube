@@ -5,9 +5,20 @@ require_once "Conexao.php";
 class Albuns extends Conexao {
 
 	protected $nome_album;
+
+	const table = 'tb_albuns';
+
 	
 	public function __construct(){
 		parent::__construct('tb_albuns');
+	}
+
+	public function atualizarAlbum($id, $titulo_album){
+
+		$sql = "UPDATE ".self::table." SET nomeAlbum = ? WHERE idAlbum = ?";
+		$result = $this->db->prepare($sql);
+		$result->execute([$titulo_album, $id]);
+		return $result->rowCount() > 0 ? true : false;	
 	}
 
 	public function salvarAlbum($nome_album){
@@ -70,4 +81,3 @@ class Albuns extends Conexao {
 	}
 
 }//fim classe
- 

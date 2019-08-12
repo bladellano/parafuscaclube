@@ -131,21 +131,21 @@
 
 	.header-site{
 
-		background-image: url('../img/banner-fundo.jpg');
+		background-image: url('../img/bg-fundo.jpg');
 		position: center top;
 		background-repeat: no-repeat;
 		background-size: cover;
-		/*background-attachment: fixed;*/
+		background-attachment: fixed;
 		color: #fff;
-		/*padding-top: 210px;*/
-		/*padding-bottom: 80px;*/
+		padding-top: 80px;
+		padding-bottom: 20px;
 	}
 	.content-site {
 		padding-top: 50px;
 		padding-bottom: 50px;
 	}
 	.img-site{
-		background-image: url('../img/bg-fundo.jpg');
+		background-image: url('../img/bg-membros.jpg');
 		position: center top;
 		background-repeat: no-repeat;
 		background-size: cover;

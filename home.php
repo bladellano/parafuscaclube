@@ -78,24 +78,24 @@ $objMembro = new Membros();
 
 <div id="divAguarde"></div>
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://www.google.comgit/recaptcha/api.js" async defer></script>
 
 <section class="header-site">
 
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12 text-center" style="height: 544px; position: relative; left: 40%">
-					<!-- <img src="img/logo.png" alt="Logo Pará Fusca Clube"> -->
-					<!-- <p class="lead text-center"> -->
-					<!-- Somos verdadeiros apaixonados pelo fusca! E dessa paixão surgiu o Pará Fusca Clube que foi criado com o objetivo de reunir pessoas amantes desse veículo.  -->
-				<!-- </p> -->
-					<!-- <p class="text-center"> -->
+			<div class="col-xs-12 text-center">
+					<img src="img/logo.png" alt="Logo Pará Fusca Clube">
+					<p class="lead text-center">
+					Somos verdadeiros apaixonados pelo fusca! E dessa paixão surgiu o Pará Fusca Clube que foi criado com o objetivo de reunir pessoas amantes desse veículo. 
+				</p>
+					<p class="text-center">
 
-						<p class="text-center" style="bottom: 0;position: absolute;">
+						<p class="text-center">
 							<a href="#" class="btn btn-danger" data-toggle="modal" data-target="#myModal">INSCREVA-SE</a>
 						</p>
-						<!-- <p class="lead text-center">Fundado em 19/07/2010</p> -->
-						<!-- <p class="lead text-center">Fundador/Presidente: <span class="damiao">Damião Oliveira</span></p> -->
+						<p class="lead text-center">Fundado em 19/07/2010</p>
+						<p class="lead text-center">Fundador/Presidente: <span class="damiao">Damião Oliveira</span></p>
 					</div>
 				</div>
 			</div>

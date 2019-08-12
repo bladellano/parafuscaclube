@@ -1,8 +1,8 @@
 $(function () {
 
     $('#idAlbum').change(function(event) { // Seta o campo nomeFoto com mesmo nome do album.
-       $('#tituloFoto').val($(  '#idAlbum option:selected').text());
-    });
+     $('#tituloFoto').val($(  '#idAlbum option:selected').text());
+ });
 
 
     //Tooltip - Setando a posição da caixa exibindo quando passa em cima do nome.
@@ -84,19 +84,19 @@ $(function () {
         alertify.confirm('Deseja excluir o album?', function () {
 
             $.ajax({
-                    url: '../excluir-album.php',
-                    type: 'POST',
-                    dataType: 'html',
-                    data: {
-                        id: id
-                    },
-                })
-                .done(function (r) {
-                    alertify.success('Excluído com sucesso!');
-                    setTimeout(function () {
-                        location.reload();
-                    }, 1500);
-                });
+                url: '../excluir-album.php',
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    id: id
+                },
+            })
+            .done(function (r) {
+                alertify.success('Excluído com sucesso!');
+                setTimeout(function () {
+                    location.reload();
+                }, 1500);
+            });
         })
     });
 
@@ -115,8 +115,8 @@ $(function () {
         if (typeof data === 'object') {
 
             var processData = false,
-                cache = false,
-                contentType = false;
+            cache = false,
+            contentType = false;
 
             var formCompleto = document.getElementById('form-membro');
 
@@ -173,8 +173,8 @@ $(function () {
         if (typeof data === 'object') {
 
             var processData = false,
-                cache = false,
-                contentType = false;
+            cache = false,
+            contentType = false;
 
             var formCompleto = document.getElementById('form-noticia');
 
@@ -236,19 +236,19 @@ $(function () {
 
         $.ajax({
 
-                type: $(this).attr('method'),
-                url: '../salvar-video.php',
-                dataType: 'html',
-                data: data,
+            type: $(this).attr('method'),
+            url: '../salvar-video.php',
+            dataType: 'html',
+            data: data,
 
-            })
-            .done(function (r) {
+        })
+        .done(function (r) {
 
-                if (r == 1) {
+            if (r == 1) {
 
                     // alertify.alert('Mensagem', 'Inserido com sucesso!', function () {
                     // });
-                        alertify.success('Video inserido com sucesso!');
+                    alertify.success('Video inserido com sucesso!');
 
                     $('#form-video')[0].reset(); //reseta formulário
 
@@ -274,17 +274,17 @@ $(function () {
 
         $.ajax({
 
-                type: $(this).attr('method'),
-                url: '../salvar-album.php',
-                dataType: 'html',
-                data: 'nomeAlbum=' + data,
-            })
-            .done(function (r) {
+            type: $(this).attr('method'),
+            url: '../salvar-album.php',
+            dataType: 'html',
+            data: 'nomeAlbum=' + data,
+        })
+        .done(function (r) {
 
-                if (r == 1) {
+            if (r == 1) {
                     // console.log(r);
                     // alertify.alert('Alerta', 'Inserido com sucesso!', function () {
-                    alertify.success('Album inserido com sucesso!');
+                        alertify.success('Album inserido com sucesso!');
                     // });
 
                     $('#form-album')[0].reset(); //reseta formulário
@@ -327,6 +327,32 @@ $(function () {
         });
     });
 
+
+    //Atualiza album 
+    $('#btnAtualizaAlbum').click(function () {
+
+        dados = $('#frmAlbumU').serialize();
+
+        $.ajax({
+            type: "POST",
+            data: dados,
+            url: "../atualiza-album.php",
+            success: function (r) {
+
+                if (r == 1) {
+
+                    alertify.success("Atualizado com Sucesso :)");
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
+
+                } else {
+                    alertify.error("Não foi possível atualizar :(");
+                    return false;
+                }
+            }
+        });
+    });
 
 
     //Atualiza titulo do video
@@ -413,23 +439,23 @@ $(function () {
 
     // document.getElementById("foto").onchange = function(e) { 
 
-    $("#foto, #arquivo").change(function (e) {
-        data = new FormData();
-        var nomeArquivo = [],
+        $("#foto, #arquivo").change(function (e) {
+            data = new FormData();
+            var nomeArquivo = [],
             respStringInt;
-        for (var i = 0; i < e.target.files.length; i++) {
-            nomeArquivo[i] = e.target.files[i].name;
-        }
+            for (var i = 0; i < e.target.files.length; i++) {
+                nomeArquivo[i] = e.target.files[i].name;
+            }
 
-        (e.target.files.length > 1) ? respStringInt = e.target.files.length + " arquivo(s)": respStringInt = nomeArquivo.join(", ");
+            (e.target.files.length > 1) ? respStringInt = e.target.files.length + " arquivo(s)": respStringInt = nomeArquivo.join(", ");
 
-        console.log(respStringInt);
+            console.log(respStringInt);
 
-        $('label[for="foto"],label[for="arquivo"]').text(respStringInt);
+            $('label[for="foto"],label[for="arquivo"]').text(respStringInt);
 
-        var size_arquivos = 0;
+            var size_arquivos = 0;
 
-        if (e.target.files != null && e.target.files.length != 0) {
+            if (e.target.files != null && e.target.files.length != 0) {
 
             //VERIFICA O TAMANHO E A EXTENSÃO DO ARQUIVO.
             var arquivo = [];
@@ -456,7 +482,7 @@ $(function () {
 
          }*/
 
-    });
+     });
 
 
     //Upload de foto
@@ -482,7 +508,7 @@ $(function () {
             type: 'post',
             dataType: 'html',
             beforeSend: function(){
-                
+
                 $(".fundo").css("display", "block");
                 $("#wait").css("display", "block");     
             },
@@ -519,28 +545,28 @@ $(function () {
         alertify.confirm('Deseja excluir o registro?', function () {
 
             $.ajax({
-                    url: '../excluir-membro.php',
-                    type: 'POST',
-                    dataType: 'html',
-                    data: {
-                        id: id
-                    },
-                })
-                .done(function (r) {
+                url: '../excluir-membro.php',
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    id: id
+                },
+            })
+            .done(function (r) {
 
-                    if (r == true) {
-                        alertify.success('Excluído com sucesso!');
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1500);
+                if (r == true) {
+                    alertify.success('Excluído com sucesso!');
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
 
-                    } else {
+                } else {
 
-                        alertify.error('Erro ao excluir o registro!');
+                    alertify.error('Erro ao excluir o registro!');
 
-                        return false;
-                    }
-                });
+                    return false;
+                }
+            });
 
 
         });
@@ -554,28 +580,28 @@ $(function () {
         alertify.confirm('Deseja excluir o registro?', function () {
 
             $.ajax({
-                    url: '../excluir-video.php',
-                    type: 'POST',
-                    dataType: 'html',
-                    data: {
-                        id: id
-                    },
-                })
-                .done(function (r) {
+                url: '../excluir-video.php',
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    id: id
+                },
+            })
+            .done(function (r) {
 
-                    if (r == true) {
-                        alertify.success('Excluído com sucesso!');
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1500);
+                if (r == true) {
+                    alertify.success('Excluído com sucesso!');
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
 
-                    } else {
-                        alertify.error('Erro ao excluir o registro!');
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1500);
-                    }
-                });
+                } else {
+                    alertify.error('Erro ao excluir o registro!');
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
+                }
+            });
 
 
         });
@@ -589,25 +615,25 @@ $(function () {
         alertify.confirm('Deseja excluir o registro?', function () {
 
             $.ajax({
-                    url: '../excluir-noticia.php',
-                    type: 'POST',
-                    dataType: 'html',
-                    data: {
-                        id: id
-                    },
-                })
-                .done(function (r) {
+                url: '../excluir-noticia.php',
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    id: id
+                },
+            })
+            .done(function (r) {
 
-                        if (r == true) {
-                        alertify.success('Excluído com sucesso!');
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1500);
+                if (r == true) {
+                    alertify.success('Excluído com sucesso!');
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
 
-                    } else {
-                        alertify.error('Erro ao excluir o registro!');
-                           }
-                });
+                } else {
+                    alertify.error('Erro ao excluir o registro!');
+                }
+            });
 
 
         });
@@ -621,28 +647,28 @@ $(function () {
         alertify.confirm('Deseja excluir a foto?', function () {
 
             $.ajax({
-                    url: '../excluir-foto.php',
-                    type: 'POST',
-                    dataType: 'html',
-                    data: {
-                        id: id
-                    },
-                })
-                .done(function (r) {
+                url: '../excluir-foto.php',
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    id: id
+                },
+            })
+            .done(function (r) {
 
-                    if (r == true) {
-                        alertify.success('Excluído com sucesso!');
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1500);
+                if (r == true) {
+                    alertify.success('Excluído com sucesso!');
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
 
-                    } else {
-                        alertify.error('Erro ao excluir a foto!');
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1500);
-                    }
-                });
+                } else {
+                    alertify.error('Erro ao excluir a foto!');
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
+                }
+            });
 
 
         })
