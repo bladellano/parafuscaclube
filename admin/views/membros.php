@@ -4,11 +4,11 @@ require_once "../models/Membros.php";
 
 $objMembro = new Membros();
 
+require_once "_header.php"; 
+
+require_once "menu.php";
+
 ?>
-
-<?php require_once "_header.php"; ?>
-
-<?php require_once "menu.php"; ?>
 
 <div class="container" style="margin-bottom: 80px;">
 	<!-- Modal -->

@@ -8,6 +8,12 @@
 		margin: 0;
 		padding: 0;
 	}
+	
+	/* Customiza o estilo da mensagem do alertify */
+	.ajs-message.ajs-error, .ajs-message.ajs-success {
+		color: #fff !important;
+		text-shadow: 2px 1px #333;
+	}
 
 	/* Colocando um X para fechar o dialog */
 	.ui-dialog .ui-dialog-titlebar-close{	
@@ -125,14 +131,14 @@
 
 	.header-site{
 
-		background-image: url('../img/fundo-oliveira.jpg');
+		background-image: url('../img/banner-fundo.jpg');
 		position: center top;
 		background-repeat: no-repeat;
 		background-size: cover;
-		background-attachment: fixed;
+		/*background-attachment: fixed;*/
 		color: #fff;
-		padding-top: 80px;
-		padding-bottom: 80px;
+		/*padding-top: 210px;*/
+		/*padding-bottom: 80px;*/
 	}
 	.content-site {
 		padding-top: 50px;

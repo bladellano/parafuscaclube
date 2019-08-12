@@ -1,7 +1,5 @@
 $(function () {
 
-
-
     $('#idAlbum').change(function(event) { // Seta o campo nomeFoto com mesmo nome do album.
        $('#tituloFoto').val($(  '#idAlbum option:selected').text());
     });
@@ -23,7 +21,6 @@ $(function () {
 
         $('#caixa_' + $(this).attr('data-id')).fadeOut();
     });
-
 
 
     //Login
@@ -53,7 +50,6 @@ $(function () {
                     window.location = "views/inicio.php";
                 } else {
                     alertify.error("Usuário ou senha não confere :(");
-                    // alertify.alert('Alert Title', 'Alert Message!', function(){ alertify.success('Ok'); });
                 }
             },
             error: function (request, status, error) {
@@ -77,8 +73,6 @@ $(function () {
         }
         return vazios;
     }
-
-
 
 
     //Excluindo um album

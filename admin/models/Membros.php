@@ -20,13 +20,13 @@ class Membros extends Conexao {
 	
 	public function salvarMembro($array_dados, $array_foto = null){
 
-		$nomeArquivo = uniqid('img_').".".pathinfo($array_foto['arquivo_name'], PATHINFO_EXTENSION);
+		$nomeArquivo = ($array_foto != null) ? uniqid('img_').".".pathinfo($array_foto['arquivo_name'], PATHINFO_EXTENSION) : "";
 		$newNameFile = $nomeArquivo;
 
 		$this->criaThumbnails(
 			$array_foto['arquivo_type'], 
 			$array_foto['arquivo_tmp_name'], 
-			$newNameFile, 
+			$newNameFile,  
 			self::pasta
 		);
 
@@ -47,7 +47,7 @@ class Membros extends Conexao {
 
 		try {
 
-			$sql  = "INSERT INTO ".self::table." (nomeMembro, userMembro, passMembro, anoFusca, foto, thumb_foto) VALUES (?,?,?,?,?,?)";
+			$sql  = "INSERT INTO ".self::table." (nomeMembro,email,endereco,telefone,userMembro,passMembro,anoFusca,foto,thumb_foto) VALUES (?,?,?,?,?,?,?,?,?)";
 
 			$stmt = $this->db->prepare($sql);
 
@@ -117,17 +117,28 @@ class Membros extends Conexao {
 	}
 
 
-	public function selecionarMembro($id){
+	public function selecionarMembro($aWheres){
 
-		$sql  = "SELECT * FROM ".self::table." WHERE idMembro = $id";
+		try {
 
-		return $this->db->query($sql)->fetch(PDO::FETCH_OBJ);	
+			$cond = (is_array($aWheres) && count($aWheres)>0) ? "WHERE ".join($aWheres,' and ') : '';
+
+			$sql  = "SELECT * FROM ".self::table." $cond";
+
+			return $this->db->query($sql)->fetch(PDO::FETCH_ASSOC);	
+			
+		} catch (PDOException $e) {
+
+			echo $e->getMessage();
+			
+		}
+
 	}
 
 
 	public function listarMembros(){
 
-		$sql = "SELECT * FROM ".self::table." ORDER BY dataCaptura";	
+		$sql = "SELECT * FROM ".self::table." WHERE email is null ORDER BY dataCaptura";	
 
 		return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);	
 	}

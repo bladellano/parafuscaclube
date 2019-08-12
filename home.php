@@ -1,5 +1,5 @@
+
 <?php 
-// include '_header.php';
 
 require_once "admin/models/Fotos.php";
 require_once "admin/models/Albuns.php";
@@ -15,21 +15,87 @@ $objMembro = new Membros();
 
 ?>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Ficha de Inscrição</h4>
+			</div>
+			<div class="modal-body">
+
+				<form id="fichaCadastroMembro">
+					<div class="row">
+						<div class="col-md-12"><div class="form-group">
+							<label for="nome_completo">Nome Completo</label>
+							<input class="form-control" name="nome_completo" id="nome_completo" type="text">
+						</div></div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6"><div class="form-group">
+							<label for="email">E-mail</label>
+							<input class="form-control" name="email" id="email" type="text">
+						</div></div>
+						<div class="col-md-6"><div class="form-group">
+							<label for="telefone">Telefone</label>
+							<input class="form-control" name="telefone" id="telefone" type="text">
+						</div></div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6"><div class="form-group">
+							<label for="endereco">Endereço</label>
+							<input class="form-control" name="endereco" id="endereco" type="text">
+						</div></div>
+						<div class="col-md-6"><div class="form-group">
+							<label for="ano_fusca">Ano Fusca</label>
+							<input class="form-control" name="ano_fusca" id="ano_fusca" type="text">
+						</div></div>
+					</div>					
+					<div class="row">
+						<div class="col-md-12">
+							<div class="g-recaptcha" data-sitekey="6LeDa7IUAAAAAAJ2XiClYhUlSx2W4woSmz4mOksN"></div>
+						</div>
+					</div>
+					<div class="row text-center"><p></p>
+						<button type="submit" class="btn btn-primary btn-membro">Gravar</button>
+					</div>
+
+				</form>
+			</div>			
+			
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+			</div>
+		</div>
+
+	</div>
+</div> <!-- Modal -->
+
+<div id="divAguarde"></div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <section class="header-site">
 
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12 text-center">
-				<!-- <h1 class="text-center">Bem-vindo<br> -->
-					<img src="img/logo.png" alt="Logo Pará Fusca Clube">
-					<p class="lead text-center">
-					Somos verdadeiros apaixonados pelo fusca! E dessa paixão surgiu o Pará Fusca Clube que foi criado com o objetivo de reunir pessoas amantes desse veículo. </p>
-					<p class="text-center">
-						<p class="text-center">
-							<a href="#" class="btn btn-danger">INSCREVA-SE</a>
+			<div class="col-xs-12 text-center" style="height: 544px; position: relative; left: 40%">
+					<!-- <img src="img/logo.png" alt="Logo Pará Fusca Clube"> -->
+					<!-- <p class="lead text-center"> -->
+					<!-- Somos verdadeiros apaixonados pelo fusca! E dessa paixão surgiu o Pará Fusca Clube que foi criado com o objetivo de reunir pessoas amantes desse veículo.  -->
+				<!-- </p> -->
+					<!-- <p class="text-center"> -->
+
+						<p class="text-center" style="bottom: 0;position: absolute;">
+							<a href="#" class="btn btn-danger" data-toggle="modal" data-target="#myModal">INSCREVA-SE</a>
 						</p>
-						<p class="lead text-center">Fundado em 19/07/2010</p>
-						<p class="lead text-center">Fundador/Presidente: <span class="damiao">Damião Oliveira</span></p>
+						<!-- <p class="lead text-center">Fundado em 19/07/2010</p> -->
+						<!-- <p class="lead text-center">Fundador/Presidente: <span class="damiao">Damião Oliveira</span></p> -->
 					</div>
 				</div>
 			</div>
@@ -169,42 +235,41 @@ $objMembro = new Membros();
 						</div>
 
 					</div> <!--container-->					
-				<!-- </div> -->
+					<!-- </div> -->
 
-			</section> <!--Midias-->
+				</section> <!--Midias-->
 
 
-			<section class="img-site" id="membros">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12">
-							<h1 class="text-center"><span>Membros PFC</span></h1>
+				<section class="img-site" id="membros">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h1 class="text-center"><span>Membros PFC</span></h1>
 
-							<br>
+								<br>
+							</div>
+						</div>
+						<div class="row">	
+							<div class="slick-membros">
+								<?php 
+
+								foreach ($objMembro->listarMembros() as $membro) {							 
+
+									echo '<div class="col-sm-3">
+									<div class="thumbnail">
+									<img class="img-circle" src="admin/'.$membro['thumb_foto'].'" alt="">
+									<div class="caption text-center">
+									<h3>'.$membro['nomeMembro'].'</h3>
+									</div>
+									</div>
+									</div>';
+
+								}
+
+								?>
+							</div><!--slick-membros-->
+
 						</div>
 					</div>
-					<div class="row">	
-						<div class="slick-membros">
-						<?php 
+				</section>
 
-							foreach ($objMembro->listarMembros() as $membro) {							 
-
-								echo '<div class="col-sm-3">
-								<div class="thumbnail">
-								<img class="img-circle" src="admin/'.$membro['thumb_foto'].'" alt="">
-								<div class="caption text-center">
-								<h3>'.$membro['nomeMembro'].'</h3>
-								</div>
-								</div>
-								</div>';
-
-							}
-
-							?>
-						</div><!--slick-membros-->
-
-					</div>
-				</div>
-			</section>
-
-		 

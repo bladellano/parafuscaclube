@@ -1,6 +1,153 @@
 $(document).ready(function() {
-        
- 
+
+	//Customiza a divAguarde	
+	$("#divAguarde").dialog({
+		autoOpen: false,
+		height: 90,
+		width: 150,
+		title: 'Processando...',
+		modal: true,
+		resizable: false,
+		open: function (event, ui) {
+			$(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+			$("#divAguarde").html('<img src="img/reload-1s-45px.gif" alt="Aguarde" align="absmiddle">');
+		},
+		close: function () {
+			$("#divAguarde").empty();
+		}
+	});
+
+
+    //Pegando dados do form membro.
+    $('input[name="telefone"]').mask('(00)00000-0000');
+    $('input[name="ano_fusca"]').mask('0000');
+
+    $("#fichaCadastroMembro").submit(function(event) {
+
+        event.preventDefault();
+
+        var vazios = validarFormVazio($(this));
+
+        if (vazios > 0) {
+
+            alertify
+            .alert("Alerta",'Por favor, preencha todos campos!', function(){
+            });
+
+            return false;
+        }
+
+        var dados = $(this).serializeArray();
+        var stopScript = false;
+
+        dados.forEach( function(element, index) {
+        	if(element.name == 'email'){
+        		if(verificarEmail(element.value) == false){
+        			$('input[name=email]').css('border','2px solid #cf000f'); 
+        			alertify
+					.alert("Alerta",'Formato do e-mail inválido!', function(){
+					});
+        			stopScript = true;
+        			return false;
+        		}
+        			$('input[name=email]').css('border','1px solid #cccccc'); 
+        	}
+        });
+
+        if(stopScript){
+        	return false;
+        }
+
+		$.ajax({
+			url: "admin/salvar-membro.php",
+			type: 'POST',
+			dataType: 'html',
+			data: dados,
+			beforeSend: function() {
+
+				$('.modal').css('z-index',1); // Envia o modal para de baixo do loading
+
+				$("#divAguarde").dialog("open");
+				$('.ui-dialog').css({
+					
+					'text-align': 'center',// Centraliza o gif
+					'z-index': '1050',// Envia para frente de todos.
+				});
+				$('.ui-dialog-content').css({
+					'overflow': 'hidden'
+				})
+
+				$('#fichaCadastroMembro input').attr('disabled','disabled');
+
+			},
+			success: function(r){
+
+				if(r==1){
+
+					$("#divAguarde").dialog("close");
+					alertify.success('Você acabou de se registrar com sucesso! Brevemente entraremos em contato.');
+					$('#fichaCadastroMembro')[0].reset();
+					setTimeout(function(){ window.location.reload(); }, 3500);					
+
+				} else if(r==2){
+
+					alertify
+					.alert("Alerta",'Este e-mail já esta sendo usado!', function(){
+					});
+
+					$('.modal').css('z-index',1050);
+
+					$('#fichaCadastroMembro input').attr('disabled',false);
+
+					$("#divAguarde").dialog("close");
+
+					return false;
+				}else {
+
+					alertify
+					.alert("Alerta",'Você não marcou o reCAPTCHA ou já expirou!', function(){
+					});
+
+					$('.modal').css('z-index',1050);
+
+					$('#fichaCadastroMembro input').attr('disabled',false);
+
+					$("#divAguarde").dialog("close");
+
+					return false;
+				}
+
+			}
+		});
+
+    });
+
+    // Verifica formato do e-mail	
+	function verificarEmail(email){
+		if(email == '') return false;
+		if(!email.match(/^([a-z0-9-_.]{1,})+@+([a-z.]{1,})$/)) return false;
+
+	}
+
+    function validarFormVazio(formulario) {
+
+    	dados = $(formulario).serialize();
+    	d = dados.split('&');
+    	d.pop(); // Tira "g-recaptcha-response"
+
+    	vazios = 0;
+    	for (i = 0; i < d.length; i++) {
+    		controles = d[i].split("=");
+    		
+    		if (controles[1] == "") {
+    			vazios++;
+    		}
+    	}	
+
+    	return vazios;
+    }
+
+
 	//Altera o fundo do navmenu
 	$(window).scroll(function(event) {
 		if($(this).scrollTop() > 0){
@@ -104,7 +251,7 @@ $('button[type=button][class="ui-dialog-titlebar-close"]').append("<i class=\"fa
 
 function viewNoticia(id, tipo = 'Notícia'){
 
- 	$.ajax({
+	$.ajax({
 		url: 'admin/buscar-noticia.php',
 		type: 'POST',
 		dataType: 'html',
@@ -114,21 +261,21 @@ function viewNoticia(id, tipo = 'Notícia'){
 
 		dados = jQuery.parseJSON(r);
 
-           $('#boxMensagem').dialog('destroy').remove();
+		$('#boxMensagem').dialog('destroy').remove();
 
-		   $('<div id="boxMensagem">').load('modal/modalNoticia.php',{
-		   	id:id,
-		   	titulo: dados.tituloNoticia,
-		   	conteudo: dados.conteudo,
-		   	imagem: dados.thumb_imagem,
-		   	data: dados.dataCaptura
-		   }).dialog({
-                maximize : false,
-                modal : true,
-                title : tipo,
-                width : 650,
-                height : 500
-            });
+		$('<div id="boxMensagem">').load('modal/modalNoticia.php',{
+			id:id,
+			titulo: dados.tituloNoticia,
+			conteudo: dados.conteudo,
+			imagem: dados.thumb_imagem,
+			data: dados.dataCaptura
+		}).dialog({
+			maximize : false,
+			modal : true,
+			title : tipo,
+			width : 650,
+			height : 500
+		});
 	});
 
 }
