@@ -158,7 +158,7 @@ $objMembro = new Membros();
 				<div class="row">
 					<div class="col-xs-12 text-center">
 						<!-- <a href="https://www.youtube.com/channel/UCi6kCppWOEc8aVZMF_68nog" class="btn btn-danger" target="_blank">Todos os Videos</a> -->
-						<a href="videos" class="btn btn-danger" target="_blank">Todos os Videos</a>
+						<a href="videos" class="btn btn-danger">Todos os Videos</a>
 					</div>
 				</div>
 			</div>	
