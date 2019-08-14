@@ -1,5 +1,18 @@
 $(document).ready(function() {
 
+
+	$('[data-toggle="popover"]').css({
+		'textDecoration':'none',
+		'color':'#fff',
+		'font-size':'22px'
+	});
+
+	$(function () {
+		$('[data-toggle="popover"]').popover({
+			html:true
+		})
+	})
+
 	//Customiza a divAguarde	
 	$("#divAguarde").dialog({
 		autoOpen: false,
@@ -24,46 +37,46 @@ $(document).ready(function() {
 
     $("#fichaCadastroMembro").submit(function(event) {
 
-        event.preventDefault();
+    	event.preventDefault();
 
-        var vazios = validarFormVazio($(this));
+    	var vazios = validarFormVazio($(this));
 
-        if (vazios > 0) {
+    	if (vazios > 0) {
 
-            alertify
-            .alert("Alerta",'Por favor, preencha todos campos!', function(){
-            });
+    		alertify
+    		.alert("Alerta",'Por favor, preencha todos campos!', function(){
+    		});
 
-            return false;
-        }
+    		return false;
+    	}
 
-        var dados = $(this).serializeArray();
-        var stopScript = false;
+    	var dados = $(this).serializeArray();
+    	var stopScript = false;
 
-        dados.forEach( function(element, index) {
-        	if(element.name == 'email'){
-        		if(verificarEmail(element.value) == false){
-        			$('input[name=email]').css('border','2px solid #cf000f'); 
-        			alertify
-					.alert("Alerta",'Formato do e-mail inválido!', function(){
-					});
-        			stopScript = true;
-        			return false;
-        		}
-        			$('input[name=email]').css('border','1px solid #cccccc'); 
-        	}
-        });
+    	dados.forEach( function(element, index) {
+    		if(element.name == 'email'){
+    			if(verificarEmail(element.value) == false){
+    				$('input[name=email]').css('border','2px solid #cf000f'); 
+    				alertify
+    				.alert("Alerta",'Formato do e-mail inválido!', function(){
+    				});
+    				stopScript = true;
+    				return false;
+    			}
+    			$('input[name=email]').css('border','1px solid #cccccc'); 
+    		}
+    	});
 
-        if(stopScript){
-        	return false;
-        }
+    	if(stopScript){
+    		return false;
+    	}
 
-		$.ajax({
-			url: "admin/salvar-membro.php",
-			type: 'POST',
-			dataType: 'html',
-			data: dados,
-			beforeSend: function() {
+    	$.ajax({
+    		url: "admin/salvar-membro.php",
+    		type: 'POST',
+    		dataType: 'html',
+    		data: dados,
+    		beforeSend: function() {
 
 				$('.modal').css('z-index',1); // Envia o modal para de baixo do loading
 
@@ -123,11 +136,11 @@ $(document).ready(function() {
     });
 
     // Verifica formato do e-mail	
-	function verificarEmail(email){
-		if(email == '') return false;
-		if(!email.match(/^([a-z0-9-_.]{1,})+@+([a-z.]{1,})$/)) return false;
+    function verificarEmail(email){
+    	if(email == '') return false;
+    	if(!email.match(/^([a-z0-9-_.]{1,})+@+([a-z.]{1,})$/)) return false;
 
-	}
+    }
 
     function validarFormVazio(formulario) {
 

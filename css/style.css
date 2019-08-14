@@ -3,12 +3,14 @@
 		height: 100%;
 		/*position: relative;*/
 	}  
-
 	* {
 		margin: 0;
 		padding: 0;
 	}
 	
+	.popover-title{
+		background: #000;
+	}
 	/* Customiza o estilo da mensagem do alertify */
 	.ajs-message.ajs-error, .ajs-message.ajs-success {
 		color: #fff !important;
