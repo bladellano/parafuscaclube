@@ -8,45 +8,11 @@ $fotos = new Fotos();
 $objAlbum = new Albuns();
 $objNoticia = new Noticias();
 
+require_once "_header.php"; 
+
+require_once "menu.php"; 
+
 ?>
-
-<?php require_once "_header.php"; ?>
-
-<?php require_once "menu.php"; ?>
-
-<!-- <style>
-	#wait{
-		
-		display:none; 
-		position:absolute;
-		top:25%;
-		left:16%;
-		text-align:center;	
-		z-index: 9;
-	}
-	#wait img{
-		width: 25%;
-		border: 1px solid #999;
-		border-radius: 8px;
-		z-index: 8;
-
-	}	
-
-	.fundo{
-		background-color: #000;
-		position: absolute;
-		height: 100%;
-		width: 100%;
-		z-index: 4;
-		opacity: 0.8;
-		-webkit-transition: 2s;
-			   -moz-transition: 2s;
-			    -ms-transition: 2s;
-			     -o-transition: 2s;
-			        transition: 2s;	
-
-	}	
-</style> -->
 
 <div class="fundo" style="display: none"></div>
 <div class="container">
@@ -100,6 +66,10 @@ $objNoticia = new Noticias();
 				<input type="submit" class="btn btn-primary" value="Salvar">
 
 			</form>
+
+		<div class="row">
+			<div class="col-md-12"><a href="#" id="btApagarItem">Apagar</a></div>
+		</div>
 		</div> <!--col-md-6-->
 		<div class="col-md-8 text-center">
 			<?php  
@@ -109,7 +79,7 @@ $objNoticia = new Noticias();
 				?>
 
 				<h3>LISTA DE FOTOS</h3>
-				<table class="table table-striped">
+				<table class="table table-hover">
 					<thead >		
 						<tr>
 							<th>Titulo</th>
@@ -127,10 +97,10 @@ $objNoticia = new Noticias();
 							foreach ($fotos->paginacao()["objItens"] as $foto) {
 
 								echo '<tr>';
-								echo '<td>'.$foto["tituloFoto"].'</td>'; 	
+								echo '<td><input class="form-check-input" type="checkbox" id="chkCdNoticia" name="chkCdNoticia[]" value="'.$foto["idFoto"].'">'.$foto["tituloFoto"].'</td>'; 	
 								echo '<td><img width="50" src="../'.$foto["urlFoto"].'" alt=""></td>'; 			
 								echo '<td>'.$objAlbum->selecionarAlbum($foto["idAlbum"]).'</td>'; 			
-								echo '<td>'.date('d/m/Y H:i:s', strtotime($foto["dataCaptura"])).'</td>';
+								echo '<td>'.$fotos->formatDataPtbr($foto["dataCaptura"]).'</td>';
 								echo '<td>
 								<a class="idFoto apagar btn btn-danger" href='.$foto["idFoto"].'><i class="fa fa-close"></i></a>
 								<span class="btn btn-success" data-toggle="modal" data-target="#atualizarFoto" 

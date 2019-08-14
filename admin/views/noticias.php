@@ -109,7 +109,7 @@ $objVideo = new Videos();
 		?>
 
     <h3>LISTA DE NOTÍCIAS</h3>
-    <table class="table table-striped">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Título</th>
@@ -129,7 +129,7 @@ $objVideo = new Videos();
 						// echo '<td><img width="80" src="../'.$objFoto->selecionarFoto($noticia["idFoto"])->urlFoto.'" alt=""></td>';
                         echo '<td><img width="80" src="../'.$noticia["thumb_imagem"].'" alt=""></td>';
 						echo '<td>'.$objAlbum->selecionarAlbum($noticia["idAlbum"]).'</td>'; 			
-						echo '<td>'.date('d/m/Y H:i:s', strtotime($noticia["dataCaptura"])).'</td>'; 				 
+						echo '<td>'.$objNoticia->formatDataPtbr($noticia["dataCaptura"]).'</td>'; 				 
 						echo '<td align="center"><a class="idNoticia apagar btn btn-danger" href='.$noticia["idNoticia"].'><i class="fa fa-close"></i></a> '; 
 						echo '<span class="btn btn-success" data-toggle="modal" data-target="#atualizarNoticia" 
 						onclick="adicionarDado('.$noticia["idNoticia"].',\''.$noticia["tituloNoticia"].'\')"><i class="fa fa-edit"></i></span>

@@ -1,8 +1,35 @@
 $(function () {
 
+
+
+    $('#btApagarItem').click(function(event) { // Apaga varios itens!
+        
+        var val= [];
+        $('input[id=chkCdNoticia]:checkbox:checked').each(function (i) {
+            val[i] = $(this).val();
+        });
+
+        console.log('Cod´s: ', val);
+
+        var dados = val
+
+        $.ajax({
+            url: '../excluir-foto.php',
+            type: 'POST',
+            dataType: 'html',
+            data: {dados},
+            success: function(r){
+                console.log('result: ' + r);
+            }
+        })
+       
+        
+    });
+
+
     $('#idAlbum').change(function(event) { // Seta o campo nomeFoto com mesmo nome do album.
-       $('#tituloFoto').val($(  '#idAlbum option:selected').text());
-   });
+     $('#tituloFoto').val($('#idAlbum option:selected').text());
+ });
 
 
     //Tooltip - Setando a posição da caixa exibindo quando passa em cima do nome.
@@ -544,31 +571,31 @@ $(function () {
         var id = $(this).attr('href');
         alertify.confirm('Alerta!', 'Deseja realmente excluir o membro?', function(){ 
 
-    $.ajax({
-        url: '../excluir-membro.php',
-        type: 'POST',
-        dataType: 'html',
-        data: {
-            id: id
-        },
-    })
-    .done(function (r) {
-        if (r == true) {
-            alertify.success('Excluído com sucesso!');
-            setTimeout(function () {
-                location.reload();
-            }, 1500);
+            $.ajax({
+                url: '../excluir-membro.php',
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    id: id
+                },
+            })
+            .done(function (r) {
+                if (r == true) {
+                    alertify.success('Excluído com sucesso!');
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
 
-        } else {
-            alertify.error('Erro ao excluir o registro!');
-            return false;
+                } else {
+                    alertify.error('Erro ao excluir o registro!');
+                    return false;
+                }
+            });
+
         }
+        , function(){ 
+            alertify.error('Cancelado')
         });
-
-    }
-    , function(){ 
-        alertify.error('Cancelado')
-    });
 
     });
 
@@ -643,16 +670,14 @@ $(function () {
     //Excluindo uma foto
     $('.idFoto.apagar').on('click', function (e) {
         e.preventDefault();
-        var id = $(this).attr('href');
+        var dados = $(this).attr('href');
         alertify.confirm('Deseja excluir a foto?', function () {
 
             $.ajax({
                 url: '../excluir-foto.php',
                 type: 'POST',
                 dataType: 'html',
-                data: {
-                    id: id
-                },
+                data: {dados},
             })
             .done(function (r) {
 
