@@ -1,14 +1,15 @@
 $(function () {
 
     $('#idAlbum').change(function(event) { // Seta o campo nomeFoto com mesmo nome do album.
-     $('#tituloFoto').val($(  '#idAlbum option:selected').text());
- });
+       $('#tituloFoto').val($(  '#idAlbum option:selected').text());
+   });
 
 
     //Tooltip - Setando a posição da caixa exibindo quando passa em cima do nome.
     $('.viewFoto').hover(function () {
 
         var objCaixa = $('#caixa_' + $(this).attr('data-id'));
+        console.log(objCaixa);
         var posTop = $(this).offset().top;
         var postLeft = $(this).offset().left;
 
@@ -541,35 +542,34 @@ $(function () {
         e.preventDefault();
 
         var id = $(this).attr('href');
+        alertify.confirm('Alerta!', 'Deseja realmente excluir o membro?', function(){ 
 
-        alertify.confirm('Deseja excluir o registro?', function () {
+    $.ajax({
+        url: '../excluir-membro.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {
+            id: id
+        },
+    })
+    .done(function (r) {
+        if (r == true) {
+            alertify.success('Excluído com sucesso!');
+            setTimeout(function () {
+                location.reload();
+            }, 1500);
 
-            $.ajax({
-                url: '../excluir-membro.php',
-                type: 'POST',
-                dataType: 'html',
-                data: {
-                    id: id
-                },
-            })
-            .done(function (r) {
-
-                if (r == true) {
-                    alertify.success('Excluído com sucesso!');
-                    setTimeout(function () {
-                        location.reload();
-                    }, 1500);
-
-                } else {
-
-                    alertify.error('Erro ao excluir o registro!');
-
-                    return false;
-                }
-            });
-
-
+        } else {
+            alertify.error('Erro ao excluir o registro!');
+            return false;
+        }
         });
+
+    }
+    , function(){ 
+        alertify.error('Cancelado')
+    });
+
     });
 
     //Excluindo video

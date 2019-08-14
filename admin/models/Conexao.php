@@ -40,6 +40,9 @@ class Conexao {
 		return $con; 
 	}
 
+	public function formatDataPtbr($data){
+		return date('d/m/Y',strtotime($data));
+	}
 
 	public function paginacao(){
 

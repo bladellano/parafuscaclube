@@ -3,6 +3,7 @@
 require_once "../models/Membros.php";
 
 $objMembro = new Membros();
+ 
 
 require_once "_header.php"; 
 
@@ -79,13 +80,16 @@ require_once "menu.php";
 	<hr>
 	<fieldset>
 		<legend>LISTAR MEMBROS</legend>
-		<table class="table table-striped">
+		<table class="table table-hover">
 			<thead>		
 				<tr>
 					<th>#</th>
 					<th>Nome Membro</th>
 					<th>Usuário</th>
+					<th>E-mail</th>
+					<th>Telefone</th>
 					<th>anoFusca</th>				 
+					<th>Entrada</th>				 
 					<th>Ações</th>
 				</tr>
 			</thead>
@@ -94,15 +98,21 @@ require_once "menu.php";
 					<?php 
 
 					foreach ($objMembro->paginacao()["objItens"] as $membro) {
+
+						$imagem = strlen($membro['thumb_foto']) > 17 ? $membro['thumb_foto'] :"img/sem-foto.jpg";//Verifica sem foto.
+
 						echo '<tr>';
 						echo '<td align="center">'.$membro["idMembro"].'</td>';
 						echo '<td><div id="caixa_'.$membro["idMembro"].'">
-						<img width="128" height="98" src="../'.$membro['thumb_foto'].'" alt="">
+						<img width="128" height="98" src="../'.$imagem.'" alt="">
 						</div>
 
 						<span class="viewFoto btn btn-default" data-id="'.$membro["idMembro"].'">'.$membro["nomeMembro"].'</span></td>';
 						echo '<td>'.$membro["userMembro"].'</td>'; 	
-						echo '<td>'.$membro["anoFusca"].'</td>'; 	
+						echo '<td>'.$membro["email"].'</td>'; 	
+						echo '<td>'.$membro["telefone"].'</td>'; 	
+						echo '<td align="center">'.$membro["anoFusca"].'</td>'; 	
+						echo '<td>'.$objMembro->formatDataPtbr($membro["dataCaptura"]).'</td>'; 	
 						echo '<td align="center"><a class="idMembro apagar btn btn-danger" href='.$membro["idMembro"].'><i class="fa fa-close"></i></a> ';
 						echo '<span class="btn btn-success" data-toggle="modal" data-target="#atualizarMembro" 
 						onclick="adicionarDado(\''.$membro["idMembro"].'\',\''.$membro["nomeMembro"].'\',\''.$membro["userMembro"].'\',\''.$membro["anoFusca"].'\')"><i class="fa fa-edit"></i></td>'; 

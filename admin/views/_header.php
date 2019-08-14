@@ -1,7 +1,7 @@
 <?php  
 
-error_reporting(0);
-ini_set(“display_errors”, 0);
+// error_reporting(0);
+// ini_set(“display_errors”, 0);
 
 session_start();
 
@@ -23,19 +23,12 @@ if(!isset($_SESSION['usuario'])){ // Verifica se há sessão.
     <script src="../js/jquery.min.js" type="text/javascript"></script>
     <script src="../js/alertify.js" type="text/javascript"></script>
     <script src="../js/functions.js" type="text/javascript"></script>
-    <!-- <script src="../js/bootstrap.min.js" type="text/javascript"></script> -->
-    <!-- <script src="//cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script> -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--    <script src="ckeditor/ckeditor.js" type="text/javascript"></script>-->
     <link rel="stylesheet" type="text/css" href="../css/alertify.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="../css/bootstrap.css"> -->
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-
     <link rel="stylesheet" type="text/css" href="../css/pace.css">
-
     <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@3.0.4/js/froala_editor.pkgd.min.js'></script>
-
     <link href='https://cdn.jsdelivr.net/npm/froala-editor@3.0.4/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
 
 </head>
