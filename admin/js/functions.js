@@ -316,7 +316,7 @@ $(function () {
 
             if (r == 1) {
 
-                    alertify.success('Album inserido com sucesso!');
+                alertify.success('Album inserido com sucesso!');
 
                     $('#form-album')[0].reset(); // Reseta formulário
 
@@ -328,12 +328,42 @@ $(function () {
 
             });
 
-    })
+    });
+
+
+    function verificarEmail(email){
+        if(email == '') return false;
+        if(!email.match(/^([a-z0-9-_.]{1,})+@+([a-z.]{1,})$/)) return false;
+
+    }
+
+    $('input[name="telefone"]').mask('(00)00000-0000');
+    $('input[name="anofuscaU"]').mask('0000');
 
     //Atualiza dados do membro
     $('#btnAtualizaMembro').click(function () {
 
         dados = $('#frmMembroU').serializeArray();
+        var stopScript = false;
+
+        dados.forEach( function(element, index) {
+            if(element.name == 'email'){
+
+                if(verificarEmail(element.value) == false){
+                    $('input[name=email]').css('border','2px solid #cf000f'); 
+                    alertify
+                    .alert("Alerta",'Formato do e-mail inválido!', function(){
+                    });
+                    stopScript = true;
+                    return false;
+                }
+                $('input[name=email]').css('border','1px solid #cccccc'); 
+            }
+        });
+
+        if(stopScript){
+            return false;
+        }
 
         $.ajax({
             type: "POST",

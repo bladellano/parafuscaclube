@@ -23,7 +23,7 @@ class Fotos extends Conexao {
 	}
 
 	public function salvarFoto($titulo_foto, $type, $arquivo_nome, $arquivo_tmp_nome, $id_album){
-		/*trata a foto*/
+		/*Trata a foto*/
 
 		$nomeArquivo = uniqid('img_').".".pathinfo($arquivo_nome, PATHINFO_EXTENSION);
 		$newNameFile = $nomeArquivo; 

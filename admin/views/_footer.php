@@ -11,5 +11,7 @@
 
 <script src="../js/pace.min.js" type="text/javascript"></script>
 
+<script src="../js/jquery.mask.js" type="text/javascript"></script>
+
 </body>
 </html>

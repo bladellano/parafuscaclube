@@ -94,10 +94,18 @@ class Membros extends Conexao {
 
 	public function atualizarMembro($array_dados){
 
-		$sql = "UPDATE ".self::table." SET nomeMembro = ?, userMembro = ?, anoFusca = ? WHERE idMembro = ?";
+		$sql = "UPDATE ".self::table." SET nomeMembro = ?, userMembro = ?, anoFusca = ? , email = ? , telefone = ? , endereco = ? WHERE idMembro = ?";
 		$result = $this->db->prepare($sql);
-		$result->execute([$array_dados['nomeMembro'], $array_dados['userMembro'], $array_dados['anoFusca'], $array_dados['idMembro']]);
-		return $result->rowCount() > 0 ? true : false;	
+		return $result->execute([
+			$array_dados['nomeMembro'], 
+			$array_dados['userMembro'], 
+			$array_dados['anoFusca'], 
+			$array_dados['email'], 
+			$array_dados['telefone'], 
+			$array_dados['endereco'], 
+			$array_dados['idMembro']
+		]); 
+
 	}
 
 	public function excluirMembro($id){

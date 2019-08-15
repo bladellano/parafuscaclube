@@ -3,7 +3,6 @@
 require_once "../models/Membros.php";
 
 $objMembro = new Membros();
- 
 
 require_once "_header.php"; 
 
@@ -14,7 +13,7 @@ require_once "menu.php";
 <div class="container" style="margin-bottom: 80px;">
 	<!-- Modal -->
 	<div class="modal fade" id="atualizarMembro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -26,7 +25,7 @@ require_once "menu.php";
 
 					<form id="frmMembroU">
 
-						<input type="text" hidden="" id="idmembroU" name="idmembroU">
+						<input type="hidden" id="idmembroU" name="idmembroU">
 
 						<label>Nome </label>
 						<input type="text" id="nomemembroU" name="nomemembroU" class="form-control input-sm">
@@ -36,6 +35,16 @@ require_once "menu.php";
 
 						<label>Ano Fusca </label>
 						<input type="text" id="anofuscaU" name="anofuscaU" class="form-control input-sm">
+
+						<label>E-mail </label>
+						<input type="text" id="email" name="email" class="form-control input-sm">
+
+						<label>Telefone </label>
+						<input type="text" id="telefone" name="telefone" class="form-control input-sm">
+
+						<label>Endereço </label>
+						<input type="text" id="endereco" name="endereco" class="form-control input-sm">
+
 					</form>
 
 				</div>
@@ -115,7 +124,7 @@ require_once "menu.php";
 						echo '<td>'.$objMembro->formatDataPtbr($membro["dataCaptura"]).'</td>'; 	
 						echo '<td align="center"><a class="idMembro apagar btn btn-danger" href='.$membro["idMembro"].'><i class="fa fa-close"></i></a> ';
 						echo '<span class="btn btn-success" data-toggle="modal" data-target="#atualizarMembro" 
-						onclick="adicionarDado(\''.$membro["idMembro"].'\',\''.$membro["nomeMembro"].'\',\''.$membro["userMembro"].'\',\''.$membro["anoFusca"].'\')"><i class="fa fa-edit"></i></td>'; 
+						onclick="adicionarDado(\''.$membro["idMembro"].'\',\''.$membro["nomeMembro"].'\',\''.$membro["userMembro"].'\',\''.$membro["anoFusca"].'\',\''.$membro["email"].'\',\''.$membro["telefone"].'\',\''.$membro["endereco"].'\')"><i class="fa fa-edit"></i></td>'; 
 						echo '</tr>';
 					}
 					?>
@@ -129,12 +138,16 @@ require_once "menu.php";
 
 <script type="text/javascript">		
 
-	function adicionarDado(id, nome, usuario, anofusca){ 
+	function adicionarDado(id, nome, usuario, anofusca, email, telefone, endereco){ 
 
 		$('#idmembroU').val(id);
 		$('#nomemembroU').val(nome);
 		$('#usuariomembroU').val(usuario);
 		$('#anofuscaU').val(anofusca);
+
+		$('#email').val(email);
+		$('#telefone').val(telefone);
+		$('#endereco').val(endereco);
 	}
 </script>
 

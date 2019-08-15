@@ -4,16 +4,15 @@ require_once "models/Membros.php";
 
 $objMembro = new Membros();
 
-// print_r($_POST); exit;
-
 $aDadosMembro = array(
 	'idMembro' => $_POST['idmembroU'],
 	'nomeMembro' => $_POST['nomemembroU'],
 	'userMembro' => $_POST['usuariomembroU'],
-	'anoFusca' => $_POST['anofuscaU']
+	'anoFusca' => $_POST['anofuscaU'],
+	'email' => $_POST['email'],
+	'telefone' => $_POST['telefone'],
+	'endereco' => $_POST['endereco']
 );
-
-
 
 echo $objMembro->atualizarMembro($aDadosMembro);
 
