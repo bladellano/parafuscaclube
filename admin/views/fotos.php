@@ -90,7 +90,7 @@ require_once "menu.php";
 				<table class="table table-hover">
 					<thead >		
 						<tr>
-							<th>#</th>
+							<th><a href="#" id="chkCdNoticia">Todos</a></th>
 							<th>Título</th>
 							<th>Foto</th>
 							<th>Album</th>

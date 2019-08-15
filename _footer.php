@@ -27,13 +27,11 @@
 							<p>© 2019 - Pará Fusca Clube. Todos os direitos reservados.</p>
 						</div>
 						<div class="col-md-6 text-right">
-							<p>Desenvolvido por <img src="img/fire-logo.png" alt=""></p>
+							<p>Desenvolvido por <a href="https://api.whatsapp.com/send?phone=5591982650277" target="_blank"><img src="img/fire-logo.png" alt=""></a></p>
 						</div>
 					</div>
 				</div>
 			</section>
-
-			<!-- <script src="js/jquery.min.js"></script> -->
 
 			<script src="js/bootstrap.js"></script>
 			<script src="js/slick.js"></script>
@@ -41,11 +39,6 @@
 			<script src="js/functions.js"></script>
 			<script src="js/jquery.mask.js"></script>
 			<script src="js/alertify.js" type="text/javascript"></script>
-
-			<!-- <script src="libs/jquery-ui-1.12.1/jquery-ui.js"></script> -->
-
-			<!-- <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> -->
-
 
 			<script>
 

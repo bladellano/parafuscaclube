@@ -1,6 +1,21 @@
 $(function () {
 
 
+    // Marca e desmarca todos os ítens.
+    $('#chkCdNoticia').click(function(event) {
+        event.preventDefault();
+        var inputCheck = $('input[type=checkbox]#chkCdNoticia');
+        if(inputCheck.not(':checked').length == 0){
+            inputCheck.prop('checked', false);
+           return false;
+       } else {
+        inputCheck.prop('checked', true);
+    }
+
+});
+
+
+
     $('#btApagarItem').click(function(event) { // Apaga varios itens!
 
      if($('input[id=chkCdNoticia]:checkbox:checked').length == 0) {
@@ -84,7 +99,6 @@ $(function () {
             data: dados,
             url: "login.php",
             success: function (r) {
-                // alert(r);
                 if (r == 1) {
                     window.location = "views/inicio.php";
                 } else {
@@ -131,11 +145,19 @@ $(function () {
                 },
             })
             .done(function (r) {
+
+               if (r == true) {
                 alertify.success('Excluído com sucesso!');
                 setTimeout(function () {
                     location.reload();
                 }, 1500);
-            });
+
+            } else {
+                alertify.error('Erro ao excluir o registro!');
+                return false;
+            }
+
+        });
         })
     });
 
@@ -371,7 +393,7 @@ $(function () {
             url: "../atualiza-membro.php",
             success: function (r) {
 
-                if (r == 1) {
+                if (r == 1) {1966
 
                     alertify.success("Atualizado com Sucesso :)");
                     setTimeout(function () {
@@ -411,7 +433,7 @@ $(function () {
                 }
             }
         });
-    });
+    });1966
 
 
     //Atualiza titulo do video
@@ -430,7 +452,7 @@ $(function () {
                     alertify.success("Atualizado com Sucesso :)");
                     setTimeout(function () {
                         location.reload();
-                    }, 1500);
+                    }, 1500);1966
 
                 } else {
                     alertify.error("Não foi possível atualizar :(");

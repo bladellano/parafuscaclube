@@ -286,7 +286,7 @@ function viewNoticia(id, tipo = 'Notícia'){
 			maximize : false,
 			modal : true,
 			title : tipo,
-			width : 650,
+			width : 750,
 			height : 500
 		});
 	});

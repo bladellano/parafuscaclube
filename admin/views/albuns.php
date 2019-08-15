@@ -41,9 +41,10 @@ $albuns = new Albuns();
 
 			<form id="form-album" method="POST">
 
-				<label for="tituloFoto">Nome Album:</label> <input type="text" name="nomeAlbum" id="nomeAlbum" required>					 
+				<label for="tituloFoto">Nome Album:</label> 
+				<input class="form-control" type="text" name="nomeAlbum" id="nomeAlbum" required>					 
 
-				<input type="submit" value="Salvar">
+				<input class="btn btn-primary" type="submit" value="Salvar">
 			</form>
 
 		</fieldset>
