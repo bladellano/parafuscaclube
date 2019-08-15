@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-
 	$('[data-toggle="popover"]').css({
 		'textDecoration':'none',
 		'color':'#fff',
@@ -281,7 +280,8 @@ function viewNoticia(id, tipo = 'Notícia'){
 			titulo: dados.tituloNoticia,
 			conteudo: dados.conteudo,
 			imagem: dados.thumb_imagem,
-			data: dados.dataCaptura
+			data: dados.dataCaptura,
+			id_album: dados.idAlbum
 		}).dialog({
 			maximize : false,
 			modal : true,

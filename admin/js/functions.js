@@ -1,5 +1,16 @@
 $(function () {
 
+// Verifica em que página esta atualmente e adiciona a classe active.
+var url = window.location.href,
+aNamePag = url.split('/'), 
+sizeArray = aNamePag.length,
+pag = aNamePag[(sizeArray-1)];
+$('.nav-link').each(function(i,e){
+    if($(this).attr('href') == pag){
+        $( ".nav-link[href='"+ pag +"']" ).addClass("active");
+    }
+});
+
 
     // Marca e desmarca todos os ítens.
     $('#chkCdNoticia').click(function(event) {
@@ -7,16 +18,16 @@ $(function () {
         var inputCheck = $('input[type=checkbox]#chkCdNoticia');
         if(inputCheck.not(':checked').length == 0){
             inputCheck.prop('checked', false);
-           return false;
-       } else {
-        inputCheck.prop('checked', true);
-    }
+            return false;
+        } else {
+            inputCheck.prop('checked', true);
+        }
 
-});
+    });
 
 
-
-    $('#btApagarItem').click(function(event) { // Apaga varios itens!
+// Função para apagar vários itens de uma vez.
+    $('#btApagarItem').click(function(event) { 
 
      if($('input[id=chkCdNoticia]:checkbox:checked').length == 0) {
         alertify.error('Selecione pelo menos uma foto!');
