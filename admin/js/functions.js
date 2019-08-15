@@ -1,35 +1,47 @@
 $(function () {
 
 
-
     $('#btApagarItem').click(function(event) { // Apaga varios itens!
-        
-        var val= [];
-        $('input[id=chkCdNoticia]:checkbox:checked').each(function (i) {
-            val[i] = $(this).val();
-        });
 
-        console.log('Cod´s: ', val);
+     if($('input[id=chkCdNoticia]:checkbox:checked').length == 0) {
+        alertify.error('Selecione pelo menos uma foto!');
+        return false;
+    }  
 
-        var dados = val
+    var val= [];
 
-        $.ajax({
-            url: '../excluir-foto.php',
-            type: 'POST',
-            dataType: 'html',
-            data: {dados},
-            success: function(r){
-                console.log('result: ' + r);
-            }
-        })
-       
-        
+    $('input[id=chkCdNoticia]:checkbox:checked').each(function (i) {
+        val[i] = $(this).val();
     });
+
+    var dados = val;
+
+    alertify.confirm('Alerta!', 'Deseja realmente excluir?', function(){ 
+
+      $.ajax({
+        url: '../excluir-foto.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {dados},
+        success: function(r){             
+            if(r == true){
+                alertify.success('Excluído com sucesso!');
+                setTimeout(function () {
+                    location.reload();
+                }, 1500);
+            }
+        }
+    });
+  }
+  , function(){ 
+    alertify.error('Cancelado');
+});
+  }); // Fim função apagar várias fotos.
 
 
     $('#idAlbum').change(function(event) { // Seta o campo nomeFoto com mesmo nome do album.
-     $('#tituloFoto').val($('#idAlbum option:selected').text());
- });
+       $('#tituloFoto').val($('#idAlbum option:selected').text());
+   });
 
 
     //Tooltip - Setando a posição da caixa exibindo quando passa em cima do nome.
@@ -468,7 +480,7 @@ $(function () {
     // document.getElementById("foto").onchange = function(e) { 
 
         $("#foto, #arquivo").change(function (e) {
-            data = new FormData();
+             data = new FormData();
             var nomeArquivo = [],
             respStringInt;
             for (var i = 0; i < e.target.files.length; i++) {
@@ -515,6 +527,11 @@ $(function () {
 
     //Upload de foto
     $('#form-upload').submit(function (e) {
+
+        if (typeof data === 'undefined') {
+            alertify.error('<i class="fa fa-exclamation-triangle"></i> Selecione uma ou  mais imagens!');
+            return false;
+        }
 
         e.preventDefault();
 
@@ -667,10 +684,11 @@ $(function () {
     });
 
 
-    //Excluindo uma foto
+    //Excluir foto
     $('.idFoto.apagar').on('click', function (e) {
         e.preventDefault();
-        var dados = $(this).attr('href');
+
+        var dados = [$(this).attr('href')];
         alertify.confirm('Deseja excluir a foto?', function () {
 
             $.ajax({

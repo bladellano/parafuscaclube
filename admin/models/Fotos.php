@@ -125,7 +125,6 @@ class Fotos extends Conexao {
 				$sql = "DELETE FROM tb_fotos WHERE idFoto= :id";
 				$result =$this->db->prepare($sql);
 				$result->execute([':id'=>$id]);
-
 				return true;	
 
 			} else {

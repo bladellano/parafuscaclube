@@ -44,7 +44,7 @@ require_once "menu.php";
 
 
 	<div class="row">
-		<div class="col-md-4 text-center">
+		<div class="col-md-3 text-center">
 
 			<h3>UPLOAD DE FOTOS</h3>
 			<form id="form-upload" method="POST" enctype="multipart/form-data">
@@ -60,18 +60,26 @@ require_once "menu.php";
 					<?php endforeach;  ?>
 				</select>	 
 
-				<label for="arquivo"><ion-icon name="document"></ion-icon> Selecionar arquivo(s):</label>
-				<input type="file" multiple="" name="arquivo" id="arquivo" required="">
+				<label for="arquivo"><i class="fa fa-file"></i> Selecionar arquivo(s):</label>
+				
+				<input type="file" multiple="" name="arquivo" id="arquivo">
 
 				<input type="submit" class="btn btn-primary" value="Salvar">
 
 			</form>
 
-		<div class="row">
-			<div class="col-md-12"><a href="#" id="btApagarItem">Apagar</a></div>
-		</div>
-		</div> <!--col-md-6-->
-		<div class="col-md-8 text-center">
+			<div class="row"><!--Adicionando um menuzinho-->			
+				<div class="col-md-12">
+					<div class="alert alert-warning text-left" role="alert">
+						<p class="text-muted">.:: Menu ::.</p>
+						<p><i class="fa fa-trash"></i> <a href="#" id="btApagarItem">Apagar Ítens</a></p>
+						<p><i class="fa fa-edit"></i> <a href="#">Alterar Ítens</a></p>
+					</div>
+				</div>
+			</div>
+
+		</div> <!--col-md-3-->
+		<div class="col-md-9 text-center">
 			<?php  
 
 			if($fotos->paginacao()["totalResult"] > 0):
@@ -82,7 +90,8 @@ require_once "menu.php";
 				<table class="table table-hover">
 					<thead >		
 						<tr>
-							<th>Titulo</th>
+							<th>#</th>
+							<th>Título</th>
 							<th>Foto</th>
 							<th>Album</th>
 							<th>Entrada</th>
@@ -97,7 +106,8 @@ require_once "menu.php";
 							foreach ($fotos->paginacao()["objItens"] as $foto) {
 
 								echo '<tr>';
-								echo '<td><input class="form-check-input" type="checkbox" id="chkCdNoticia" name="chkCdNoticia[]" value="'.$foto["idFoto"].'">'.$foto["tituloFoto"].'</td>'; 	
+								echo '<td><input type="checkbox" id="chkCdNoticia" name="chkCdNoticia[]" value="'.$foto["idFoto"].'"></td>';
+								echo '<td>'.$foto["tituloFoto"].'</td>'; 	
 								echo '<td><img width="50" src="../'.$foto["urlFoto"].'" alt=""></td>'; 			
 								echo '<td>'.$objAlbum->selecionarAlbum($foto["idAlbum"]).'</td>'; 			
 								echo '<td>'.$fotos->formatDataPtbr($foto["dataCaptura"]).'</td>';
@@ -124,7 +134,7 @@ require_once "menu.php";
 
 				endif; ?>
 
-			</div><!--col-md-6-->
+			</div><!--col-md-9-->
 		</div>
 
 		<span id='response'></span>
