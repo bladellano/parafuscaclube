@@ -48,7 +48,6 @@ $(function () {
     $('.viewFoto').hover(function () {
 
         var objCaixa = $('#caixa_' + $(this).attr('data-id'));
-        console.log(objCaixa);
         var posTop = $(this).offset().top;
         var postLeft = $(this).offset().left;
 
@@ -231,10 +230,6 @@ $(function () {
         } else {
 
             data = $(this).serializeArray();
-
-            // console.log(data);            
-            // return false;
-
         }
 
         $.ajax({
@@ -303,8 +298,6 @@ $(function () {
     })
 
 
-
-
     //Insere album
 
     $('#form-album').submit(function (e) {
@@ -322,12 +315,10 @@ $(function () {
         .done(function (r) {
 
             if (r == 1) {
-                    // console.log(r);
-                    // alertify.alert('Alerta', 'Inserido com sucesso!', function () {
-                        alertify.success('Album inserido com sucesso!');
-                    // });
 
-                    $('#form-album')[0].reset(); //reseta formulário
+                    alertify.success('Album inserido com sucesso!');
+
+                    $('#form-album')[0].reset(); // Reseta formulário
 
                 }
 
@@ -338,8 +329,6 @@ $(function () {
             });
 
     })
-
-
 
     //Atualiza dados do membro
     $('#btnAtualizaMembro').click(function () {
@@ -473,29 +462,27 @@ $(function () {
         });
     });
 
-
-
     //Carrega os arquivos para o objeto data(FormData);
 
     // document.getElementById("foto").onchange = function(e) { 
 
         $("#foto, #arquivo").change(function (e) {
-             data = new FormData();
-            var nomeArquivo = [],
-            respStringInt;
-            for (var i = 0; i < e.target.files.length; i++) {
-                nomeArquivo[i] = e.target.files[i].name;
-            }
+         data = new FormData();
+         var nomeArquivo = [],
+         respStringInt;
+         for (var i = 0; i < e.target.files.length; i++) {
+            nomeArquivo[i] = e.target.files[i].name;
+        }
 
-            (e.target.files.length > 1) ? respStringInt = e.target.files.length + " arquivo(s)": respStringInt = nomeArquivo.join(", ");
+        (e.target.files.length > 1) ? respStringInt = e.target.files.length + " arquivo(s)": respStringInt = nomeArquivo.join(", ");
 
-            console.log(respStringInt);
+        // console.log(respStringInt);
 
-            $('label[for="foto"],label[for="arquivo"]').text(respStringInt);
+        $('label[for="foto"], label[for="arquivo"]').text(respStringInt);
 
-            var size_arquivos = 0;
+        var size_arquivos = 0;
 
-            if (e.target.files != null && e.target.files.length != 0) {
+        if (e.target.files != null && e.target.files.length != 0) {
 
             //VERIFICA O TAMANHO E A EXTENSÃO DO ARQUIVO.
             var arquivo = [];
@@ -578,7 +565,7 @@ $(function () {
             contentType: false
         });
 
-    }); // fim - form-upload
+    }); // Fim - form-upload
 
 
     //Excluindo membro
@@ -717,4 +704,4 @@ $(function () {
         })
     });
 
-}); //fim function
+}); //Fim function.
