@@ -9,7 +9,6 @@
 			<p><i class="fas fa-phone"></i> Telefone/WhatsApp: (91) 98333-1201</p>
 			<p><i class="far fa-clock"></i> De segunda a sábado.</p>
 			<p>
-
 				<ul class="redes-sociais">
 					<li><i class="fab fa-instagram"></i></li>
 					<li><a href="https://www.youtube.com/channel/UCi6kCppWOEc8aVZMF_68nog" target="_blank"><i class="fab fa-youtube"></i></li>
@@ -17,7 +16,7 @@
 
 						<li><a href="https://api.whatsapp.com/send?phone=5591983331201" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
 					</ul>
-				</p>
+			</p>
 			</div>
 
 			<section class="footer-site" id="contato">

@@ -1,5 +1,38 @@
 $(document).ready(function() {
 
+
+	//Formulário de contato
+	$('form[name=form-contato]').submit(function(event) { 
+		event.preventDefault();
+
+		dados = $(this).serializeArray();
+
+		$.ajax({
+			url: 'admin/envio-email.php',
+			type: 'POST',
+			dataType: 'html',
+			data: dados,
+			success: function(r){
+				if(r==1){
+
+					alertify.success('E-Mail enviado com sucesso!');
+					setTimeout(function(){ window.location.reload(); }, 2000);					
+
+
+				} else {
+
+					alertify.error('Falha no envio do E-Mail!');
+
+				}	
+			}
+
+		}).fail(function() {
+			console.log("error");
+		});		
+
+	});
+
+
 	$('[data-toggle="popover"]').css({
 		'textDecoration':'none',
 		'color':'#fff',

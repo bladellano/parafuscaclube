@@ -14,7 +14,6 @@ $objVideo = new Videos();
 $objMembro = new Membros();
 
 ?>
-
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
 	<div class="modal-dialog">
@@ -103,7 +102,7 @@ $objMembro = new Membros();
 
 	<!-- História -->
 	<section class="content-site historia" id="historia">
-		<h1 class="text-center"><span>História</span></h1>
+		<h2 class="text-center"><span>História</span></h2>
 		<div class="container">
 			<p>Criado na década de 30, o fusca se espalhou em mais de 150 países, nos quatro cantos do planeta. Não há dúvidas de que, por onde passou, tornou-se um ícone, seja como Käfer, Coccinelle, Escarabajo, Vocho, Maggiolino, Fusca, Beetle ou Bug.
 			Segundo o livro "The Volkswagen Beetle", a idéia de um "carro do povo" - tradução literal da palavra alemã Volkswagen para o Português - é tão antiga quanto a existência dos automóveis.</p>
@@ -120,7 +119,7 @@ $objMembro = new Membros();
 	<section class="content-site" id="fotos">
 		<div class="container">
 
-			<h1 class="text-center"><span>Últimos Eventos</span></h1>	
+			<h2 class="text-center"><span>Últimos Eventos</span></h2>	
 
 			<div class="slick">
 
@@ -138,11 +137,10 @@ $objMembro = new Membros();
 	</section>
 
 	<section class="content-site" style="background-color: #ddd" id="videos">
-		<h1 class="text-center"><span>Últimos Videos</span></h1>	
+		<h2 class="text-center"><span>Últimos Videos</span></h2>	
 		<div class="container">
 			<div class="row">
 				<?php 
-
 
 				foreach ($objVideo->listarVideos('LIMIT 3') as $video) {						 
 
@@ -157,7 +155,6 @@ $objMembro = new Membros();
 			</div>
 			<div class="row">
 				<div class="col-xs-12 text-center">
-					<!-- <a href="https://www.youtube.com/channel/UCi6kCppWOEc8aVZMF_68nog" class="btn btn-danger" target="_blank">Todos os Videos</a> -->
 					<a href="videos" class="btn btn-danger">Todos os Videos</a>
 				</div>
 			</div>
@@ -239,12 +236,11 @@ $objMembro = new Membros();
 
 			</section> <!--Midias-->
 
-
 			<section class="img-site" id="membros">
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12">
-							<h1 class="text-center"><span>Membros PFC</span></h1>
+							<h2 class="text-center"><span>Membros PFC</span></h2>
 
 							<br>
 						</div>
@@ -276,6 +272,70 @@ $objMembro = new Membros();
 						</div><!--slick-membros-->
 
 					</div>
+				</div>
+			</section>
+
+			<section id="form-contato">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<h2 class="text-center"><span>Formulário de Contato</span></h2>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-3"></div><!--Espaço para centralizar o form-->
+						<div class="col-md-6"> 
+
+							<form name="form-contato" method="POST">
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-6"> 
+											<input type="text" class="form-control" placeholder="Nome" required name="nome">
+										</div>
+										<div class="col-md-6"> 
+											<input type="email" class="form-control input-ajust" placeholder="E-mail" required name="email">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-6"> 
+											<input type="text" class="form-control" placeholder="Telefone" required name="telefone">
+										</div>
+										<div class="col-md-6"> 
+											<input type="text" class="form-control input-ajust" placeholder="Empresa" name="empresa">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-12"> 
+											<input type="text" class="form-control" placeholder="Assunto" required name="assunto">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-12"> 
+											<textarea name="mensagem"  cols="40" rows="5" class="form-control" placeholder="Mensagem" required></textarea> 
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="g-recaptcha" data-sitekey="6LeDa7IUAAAAAAJ2XiClYhUlSx2W4woSmz4mOksN"></div>
+									</div>
+								</div><p></p>
+								<div class="row">
+									<div class="col-md-12 text-center">
+										<button class="btn btn-danger">ENVIAR</button>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="col-md-3"></div> <!--Espaço para centralizar o form-->
+					</div>			
 				</div>
 			</section>
 
