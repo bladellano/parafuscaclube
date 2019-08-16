@@ -291,7 +291,7 @@ $objMembro = new Membros();
 								<div class="form-group">
 									<div class="row">
 										<div class="col-md-6"> 
-											<input type="text" class="form-control" placeholder="Nome" required name="nome">
+											<input type="text" class="form-control afasta-input-form" placeholder="Nome" required name="nome">
 										</div>
 										<div class="col-md-6"> 
 											<input type="email" class="form-control input-ajust" placeholder="E-mail" required name="email">
@@ -301,7 +301,7 @@ $objMembro = new Membros();
 								<div class="form-group">
 									<div class="row">
 										<div class="col-md-6"> 
-											<input type="text" class="form-control" placeholder="Telefone" required name="telefone">
+											<input type="text" class="form-control afasta-input-form " placeholder="Telefone" required name="telefone">
 										</div>
 										<div class="col-md-6"> 
 											<input type="text" class="form-control input-ajust" placeholder="Empresa" name="empresa">

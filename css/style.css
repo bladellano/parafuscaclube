@@ -14,8 +14,10 @@
 	}
 	#form-contato input, textarea[name=mensagem]{
 		background-color: #c8d6e5;
+			
 
 	}
+
 	input[placeholder], textarea[name=mensagem] { /*  Customiza o textarea do form de contato */
 		font-weight: bold;
 		letter-spacing: -1px;
@@ -256,5 +258,8 @@
 		.col-md-6.text-right, .col-md-6.text-left{
 			text-align: center;
 
+		}
+		.afasta-input-form {
+			margin-bottom: 16px;
 		}
 	}
