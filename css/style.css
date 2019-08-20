@@ -238,6 +238,10 @@
 
 	}
 	@media screen and (max-width: 768px){
+
+		.img-sm {
+			width: 320px;
+		}
 		.thumnails {
 			height: 150px;
 			padding-left: 2px;

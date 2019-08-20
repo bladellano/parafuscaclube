@@ -84,7 +84,7 @@ $objMembro = new Membros();
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 text-center">
-				<img src="img/logo.png" alt="Logo Pará Fusca Clube">
+				<img class="img-sm" src="img/logo.png" alt="Logo Pará Fusca Clube">
 				<p class="lead text-center">
 					Somos verdadeiros apaixonados pelo fusca! E dessa paixão surgiu o Pará Fusca Clube que foi criado com o objetivo de reunir pessoas amantes desse veículo. 
 				</p>
