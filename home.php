@@ -30,29 +30,29 @@ $objMembro = new Membros();
 					<div class="row">
 						<div class="col-md-12"><div class="form-group">
 							<label for="nome_completo">Nome Completo</label>
-							<input class="form-control" name="nome_completo" id="nome_completo" type="text">
+							<input tabindex="1" autofocus="" class="form-control" name="nome_completo" id="nome_completo" type="text">
 						</div></div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-6"><div class="form-group">
 							<label for="email">E-mail</label>
-							<input class="form-control" name="email" id="email" type="text">
+							<input tabindex="2" class="form-control" name="email" id="email" type="text">
 						</div></div>
 						<div class="col-md-6"><div class="form-group">
 							<label for="telefone">Telefone</label>
-							<input class="form-control" name="telefone" id="telefone" type="text">
+							<input tabindex="4" class="form-control" name="telefone" id="telefone" type="text">
 						</div></div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-6"><div class="form-group">
 							<label for="endereco">Endereço</label>
-							<input class="form-control" name="endereco" id="endereco" type="text">
+							<input tabindex="3" class="form-control" name="endereco" id="endereco" type="text">
 						</div></div>
 						<div class="col-md-6"><div class="form-group">
 							<label for="ano_fusca">Ano Fusca</label>
-							<input class="form-control" name="ano_fusca" id="ano_fusca" type="text">
+							<input tabindex="5" class="form-control" name="ano_fusca" id="ano_fusca" type="text">
 						</div></div>
 					</div>					
 					<div class="row">
