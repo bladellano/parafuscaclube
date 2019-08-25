@@ -2,6 +2,7 @@
 <?php
 
 $url = (isset($_GET["url"])) ? $_GET["url"] : false;
+//echo $url; exit;
 
 $url = array_filter(explode('/',$url));
 

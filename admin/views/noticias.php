@@ -1,5 +1,5 @@
 <?php 
-
+ 
 require_once "../models/Noticias.php";
 require_once "../models/Albuns.php";
 require_once "../models/Fotos.php";
