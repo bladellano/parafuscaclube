@@ -1,87 +1,93 @@
-<?php 
+<?php
 // ob_start();
 // session_start();
 
 require_once "Conexao.php";
 
-class Videos extends Conexao {
+class Videos extends Conexao
+{
 
-	protected $titulo_video;
-	protected $cod_video;
-	protected $url_video;
+ protected $titulo_video;
+ protected $cod_video;
+ protected $url_video;
 
-	const table = 'tb_videos';
+ const table = 'tb_videos';
 
-	public function __construct(){
+ public function __construct()
+ {
 
-		parent::__construct(self::table);
+  parent::__construct(self::table);
 
-	}
-	
-	public function salvarVideo($titulo_video,$cod_video,$url_video){
-		
-		$this->titulo_video = $titulo_video;
-		$this->cod_video = $cod_video;
-		$this->url_video = $url_video;
+ }
 
-		try {
+ public function salvarVideo($titulo_video, $cod_video, $url_video)
+ {
 
-			$sql  = "INSERT INTO tb_videos (tituloVideo,codVideo, urlVideo, idUsuario) VALUES (?,?,?,?)";
+  $this->titulo_video = $titulo_video;
+  $this->cod_video    = $cod_video;
+  $this->url_video    = $url_video;
 
-			$stmt = $this->db->prepare($sql);
+  try {
 
-			if(!$stmt->execute([$this->titulo_video, $this->cod_video, $this->url_video, $_SESSION['iduser']])){
+   $sql = "INSERT INTO tb_videos (tituloVideo,codVideo, urlVideo, idUsuario) VALUES (?,?,?,?)";
 
-				return false;
-			} else {
-				return true;
-			}
+   $stmt = $this->db->prepare($sql);
 
-		} catch (PDOException $e) {
+   if (!$stmt->execute([$this->titulo_video, $this->cod_video, $this->url_video, $_SESSION['iduser']])) {
 
-			echo $e->getMessage();
+    return false;
+   } else {
+    return true;
+   }
 
-		}
+  } catch (PDOException $e) {
 
-	}
+   echo $e->getMessage();
 
-	public function listarVideos($limit=null){
+  }
 
-		$sql = "SELECT * FROM ".self::table." ORDER BY dataCaptura DESC $limit";	
+ }
 
-		return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);	
-	}
+ public function listarVideos($limit = null)
+ {
 
-	public function atualizarVideo($id, $titulo_video){
+  $sql = "SELECT * FROM " . self::table . " ORDER BY dataCaptura DESC $limit";
 
-		$sql = "UPDATE ".self::table." SET tituloVideo = ? WHERE idVideo = ?";
-		$result = $this->db->prepare($sql);
-		$result->execute([$titulo_video, $id]);
-		return $result->rowCount() > 0 ? true : false;	
-	}
+  return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+ }
 
-	public function excluirVideo($id){
-		//VERIFICAR SE O ID DO VIDEO ESTA RELACIONADO A ALGUMA NOTICIA.
-		try {
-			
-			$sql = "DELETE FROM ".self::table." WHERE idVideo = :id";
-			$result =$this->db->prepare($sql);
-			$result->execute([':id' => $id]);
+ public function atualizarVideo($id, $titulo_video)
+ {
 
-			return $result->rowCount() > 0 ? true : false;		
+  $sql    = "UPDATE " . self::table . " SET tituloVideo = ? WHERE idVideo = ?";
+  $result = $this->db->prepare($sql);
+  $result->execute([$titulo_video, $id]);
+  return $result->rowCount() > 0 ? true : false;
+ }
 
-		} catch (PDOException $e) {
+ public function excluirVideo($id)
+ {
+  //VERIFICAR SE O ID DO VIDEO ESTA RELACIONADO A ALGUMA NOTICIA.
+  try {
 
-			echo $e->getMessage();
-		}
-	}
+   $sql    = "DELETE FROM " . self::table . " WHERE idVideo = :id";
+   $result = $this->db->prepare($sql);
+   $result->execute([':id' => $id]);
 
-	public function selecionarVideo($id){
+   return $result->rowCount() > 0 ? true : false;
 
-		$sql  = "SELECT * FROM ".self::table." WHERE idVideo = $id";
+  } catch (PDOException $e) {
 
-		return $this->db->query($sql)->fetch(PDO::FETCH_OBJ);	
-	}
+   echo $e->getMessage();
+  }
+ }
 
-}//fim classe
+ public function selecionarVideo($id)
+ {
 
+  $sql = "SELECT * FROM " . self::table . " WHERE idVideo = $id";
+
+  return $this->db->query($sql)->fetch(PDO::FETCH_OBJ);
+ }
+
+} //fim classe
