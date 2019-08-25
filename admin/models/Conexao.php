@@ -26,7 +26,7 @@ class Conexao {
 
 			$host = 'localhost';
 			$dbname = 'bdfusca';
-			$user = 'root';
+			$user = 'root@localhost';
 			$pass = '';
 
 			$con = new PDO("mysql:host={$host};dbname={$dbname}",$user,$pass);

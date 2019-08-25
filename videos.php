@@ -15,8 +15,8 @@
 
 	foreach ($aVideos as $video) {
 
-		echo'<div class="col-lg-3 col-md-4 col-xs-6 thumb">';
- 		
+		echo'<div class="col-lg-3 col-md-4 col-xs-12 thumb">';
+		
 		echo '<div class="panel panel-default">
 		<div class="panel-body text-center">
 		'.$video['tituloVideo'].'
