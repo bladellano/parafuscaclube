@@ -24,7 +24,6 @@ class Fotos extends Conexao {
 
 	public function salvarFoto($titulo_foto, $type, $arquivo_nome, $arquivo_tmp_nome, $id_album){
 		/*Trata a foto*/
-
 		$nomeArquivo = uniqid('img_').".".pathinfo($arquivo_nome, PATHINFO_EXTENSION);
 		$newNameFile = $nomeArquivo; 
 
@@ -32,7 +31,7 @@ class Fotos extends Conexao {
 		$this->novo_nome = $newNameFile;
 		$this->extensao = pathinfo($arquivo_nome, PATHINFO_EXTENSION);
 
-		$this->criaThumbnails(
+		parent::criaThumbnails(
 			$type, 
 			$arquivo_tmp_nome, 
 			$newNameFile, 
@@ -40,7 +39,6 @@ class Fotos extends Conexao {
 		);
 
 		move_uploaded_file($arquivo_tmp_nome, self::pasta.$newNameFile);
-
 		
 		try {
 
@@ -57,36 +55,6 @@ class Fotos extends Conexao {
 		} catch (PDOException $e) {
 			echo $e->getMessage();
 		}
-
-	}
-
-
-	function criaThumbnails($type, $tmp_name, $name, $folder){
-
-		$proporcao = 0.5;
-
-		switch ($type) {
-			case 'image/jpeg':
-			$imagem_temporaria = imagecreatefromjpeg($tmp_name);
-			$largura_original = imagesx($imagem_temporaria);
-			$altura_original = imagesy($imagem_temporaria);	
-			$nova_largura = $largura_original*$proporcao;
-			$nova_altura =  $altura_original*$proporcao;
-
-			$imagem_redimensionada = imagecreatetruecolor($nova_largura, $nova_altura);
-
-			imagecopyresampled($imagem_redimensionada, $imagem_temporaria,0,0,0,0,$nova_largura,$nova_altura,$largura_original,$altura_original);
-
-			imagejpeg($imagem_redimensionada, $folder.'thumbnail_'.$name);
-
-			break;
-
-			default:
-		# code...
-			break;
-		}
-		// echo 'Criou thumbnail com sucesso!';
-
 	}
 
 
@@ -108,6 +76,7 @@ class Fotos extends Conexao {
 
 	public function excluirFoto($id){
 		//Pega caminho da foto.
+
 		$url_foto = $this->selecionarFoto($id)->urlFoto;
 
 		$pasta = explode("/",$this->selecionarFoto($id)->urlFoto)[0]; 

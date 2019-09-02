@@ -10,6 +10,8 @@ class Conexao {
 
 	protected $line_size = 5; // Quantidade de numeros para listar item-página.
 
+	const pasta = "upload/";
+
 	public function __construct($table = null){
 		$this->table = $table; 
 		$this->db = $this->conectar();
@@ -66,7 +68,6 @@ class Conexao {
 		}
 		
 		// Gerando os botões...
-
 		$page_back = @$_GET['page'] - 1;
 		$page_go = @$_GET['page'] + 1;
 		$tbn_value = @$_GET['page'];		
@@ -114,6 +115,36 @@ class Conexao {
 				);
 
 	} // fim metodo paginacao
+
+
+
+	public function criaThumbnails($type, $tmp_name, $name, $folder){
+
+		$proporcao = 0.5;
+
+		switch ($type) {
+			case 'image/jpeg':
+			$imagem_temporaria = imagecreatefromjpeg($tmp_name);
+			$largura_original = imagesx($imagem_temporaria);
+			$altura_original = imagesy($imagem_temporaria);	
+			$nova_largura = $largura_original*$proporcao;
+			$nova_altura =  $altura_original*$proporcao;
+
+			$imagem_redimensionada = imagecreatetruecolor($nova_largura, $nova_altura);
+
+			imagecopyresampled($imagem_redimensionada, $imagem_temporaria,0,0,0,0,$nova_largura,$nova_altura,$largura_original,$altura_original);
+
+			imagejpeg($imagem_redimensionada, $folder.'thumbnail_'.$name);
+
+			break;
+
+			default:
+		# code...
+			break;
+		}
+	}
+
+
 
 
 }//fim classe

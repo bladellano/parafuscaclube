@@ -757,9 +757,9 @@ $('.nav-link').each(function(i,e){
 
                 } else {
                     alertify.error('Erro ao excluir a foto!');
-                    setTimeout(function () {
-                        location.reload();
-                    }, 1500);
+                    // setTimeout(function () {
+                    //     location.reload();
+                    // }, 1500);
                 }
             });
 

@@ -4,6 +4,8 @@ require_once "models/Fotos.php";
 
 $foto = new Fotos();
 
+// print_r($_REQUEST); exit;
+
 foreach ($_REQUEST['dados'] as $id) {
 
 	if($foto->excluirFoto($id) == 0){

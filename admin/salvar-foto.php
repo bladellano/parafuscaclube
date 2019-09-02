@@ -1,6 +1,7 @@
 <?php 
 
 require_once "models/Fotos.php";
+require_once "models/Conexao.php";
 
 $objFoto = new Fotos();
 
